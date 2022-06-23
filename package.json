@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "ts-node-dev server/index.ts",
-    "build": "CI='' tsc && cd client && npm i --only=dev && npm install && npm run build"
+    "build": "CI=false tsc && cd client && npm i --only=dev && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
