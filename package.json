@@ -1,7 +1,7 @@
 {
   "name": "pediageek",
   "version": "1.0.0",
-  "description": "",
+  "description": "Pediageek is the best way to express your views to the world.",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
