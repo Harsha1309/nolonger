@@ -52,15 +52,11 @@ jobs:
       - name: unzip artifact for deployment
         run: unzip release.zip
 
-      - uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: "pediageek"
           slot-name: "Production"
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_683FE0EBEFF9480097683FED4E811DD1 }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_7b6fed77868643f2a155a19bfbffbb6a }}
           package: .
