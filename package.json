@@ -1,9 +1,6 @@
 {
   "name": "pediageek",
   "version": "1.0.0",
-  "engines": {
-    "npm": "16.x"
-  },
   "description": "",
   "main": "dist/index.js",
   "scripts": {
