@@ -1,0 +1,25 @@
+body {
+    background: #ffffff;
+    font-family: sans-serif;
+  }
+  
+ 
+  
+  #createblog .ql-container {
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    background: #f5f4f4;
+    font-size: 18px;
+  }
+  
+  /* Snow Theme */
+  #createblog .ql-snow.ql-toolbar {
+    display: block;
+    background: #cbcaca;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+  }
+  
+  #createblog .ql-editor {
+    min-height: 18em;
+  }
