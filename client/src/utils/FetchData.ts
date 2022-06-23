@@ -1,8 +1,8 @@
 import axios from 'axios'
-import { API_URL } from './config';
-axios.defaults.withCredentials=true
+
+
 export const postAPI = async (url: string, post: object, token?:string) => {
-  const res = await axios.post(`${API_URL}/api/${url}`, post, {
+  const res = await axios.post(`/api/${url}`, post, {
     headers: { Authorization: token }
   })
 
@@ -11,7 +11,7 @@ export const postAPI = async (url: string, post: object, token?:string) => {
 
 
 export const getAPI = async (url: string, token?:string) => {
-  const res = await axios.get(`${API_URL}/api/${url}`, {
+  const res = await axios.get(`/api/${url}`, {
     headers: { Authorization: token }
   })
 
@@ -19,7 +19,7 @@ export const getAPI = async (url: string, token?:string) => {
 }
 
 export const patchAPI = async (url: string, post: object, token?:string) => {
-  const res = await axios.patch(`${API_URL}/api/${url}`, post, {
+  const res = await axios.patch(`/api/${url}`, post, {
     headers: { Authorization: token }
   })
 
@@ -28,7 +28,7 @@ export const patchAPI = async (url: string, post: object, token?:string) => {
 
 
 export const putAPI = async (url: string, post: object, token?:string) => {
-  const res = await axios.put(`${API_URL}/api/${url}`, post, {
+  const res = await axios.put(`/api/${url}`, post, {
     headers: { Authorization: token }
   })
 
@@ -37,7 +37,7 @@ export const putAPI = async (url: string, post: object, token?:string) => {
 
 
 export const deleteAPI = async (url: string, token?:string) => {
-  const res = await axios.delete(`${API_URL}/api/${url}`, {
+  const res = await axios.delete(`/api/${url}`, {
     headers: { Authorization: token }
   })
 
