@@ -23,12 +23,12 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-            npm install
-            npm run build --if-present
-            npm run test --if-present
+          npm install
+          npm run build --if-present
+          npm run test --if-present
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip release.zip ./* -r   
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -43,20 +43,20 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
-     steps:
-  - name: Download artifact from build job
-    uses: actions/download-artifact@v2
-    with:
-      name: node-app
-      
-  - name: unzip artifact for deployment
-    run: unzip release.zip
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v2
+        with:
+          name: node-app
 
-  - name: 'Deploy to Azure Web App'
-    id: deploy-to-webapp
-    uses: azure/webapps-deploy@v2
-    with:
+      - name: unzip artifact for deployment
+        run: unzip release.zip
+
+      - name: 'Deploy to Azure Web App'
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
           app-name: 'pediageek'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_976F929651834C36A6B8FA5FD62A88AD }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7B08A8F44E044EF895F38AAEBFFE7464 }}
           package: .
