@@ -23,7 +23,7 @@
     "mailgun.js": "^7.0.1",
     "mongoose": "^5.12.10",
     "morgan": "^1.10.0",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "nodemailer": "^6.6.1",
     "socket.io": "^4.2.0",
     "twilio": "^3.63.0"
