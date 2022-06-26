@@ -11,7 +11,14 @@ const Referal = () => {
     }
     const copy1 = () => {
         if (auth.access_token) {
-            navigator.clipboard.writeText(window.location.origin.toString()+'/register?ref=' + auth.user?._id);
+            
+            navigator.clipboard.writeText(`Hi, I just invited you to use the Pediageek ! 
+    
+            Step1: Click on the link below register using your email id.
+            Step2: Write your first blog and post it.
+            Step3: Get Rs.10-100 on your account instatntly and earn 21-25 per 100 views on your blog.
+            
+            Here is my referal link click on it to register. ${window.location.origin.toString()}/register?ref=${auth.user?._id}`);
         }
         else history.push('/register');
         var close = document.getElementById('close');
@@ -19,7 +26,13 @@ const Referal = () => {
     }
     const copy2 = () => {
         if (auth.access_token && auth.user) {
-            navigator.clipboard.writeText(auth.user?._id);
+            navigator.clipboard.writeText(`Hi, I just invited you to use the Pediageek ! 
+
+            Step1: Use my code during registration on the website. link: https://pediageek.com/register
+            Step2: Write your first blog and post it.
+            Step3: Get Rs.10-100 on your account instatntly and earn 21-25 per 100 viewson your blog.
+            
+            Here is my code eneter at the registrain referal id and check my name before submit. ${auth.user?._id}`);
         }
         else history.push('/register');
         var close = document.getElementById('close');
@@ -27,13 +40,13 @@ const Referal = () => {
 
     }
     return (
-        <div id="carouselExampleControls" className="carousel slide mb-3 d-flex  justify-content-center bg-secondary py-2" data-bs-ride="carousel" >
-            <div className="carousel-inner" style={{ maxWidth: 900 }}>
+        <div id="carouselExampleControls" className="carousel slide mb-3 d-flex  justify-content-center bg-light py-2" data-bs-ride="carousel" >
+            <div className="carousel-inner" >
                 <div className="carousel-item active"  >
-                    <img src="Refer_a_friend.png" className="d-block w-100" alt="Refer a friend" style={{ cursor: 'pointer' }} data-bs-toggle="modal" data-bs-target="#exampleModal" />
+                    <img src="Refer_a_friend.png" className="d-block w-100" alt="Refer a friend" style={{ cursor: 'pointer', maxHeight: '80vh' }} data-bs-toggle="modal" data-bs-target="#exampleModal" />
                 </div>
                 <div className="carousel-item">
-                    <img src="new_blog.png" className="d-block w-100" alt="Minimum withdraw 50." style={{ cursor: 'pointer' }} onClick={handleClick} />
+                    <img src="new_blog.png" className="d-block w-100" alt="Minimum withdraw 50." style={{ cursor: 'pointer', maxHeight: '80vh' }} onClick={handleClick} />
                 </div>
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
