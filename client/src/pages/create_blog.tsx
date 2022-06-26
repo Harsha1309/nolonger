@@ -13,7 +13,6 @@ import ReactQuill from "../components/editor/ReactQuill";
 import { ALERT } from "../redux/types/alertType";
 
 import { createBlog, updateBlog } from "../redux/actions/blogAction";
-//import { FlexFlowContext } from "twilio/lib/rest/flexApi/v1/flexFlow";
 
 interface IProps {
   id?: string;
@@ -139,8 +138,7 @@ const CreateBlog: React.FC<IProps> = ({ id }) => {
         </div>
 
         <ReactQuill setBody={setBody} body={body} />
-        {/* <Bilu /> */}
-        {/* <MainEditor setBody={setBody} body={body} />  */}
+
         <div
           ref={divRef}
           dangerouslySetInnerHTML={{
@@ -151,7 +149,7 @@ const CreateBlog: React.FC<IProps> = ({ id }) => {
 
         <small>{text.length}</small>
       </div>
-      <div style={{ flex: 2, maxWidth: 330, margin: 10 }}>
+      <div style={{ flex: 2, maxWidth: 330, margin: 15 }}>
         <h5>Blog Policy</h5>
         <div
           className="blogpolicy"
