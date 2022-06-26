@@ -1,6 +1,5 @@
-import React from "react";
 import { useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { RootStore } from "../../utils/TypeScript";
 const Referal = () => {
     const { auth } = useSelector((state: RootStore) => state);

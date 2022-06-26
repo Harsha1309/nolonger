@@ -74,7 +74,6 @@ const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
     const delayDebounce = setTimeout(async () => {
       try {
         const res = await getAPI(`categoryarray?categor=${catname}`);
-        console.log(res.data);
         setCategor(res.data);
       } catch (err) {
         console.log(err);

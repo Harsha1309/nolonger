@@ -1,14 +1,9 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import UserBlogs from "../profile/SimilarBlogs";
 import { Link } from "react-router-dom";
 import "./sidebar.css";
-import { RootStore } from "../../utils/TypeScript";
 import Follow from "../profile/Follow";
 
 export default function Sidebar({ blog }) {
-  const { auth } = useSelector((state: RootStore) => state);
-  const dispatch = useDispatch();
 
   return (
     <div className="sidebar">

@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 
 import RegisterForm from "../components/auth/RegisterForm";
-import NotFound from "../components/global/NotFound";
 import { RootStore } from "../utils/TypeScript";
 
 const Register = () => {

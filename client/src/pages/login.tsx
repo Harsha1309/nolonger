@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import LoginPass from "../components/auth/LoginPass";
-import LoginSMS from "../components/auth/LoginSMS";
 import SocialLogin from "../components/auth/SocialLogin";
 
 import { RootStore } from "../utils/TypeScript";
-import NotFound from "../components/global/NotFound";
 
 const Login = () => {
   const [sms, setSms] = useState(false);

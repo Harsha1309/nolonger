@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { googleLogin, facebookLogin } from "../../redux/actions/authAction";
+import { googleLogin } from "../../redux/actions/authAction";
 
 const SocialLogin = (referer) => {
   const dispatch = useDispatch();

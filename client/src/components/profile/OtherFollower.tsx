@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOtherInfo } from "../../redux/actions/userAction";
-import { RootStore, IUser, IParams, IBlog } from "../../utils/TypeScript";
-
+import { RootStore, IUser } from "../../utils/TypeScript";
 import SingleFollower from "./SingleFollower";
 
 interface IProps {

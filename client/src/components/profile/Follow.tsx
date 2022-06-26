@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { IBlog, IUser } from "../../utils/TypeScript";
+import { IUser } from "../../utils/TypeScript";
 import { addfollowing, removefollowing } from "../../redux/actions/userAction";
 import { RootStore } from "../../utils/TypeScript";
 import { ALERT } from "../../redux/types/alertType";

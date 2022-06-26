@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useCallback } from 'react'
-import ReactQuill, { Quill } from 'react-quill';
+import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-//import ImageResize from 'quill-image-resize-module-react';
+
 import './style.css'
 
 
@@ -10,7 +10,6 @@ import { useDispatch } from 'react-redux'
 import { checkImage, imageUpload } from '../../utils/ImageUpload'
 import { ALERT } from '../../redux/types/alertType'
 
-//Quill.register('modules/imageResize', ImageResize);
 
 
 interface IProps {
