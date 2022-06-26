@@ -1,11 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-
-import { getOtherInfo } from "../../redux/actions/userAction";
-import { RootStore, IUser } from "../../utils/TypeScript";
-
-import Loading from "../global/Loading";
-import Follow from "./Follow";
+import React from "react";
 import Following from "./OtherFollowings";
 import UserBlogs from "./UserBlogs";
 import Follower from "./OtherFollower";

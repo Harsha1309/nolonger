@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-import { IParams, RootStore, IBlog } from "../../utils/TypeScript";
+import { RootStore, IBlog } from "../../utils/TypeScript";
 
 import { getBlogsByUserId } from "../../redux/actions/blogAction";
 

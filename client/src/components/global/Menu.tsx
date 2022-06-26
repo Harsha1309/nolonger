@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootStore } from '../../utils/TypeScript'
@@ -36,7 +35,12 @@ const Menu = () => {
 
   return (
     <ul className="navbar-nav ms-auto ml-3 w-100">
+
       <Search />
+      <li className='nav-item'>
+        <i className="fas fa-search fa-lg"></i>
+      </li>
+
       {
         navLinks.map((link, index) => (
           <li key={index} className={`nav-item ${isActive(link.path)}`}>
@@ -44,7 +48,6 @@ const Menu = () => {
           </li>
         ))
       }
-
 
 
       {
@@ -55,12 +58,10 @@ const Menu = () => {
           </span>
           <ul className="dropdown-menu text-ceneter" aria-labelledby="navbarDropdown">
             <li>
-              No Notifications.
+              {' '}No Notifications.
             </li>
-
             <li><hr className="dropdown-divider" /></li>
             <li>
-
             </li>
           </ul>
         </li>
