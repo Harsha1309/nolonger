@@ -21,6 +21,10 @@ const Notification = () => {
     }, [dispatch, history, auth]);
 
     useEffect(() => {
+        document.getElementById("closebtn")?.click();
+    }, [history.location.pathname]);
+
+    useEffect(() => {
         setMsg(notification.data)
     }, [notification]);
     return (
@@ -44,6 +48,7 @@ const Notification = () => {
                                 className="btn-close"
                                 data-bs-dismiss="modal"
                                 aria-label="Close"
+                                id="closebtn"
                             ></button>
                         </div>
                         <div
