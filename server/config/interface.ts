@@ -21,6 +21,17 @@ export interface INewUser {
   account: string;
   password: string;
 }
+export interface INotification {
+  user: string;
+  msg: [
+    {
+      msg: string;
+      desc: string;
+      time: Date;
+    }
+  ];
+  new: boolean;
+}
 
 export interface IBalance {
   user: string;

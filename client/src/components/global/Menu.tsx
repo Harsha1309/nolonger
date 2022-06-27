@@ -53,8 +53,13 @@ const Menu = () => {
         {
           auth.user &&
           <li className="nav-item dropdown text-cenetr" style={{ cursor: 'pointer' }}  >
-            <span className="nav-link">
-              <i className="fas fa-bell fa-lg"></i>
+            <span className="nav-link" data-bs-toggle="modal" data-bs-target="#modalPush">
+              <i className="fas fa-bell fa-lg position-relative" >
+                <span className="position-absolute top-0 start-100 translate-middle p-2 bg-primary border border-light rounded-circle">
+                  <span className="visually-hidden">New alerts</span>
+                </span>
+              </i>
+
             </span>
           </li>
         }

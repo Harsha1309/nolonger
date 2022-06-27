@@ -6,6 +6,7 @@ import { IBlog, IParams, RootStore } from "../../utils/TypeScript";
 
 import { deleteBlog } from "../../redux/actions/blogAction";
 
+
 interface IProps {
   blog: IBlog;
 }
@@ -14,6 +15,7 @@ const CardHoriz: React.FC<IProps> = ({ blog }) => {
   const { slug } = useParams<IParams>();
   const { auth } = useSelector((state: RootStore) => state);
   const dispatch = useDispatch();
+
   const handleDelete = () => {
     if (!auth.user || !auth.access_token) return;
 
