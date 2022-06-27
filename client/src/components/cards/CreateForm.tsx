@@ -49,8 +49,8 @@ const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
     const value = e.target.id;
     setBlog({ ...blog, category: value });
     //console.log(blog);
-    if(app)
-    app.style.display='none';
+    if (app)
+      app.style.display = 'none';
     setCatname(e.target.innerText);
   };
 
@@ -83,8 +83,8 @@ const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
   }, [catname, dispatch, categories]);
 
   const addcat = () => {
-    if(app)
-    app.style.display='none';
+    if (app)
+      app.style.display = 'none';
     if (auth.access_token) dispatch(createCategory(catname, auth.access_token));
   };
 
@@ -145,7 +145,7 @@ const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
           type="text"
           className="form-control me-2 w-100"
           value={catname}
-          placeholder="Enter your search..."
+          placeholder="Add category ..."
           //onBlur={(e) => showhide()}
           onFocus={(e) => showhide()}
           onChange={(e) => setCatname(e.target.value)}
@@ -164,31 +164,30 @@ const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
             display: "none",
           }}
         >
-          <span className="btn btn-secondary p-1 position-absolute px-3" style={{right:5}} onClick={e=>{close()}}>&times;</span>
-         
-           {categor.length &&
-          <p style={{ color: "black" }}>Select One...</p>
-           }
-          {categor.map((category) => (
-            <span
-              className="btn btn-success py-1 m-1"
-              key={category._id}
-              id={category._id}
-              // style={{ margin: 1, border: 1, backgroundColor: "white",borderRadius:2 ,padding:2}}
-              onClick={(e) => {
-               // console.log(e);
-               
-                handleChangeCat(e);
-              }}
-            >
-              {category.name}
-            </span>
-          ))}
-          { !categor.length ?
-            (<span className="btn btn-light py-2 m-1 pb-2" onClick={(e) => addcat()}>
-              Add Category
-            </span>) : ""
+          <span className="btn btn-secondary p-1 position-absolute px-3" style={{ right: 5 }} onClick={e => { close() }}>&times;</span>
+
+          {categor.length &&
+            <p style={{ color: "black" }}>Select One...</p>
           }
+          {categor.length === 0 ? <button className="btn btn-light py-2 m-1 pb-2" onClick={(e) => addcat()}>
+            Add Category
+          </button>
+            :
+            categor.map((category) => (
+              <span
+                className="btn btn-success py-1 m-1"
+                key={category._id}
+                id={category._id}
+                onClick={(e) => {
+                  handleChangeCat(e);
+                }}
+              >
+                {category.name}
+              </span>
+            )
+            )
+          }
+
         </div>
       </div>
 

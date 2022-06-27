@@ -63,6 +63,12 @@ export interface IAlert {
   errors?: string | string[];
 }
 
+export interface INotification {
+  msg: string;
+  desc: string;
+  time: Date;
+}
+
 export interface ICategory {
   _id?: string;
   name: string;

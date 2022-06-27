@@ -4,7 +4,7 @@ import { RootStore } from '../../utils/TypeScript'
 import { logout } from '../../redux/actions/authAction'
 
 const Menu = () => {
-  const { auth } = useSelector((state: RootStore) => state)
+  const { auth, notification } = useSelector((state: RootStore) => state)
   const dispatch = useDispatch()
   const history = useHistory();
   const { pathname } = useLocation()
@@ -55,9 +55,9 @@ const Menu = () => {
           <li className="nav-item dropdown text-cenetr" style={{ cursor: 'pointer' }}  >
             <span className="nav-link" data-bs-toggle="modal" data-bs-target="#modalPush">
               <i className="fas fa-bell fa-lg position-relative" >
-                <span className="position-absolute top-0 start-100 translate-middle p-2 bg-primary border border-light rounded-circle">
+                {notification.new && <span className="position-absolute top-0 start-100 translate-middle p-2 bg-primary border border-light rounded-circle">
                   <span className="visually-hidden">New alerts</span>
-                </span>
+                </span>}
               </i>
 
             </span>

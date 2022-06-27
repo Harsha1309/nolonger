@@ -13,18 +13,25 @@ import Notification from "../models/notificationModel";
 
 const notificationCtrl = {
   getNotification: async (req: IReqAuth, res: Response) => {
-  
     try {
-      const notifications = await Notification.findOne({ user: req.user?._id });
+      const notifications = await Notification.findOne({
+        user: req.user?._id,
+      });
       if (notifications) {
         let free = notifications;
         free.new = false;
         free.save();
         const msg = notifications.msg;
-        const total = notifications.msg.length;
-        res.send({ msg, total });
+        res.send({ msg, new: notifications.new });
+      } else {
+        const notification = new Notification({
+          user: req.user?._id,
+          msg: [],
+          new: false,
+        });
+        notification.save();
+        res.send({ msg: notification.msg, new: notification.new });
       }
-      return res.status(404).json({ msg: "No Notifications ." });
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });
     }
