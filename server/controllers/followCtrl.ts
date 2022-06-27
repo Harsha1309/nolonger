@@ -1,6 +1,7 @@
 import { Response } from "express";
 import { IReqAuth } from "../config/interface";
 import Users from "../models/userModel";
+import notificationCtrl from "./notificationCtrl";
 
 // const Pagination = (req: IReqAuth) => {
 //   let page = Number(req.query.page) * 1 || 1;
@@ -27,6 +28,16 @@ const followCtrl = {
       const follow1 = await Users.findOne({ _id: addfollowing });
       if (follow1) {
         follow1.follower = follow1.follower.concat(req.user._id);
+        notificationCtrl.addNotification(
+          follow1._id,
+          "Followers Update 👩‍👦‍👦.",
+          "Hii! " +
+            " " +
+            follow1.name +
+            " " +
+            user?.name +
+            " started following you."
+        );
         await follow1.save();
       }
 

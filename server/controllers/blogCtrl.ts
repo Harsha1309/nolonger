@@ -4,6 +4,7 @@ import Comments from "../models/commentModel";
 import { IReqAuth } from "../config/interface";
 import mongoose from "mongoose";
 import balanceCtrl from "./balanceCtrl";
+import notificationCtrl from "./notificationCtrl";
 
 const Pagination = (req: IReqAuth) => {
   let page = Number(req.query.page) * 1 || 1;
@@ -31,8 +32,17 @@ const blogCtrl = {
       });
 
       await newBlog.save();
-      if (req.user.blogcount === 0 && req.user.referer !== "PediaGeek")
+      if (req.user.blogcount === 0 && req.user.referer !== "PediaGeek") {
         balanceCtrl.updateReferalbalance(req.user.referer, req.user._id);
+        notificationCtrl.addNotification(
+          req.user._id,
+          "Referal money Added 🥰.",
+          "Hii! " +
+            " " +
+            req.user.name +
+            " Your referal amount is added to your wallet .Keep contributing and earn more ."
+        );
+      }
       req.user.blogcount = req.user.blogcount + 1;
       req.user.save();
       res.json({
@@ -243,12 +253,29 @@ const blogCtrl = {
       blog.views = blog.views + 1;
       if (blog.views % 10 === 0) {
         blog.earn = (blog.views / 10) * 2.11;
-        blog.earn.toFixed(2);
-        console.log("updateblogbalnce run.");
+        blog.earn = parseFloat(blog.earn.toFixed(2));
         balanceCtrl.updateBlogbalance(blog);
       }
       blog = await blog.save();
       delete blog.earn;
+      if (blog.views == 20)
+        notificationCtrl.addNotification(
+          blog.user,
+          "Your blog is trending 🎉",
+          " Your Blog : " +
+            blog.title +
+            " reached a milestone of 20 views. Keep sharing and earning."
+        );
+      if (blog.views % 100)
+        notificationCtrl.addNotification(
+          blog.user,
+          "Your blog is trending 🎉",
+          " Your Blog : " +
+            blog.title +
+            " reached a milestone of " +
+            blog.views +
+            " views. Keep sharing and earning."
+        );
       return res.json(blog);
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });

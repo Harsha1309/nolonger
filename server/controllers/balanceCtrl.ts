@@ -2,6 +2,7 @@ import { json, Request, Response } from "express";
 import { IBlog, IReqAuth } from "../config/interface";
 import Balance from "../models/balanceModel";
 import sendMail from "../config/sendBalancemail";
+import notificationCtrl from "./notificationCtrl";
 
 const balanceCtrl = {
   getBalance: async (req: IReqAuth, res: Response) => {
@@ -39,6 +40,12 @@ const balanceCtrl = {
           balance.balance = balance.balance - withdraw;
           sendMail(mobilenumber, withdraw, balance);
         }
+
+        notificationCtrl.addNotification(
+          req.user._id,
+          "Withdraw request processed.",
+          "Your withdraw request is processed money will be received with in 30 minutes."
+        );
         balance = await balance.save();
         res.json({
           msg: "Successfull ! You will recive amount with in 30 minutes . If not received contact : contact@pediageek.com ",

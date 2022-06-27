@@ -8,6 +8,7 @@ const notificationSchema = new mongoose.Schema({
       msg: { type: String },
       desc: { type: String },
       time: { type: Date, default: new Date() },
+      url: { type: String, default: "#" },
     },
   ],
   new: { type: Boolean, default: true },
