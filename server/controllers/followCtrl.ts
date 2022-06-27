@@ -36,7 +36,8 @@ const followCtrl = {
             follow1.name +
             " " +
             user?.name +
-            " started following you."
+            " started following you.",
+          "/profile/" + user?._id
         );
         await follow1.save();
       }

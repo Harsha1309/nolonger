@@ -36,17 +36,30 @@ const notificationCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
-  addNotification: async (user: string, msg: string, desc: string) => {
+  addNotification: async (
+    user: string,
+    msg: string,
+    desc: string,
+    url?: string
+  ) => {
     let notification = await Notification.findOne({ user });
     if (notification) {
-      notification.msg.concat([{ msg, desc, time: new Date() }]);
+      if (url) {
+        let arr = { msg, desc, time: new Date(), url };
+        notification.msg.unshift(arr);
+      } else {
+        let arr = { msg, desc, time: new Date(), url: "#" };
+        notification.msg.unshift(arr);
+      }
       notification.new = true;
+      console.log(notification.msg);
       notification.save();
     } else {
       notification = new Notification({
         user,
         msg: [{ msg, desc, time: new Date() }],
         new: true,
+        url: url,
       });
       notification.save();
     }

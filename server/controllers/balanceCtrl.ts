@@ -63,7 +63,7 @@ const balanceCtrl = {
     const balance = await Balance.findOne({ user: blog.user });
     if (balance) {
       balance.blogbalance = balance.blogbalance + 2.11;
-      balance.blogbalance.toFixed(2);
+      balance.blogbalance = parseFloat(balance.blogbalance.toFixed(2));
       balance.balance = balance.balance + 2.11;
       balance.balance.toFixed(2);
       balance.save();

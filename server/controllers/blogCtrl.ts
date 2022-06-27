@@ -258,15 +258,17 @@ const blogCtrl = {
       }
       blog = await blog.save();
       delete blog.earn;
-      if (blog.views == 20)
+      if (blog.views === 20) {
         notificationCtrl.addNotification(
           blog.user,
           "Your blog is trending 🎉",
           " Your Blog : " +
             blog.title +
-            " reached a milestone of 20 views. Keep sharing and earning."
+            " reached a milestone of 20 views. Keep sharing and earning.",
+          "/blog/" + blog._id
         );
-      if (blog.views % 100)
+      }
+      if (blog.views % 100 === 0) {
         notificationCtrl.addNotification(
           blog.user,
           "Your blog is trending 🎉",
@@ -274,8 +276,10 @@ const blogCtrl = {
             blog.title +
             " reached a milestone of " +
             blog.views +
-            " views. Keep sharing and earning."
+            " views. Keep sharing and earning.",
+          "/blog/" + blog._id
         );
+      }
       return res.json(blog);
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });
