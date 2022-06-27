@@ -20,7 +20,8 @@ import {
 
 import { OAuth2Client } from "google-auth-library";
 import fetch from "node-fetch";
-import addNotification from "./NotificationCtrl";
+import notificationCtrl from "./notificationCtrl";
+
 const client = new OAuth2Client(`${process.env.MAIL_CLIENT_ID}`);
 const CLIENT_URL = `${process.env.BASE_URL}`;
 
@@ -74,10 +75,11 @@ const authCtrl = {
 
       const newuser = await new_user.save();
 
-      addNotification(
+      notificationCtrl.addNotification(
         newuser._id,
         "Welcome! to Pediageeks world.",
         "Hii! " +
+          " " +
           newuser.name +
           "on behalf of whole pediageek team we welcome you to the platform.Try each and every feature on platform make your own brand on the platform.Thanky you."
       );

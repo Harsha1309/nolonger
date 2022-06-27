@@ -244,7 +244,7 @@ const blogCtrl = {
       if (blog.views % 10 === 0) {
         blog.earn = (blog.views / 10) * 2.11;
         blog.earn.toFixed(2);
-        console.log('updateblogbalnce run.')
+        console.log("updateblogbalnce run.");
         balanceCtrl.updateBlogbalance(blog);
       }
       blog = await blog.save();
