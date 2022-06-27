@@ -28,6 +28,7 @@ export interface INotification {
       msg: string;
       desc: string;
       time: Date;
+      url?: string;
     }
   ];
   new: boolean;

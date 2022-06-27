@@ -10,8 +10,6 @@ import Referal from '../components/global/Referal'
 
 const Home = () => {
   const { homeBlogs } = useSelector((state: RootStore) => state)
-
-
   if (homeBlogs.length === 0) return <Loading />;
   return (
     <div className="home_page">

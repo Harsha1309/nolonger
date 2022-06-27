@@ -7,7 +7,6 @@ const Header = () => {
   return (
 
     <>
-      
       <nav className="navbar navbar-expand navbar-light bg-light p-3"
         style={{ position: 'sticky', top: 0, left: 0, zIndex: 9 }}
       >
