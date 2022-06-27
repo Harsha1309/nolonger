@@ -1,9 +1,6 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import { IReqAuth } from "../config/interface";
-import mongoose from "mongoose";
-import auth from "../middleware/auth";
 import Users from "../models/userModel";
-import { userInfo } from "os";
 
 // const Pagination = (req: IReqAuth) => {
 //   let page = Number(req.query.page) * 1 || 1;

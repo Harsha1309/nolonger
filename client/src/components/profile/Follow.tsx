@@ -17,7 +17,7 @@ const Follow: React.FC<IProps> = ({ user }) => {
   const [follow, setFollow] = useState(false);
   useEffect(() => {
     setFollow(false);
-    auth.user?.following.map((id) => {
+    auth.user?.following.forEach((id) => {
       if (id === user._id) {
         setFollow(true);
       }

@@ -21,35 +21,17 @@ const SocialLogin = (referer) => {
         size: "large",
         shape: "rectangular",
         text: "continue_with",
-      } // customization attributes
+      }
     );
   }, []);
 
-  // window.FB.login(function (response) {
-  //   const { accessToken, userID } = response.authResponse;
-  //   dispatch(facebookLogin(accessToken, userID));
-  // });
-
   return (
-    <div className="row mx-md-2">
-      {/* <div id="fb-root"></div> */}
-      <div className="bg-light justify-content-between row">
+    <div className="row ml-md-3">
+      <div className="bg-light justify-content-center row">
         <div className="col-1"></div>
         <div className="my-2 col-11" id="buttonDiv"></div>
         <div className="col-1"></div>
       </div>
-      {/*} <div
-        className="fb-login-button"
-        data-width=""
-        data-size="large"
-        data-button-type="continue_with"
-        data-layout="default"
-        data-auto-logout-link="false"
-        data-use-continue-as="true"
-      ></div> */}
-      {/* <div className="my-2 col-5"> */}
-      {/* <FacebookLogin appId="716024296293298" onSuccess={onFBSuccess} /> */}
-      {/* </div> */}
     </div>
   );
 };

@@ -2,10 +2,12 @@ import { Link } from 'react-router-dom'
 import Menu from './Menu'
 import Search from './Search'
 import Notification from '../profile/Notification'
+import GooglePrompt from '../auth/GooglePrompt'
 const Header = () => {
   return (
 
     <>
+      
       <nav className="navbar navbar-expand navbar-light bg-light p-3"
         style={{ position: 'sticky', top: 0, left: 0, zIndex: 9 }}
       >
@@ -33,6 +35,7 @@ const Header = () => {
         </div>
       </div>
       <Notification />
+      <GooglePrompt />
     </>
   )
 }
