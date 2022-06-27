@@ -74,8 +74,6 @@ const Notification = () => {
                                         <p className="mb-1">{data.desc}</p>
                                         <hr />
                                     </Link>
-
-
                                 ))}
 
                             </div>
