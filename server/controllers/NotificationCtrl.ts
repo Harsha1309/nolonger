@@ -18,11 +18,30 @@ const notificationCtrl = {
         user: req.user?._id,
       });
       if (notifications) {
-        let free = notifications;
-        free.new = false;
-        free.save();
         const msg = notifications.msg;
         res.send({ msg, new: notifications.new });
+      } else {
+        const notification = new Notification({
+          user: req.user?._id,
+          msg: [],
+          new: false,
+        });
+        notification.save();
+        res.send({ msg: notification.msg, new: notification.new });
+      }
+    } catch (err: any) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+  notificationRead: async (req: IReqAuth, res: Response) => {
+    try {
+      const notifications = await Notification.findOne({
+        user: req.user?._id,
+      });
+      if (notifications) {
+        notifications.new = false;
+        notifications.save();
+        res.send({ msg: notifications.msg, new: notifications.new });
       } else {
         const notification = new Notification({
           user: req.user?._id,
