@@ -51,10 +51,10 @@ export const validCreateBlog = ({
 }: IBlog) => {
   const err: string[] = []
 
-  if(title.trim().length < 10){
-    err.push("Title has at least 10 characters.")
-  }else if(title.trim().length > 50){
-    err.push("Title is up to 50 characters long.")
+  if(title.trim().length < 20){
+    err.push("Title has at least 20 characters.")
+  }else if(title.trim().length > 60){
+    err.push("Title is up to 60 characters long.")
   }
 
   if(content.trim().length < 2000){
@@ -63,8 +63,8 @@ export const validCreateBlog = ({
 
   if(description.trim().length < 100){
     err.push("Description has at least 100 characters.")
-  }else if(description.trim().length > 200){
-    err.push("Description is up to 200 characters long.")
+  }else if(description.trim().length > 250){
+    err.push("Description is up to 250 characters long.")
   }
 
   if(!thumbnail){
