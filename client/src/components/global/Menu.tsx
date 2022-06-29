@@ -2,6 +2,7 @@ import { Link, useHistory, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootStore } from '../../utils/TypeScript'
 import { logout } from '../../redux/actions/authAction'
+import { notificationRead } from '../../redux/actions/notificationAction'
 
 const Menu = () => {
   const { auth, notification } = useSelector((state: RootStore) => state)
@@ -30,7 +31,9 @@ const Menu = () => {
     if (!auth.access_token) return;
     dispatch(logout(auth.access_token))
   }
-
+  const Read = () => {
+    dispatch(notificationRead(auth))
+  }
 
   return (
     <>
@@ -48,12 +51,11 @@ const Menu = () => {
           <span className='nav-link' data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
             <i className="fas fa-search fa-lg"></i>
           </span>
-
         </li>
         {
           auth.user &&
           <li className="nav-item dropdown text-cenetr" style={{ cursor: 'pointer' }}  >
-            <span className="nav-link" data-bs-toggle="modal" data-bs-target="#modalPush">
+            <span className="nav-link" data-bs-toggle="modal" data-bs-target="#modalPush" onClick={Read}>
               <i className="fas fa-bell fa-lg position-relative" >
                 {notification.new && <span className="position-absolute top-0 start-100 translate-middle p-2 bg-primary border border-light rounded-circle">
                   <span className="visually-hidden">New alerts</span>
@@ -103,4 +105,5 @@ const Menu = () => {
 }
 
 export default Menu
+
 

@@ -123,7 +123,7 @@ const Privacy_policy = () => {
 <div id="conta">
   <h2 id="sec7">Contact <span className="ustome"> us </span></h2>
   <div style={{backgroundColor: 'wheat',margin: 'auto',padding:'10px', width: '75%',height: '100%'}}>
-    <span id="add3">Address:<span id="add4">Jais,Amethi,UttarPradesh</span> .</span>
+    <span id="add3">Address:<span id="add4">India</span> .</span>
     <span id="cu3"></span>
     <span id="mn3"><br/>Mobile no. :<span id="mn4">8114694441</span> .</span>
     <span id="ei3"><br/>Email id:<span id="ei4">pediageek0@gmail.com</span> .</span><br/><span id="ot">Linkedin :

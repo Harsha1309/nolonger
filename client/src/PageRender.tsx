@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { IParams } from './utils/TypeScript'
 import NotFound from './components/global/NotFound'
@@ -18,9 +18,13 @@ const PageRender = () => {
 
   let name = '';
 
-  if(page){
+  if (page) {
     name = slug ? `${page}/[slug]` : `${page}`
   }
+  useEffect(() => {
+    if (page && !slug)
+      window.scrollTo(0, 0)
+  }, [page])
 
   return generatePage(name)
 }
