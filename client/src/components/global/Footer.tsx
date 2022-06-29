@@ -106,7 +106,7 @@ const Footer = () => {
                   <i className="fas fa-envelope me-3"></i>
                   contact@pediageek.com                </p>
                 <p>
-                  <i className="fas fa-phone me-3"></i> +91 8114694441
+                  <i className="fas fa-phone-office me-3"></i> +91 8114694441
                 </p>
               </div>
             </div>
