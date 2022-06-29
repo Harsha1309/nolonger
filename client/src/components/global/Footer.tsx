@@ -64,12 +64,12 @@ const Footer = () => {
                   </Link>
                 </p>
                 <p>
-                  <Link className="text-reset text-capitalize text-decoration-none" to="/create_blog">
+                  <Link className="text-reset text-capitalize text-decoration-none" to={auth.access_token ? '/create_blog' : '/login  '}>
                     Create Blog
                   </Link>
                 </p>
                 <p>
-                  <Link className="text-reset text-capitalize text-decoration-none" to="/writer_policy">
+                  <Link className="text-reset text-capitalize text-decoration-none" to="/blog/629d49634487380016bd44a7">
                     Writer Policy
                   </Link>
 
