@@ -6,29 +6,32 @@ const draftSchema = new mongoose.Schema(
     user: { type: mongoose.Types.ObjectId, ref: "user" },
     title: {
       type: String,
-      require: true,
       trim: true,
-      minLength: 40,
-      maxLength: 100,
       default:
         "A blog title Grab attention with vivid and descriptive language.",
+      maxLength: 1000,
+      minLenght: 20,
     },
     content: {
       type: String,
-      minLength: 2000,
+      maxLength: 10000,
     },
     description: {
       type: String,
       trim: true,
       default:
         "A blog descript is an overall and brief description of the whole topic on which you are writing a blog.",
-      minLength: 100,
-      maxLength: 250,
+      maxLength: 1000,
     },
     thumbnail: {
       type: String,
+      default:
+        "https://res.cloudinary.com/aababcab/image/upload/v1655885679/blog/vaxwltxu54q0exumvaer.png",
     },
-    category: { type: mongoose.Types.ObjectId, ref: "category" },
+    category: {
+      type: mongoose.Types.ObjectId,
+      ref: "category",
+    },
   },
   {
     timestamps: true,

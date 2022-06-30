@@ -6,11 +6,11 @@ const router = express.Router();
 
 router.post("/draft", auth, draftCtrl.createDraft);
 
-router.get("/drafts/user/:id", auth, draftCtrl.getDraftsByUser);
+router.put("/drafts/user/:id", auth, draftCtrl.getDraftsByUser);
 
 router
   .route("/draft/:id")
-  .get(draftCtrl.getDraft)
+  .get(auth, draftCtrl.getDraft)
   .put(auth, draftCtrl.updateDraft)
   .delete(auth, draftCtrl.deleteDraft)
   .patch(auth, draftCtrl.createBlogdeleteDraft);

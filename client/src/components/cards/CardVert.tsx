@@ -10,18 +10,25 @@ interface IProps {
 }
 
 const CardVert: React.FC<IProps> = ({ blog }) => {
-  var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const timeAgo = new TimeAgo('en-US')
   return (
     <div className="card">
-      {typeof blog.thumbnail === "string" && (
-        <img
-          src={blog.thumbnail}
-          className="card-img"
-          alt="..."
-          style={{ height: "180px", objectFit: "cover" }}
-        />
-      )}
+      <Link
+        to={`/blog/${blog._id}`}
+        style={{
+          textDecoration: "none",
+          textTransform: "capitalize",
+        }}
+      >
+        {typeof blog.thumbnail === "string" && (
+          <img
+            src={blog.thumbnail}
+            className="card-img"
+            alt="..."
+            style={{ height: "180px", objectFit: "cover" }}
+          />
+        )}
+      </Link>
       <div className="card-body">
         <h5 className="card-title">
           {" "}
@@ -36,7 +43,6 @@ const CardVert: React.FC<IProps> = ({ blog }) => {
           </Link>
         </h5>
         <small className="text-muted cat my-1">
-          <i className="far fa-clock text-info"></i> <b>{(blog.content.length / 700).toFixed(2)} minutes {'  '}</b>
           {typeof blog.user !== "string" && <><i className="fas fa-user text-info"></i> {' '}
             <Link
               to={`/profile/${blog.user._id}`}
@@ -44,7 +50,8 @@ const CardVert: React.FC<IProps> = ({ blog }) => {
                 textDecoration: "none",
                 textTransform: "capitalize",
               }}><b>
-                {blog.user.name}</b></Link></>}
+                {blog.user.name}</b>{' '}<i className="fas fa-users text-info"></i><b> {blog.user.follower.length} Followers </b></Link></>}
+
         </small>
         <p className="card-text my-2">{blog.description.slice(0, 100) + "..."}</p>
       </div>

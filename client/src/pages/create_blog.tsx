@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootStore, IBlog, IUser } from "../utils/TypeScript";
-import { validCreateBlog, shallowEqual } from "../utils/Valid";
+import { validCreateBlog, shallowEqual, validSaveDraft } from "../utils/Valid";
 import { getAPI } from "../utils/FetchData";
 
 import NotFound from "../components/global/NotFound";
@@ -12,12 +12,15 @@ import ReactQuill from "../components/editor/ReactQuill";
 
 import { ALERT } from "../redux/types/alertType";
 
-import { createBlog, updateBlog } from "../redux/actions/blogAction";
+import { createBlog, deleteBlog, updateBlog } from "../redux/actions/blogAction";
+import { createBlogdeleteDraft, createDraft, deleteDraft, updateDraft } from "../redux/actions/draftAction";
 
 interface IProps {
   id?: string;
+  draft?: boolean;
 }
-const CreateBlog: React.FC<IProps> = ({ id }) => {
+const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
+
   const initState = {
     user: "",
     title: "",
@@ -39,32 +42,58 @@ const CreateBlog: React.FC<IProps> = ({ id }) => {
   const [oldData, setOldData] = useState<IBlog>(initState);
 
   useEffect(() => {
-    if (!id) return;
+    if (id && draft === undefined) {
+      getAPI(`blog/${id}`)
+        .then((res) => {
+          setBlog(res.data);
+          setBody(res.data.content);
+          setOldData(res.data);
+        })
+        .catch((err) => console.log(err));
 
-    getAPI(`blog/${id}`)
-      .then((res) => {
-        setBlog(res.data);
-        setBody(res.data.content);
-        setOldData(res.data);
-      })
-      .catch((err) => console.log(err));
+      // const initData = {
+      //   user: "",
+      //   title: "",
+      //   content: "",
+      //   description: "",
+      //   thumbnail: "",
+      //   category: "",
+      //   createdAt: new Date().toISOString(),
+      // };
 
-    const initData = {
-      user: "",
-      title: "",
-      content: "",
-      description: "",
-      thumbnail: "",
-      category: "",
-      createdAt: new Date().toISOString(),
-    };
+      // return () => {
+      //   setBlog(initData);
+      //   setBody("");
+      //   setOldData(initData);
+      // };
+    }
+    else if (id && draft) {
+      getAPI(`draft/${id}`, auth.access_token)
+        .then((res) => {
+          console.log(res)
+          setBlog(res.data);
+          setBody(res.data.content);
+          setOldData(res.data);
+        })
+        .catch((err) => console.log(err));
+      // const initData = {
+      //   user: "",
+      //   title: "",
+      //   content: "",
+      //   description: "",
+      //   thumbnail: "",
+      //   category: "",
+      //   createdAt: new Date().toISOString(),
+      // };
 
-    return () => {
-      setBlog(initData);
-      setBody("");
-      setOldData(initData);
-    };
-  }, [id]);
+      // return () => {
+      //   setBlog(initData);
+      //   setBody("");
+      //   setOldData(initData);
+      // };
+    }
+
+  }, [auth]);
 
   useEffect(() => {
     const div = divRef.current;
@@ -97,8 +126,8 @@ const CreateBlog: React.FC<IProps> = ({ id }) => {
       content: body.replaceAll("<img src", '<img width="100%" src'),
     };
 
-    if (id) {
-      if ((blog.user as IUser)._id !== auth.user?._id)
+    if (id && !draft) {
+      if (blog.user !== auth.user?._id)
         return dispatch({
           type: ALERT,
           payload: { errors: "Invalid Authentication." },
@@ -112,11 +141,56 @@ const CreateBlog: React.FC<IProps> = ({ id }) => {
         });
 
       dispatch(updateBlog(newData, auth.access_token));
-    } else {
+    } else if (id && draft) {
+      if (blog.user !== auth.user?._id)
+        return dispatch({
+          type: ALERT,
+          payload: { errors: "Invalid Authentication." },
+        });
+
+      dispatch(createBlog(newData, auth.access_token));
+      dispatch(deleteDraft(newData, auth.access_token));
+    }
+    else {
       dispatch(createBlog(newData, auth.access_token));
     }
   };
 
+  const handleDraft = async () => {
+    if (!auth.access_token) return;
+
+    const check = validSaveDraft({ ...blog, content: text });
+    if (check.errLength !== 0) {
+      return dispatch({ type: ALERT, payload: { errors: check.errMsg } });
+    }
+    let newData = {
+      ...blog,
+      content: body.replaceAll("<img src", '<img width="100%" src'),
+    };
+    if (id && draft) {
+      console.log(blog.user)
+      if (blog.user !== auth.user?._id)
+        return dispatch({
+          type: ALERT,
+          payload: { errors: "Invalid Authentication." },
+        });
+
+      const result = shallowEqual(oldData, newData);
+      if (result)
+        return dispatch({
+          type: ALERT,
+          payload: { errors: "The data does not change." },
+        });
+      dispatch(updateDraft(newData, auth.access_token));
+    } else if (id && draft === undefined) {
+      dispatch(createDraft(newData, auth.access_token));
+      dispatch(deleteBlog(newData, auth.access_token));
+    }
+    else {
+      dispatch(createDraft(newData, auth.access_token));
+    }
+
+  };
   if (!auth.access_token) return <NotFound />;
 
   return (
@@ -200,14 +274,19 @@ const CreateBlog: React.FC<IProps> = ({ id }) => {
           <label htmlFor="consent">I accept the above conditions.</label>
           <br />
           <br />
-          <br />
-          <br />
+          <button
+            className="btn btn-light mt-3 d-block mx-auto"
+            onClick={handleDraft}
+          >
+            {(id && draft === undefined) ? "Convert Draft" : "Save Draft"}
+          </button>
           <button
             className="btn btn-light mt-3 d-block mx-auto"
             onClick={handleSubmit}
           >
-            {id ? "Update Post" : "Create Post"}
+            {(id && !draft) ? "Update Post" : "Create Post"}
           </button>
+
         </div>
       </div>
     </div>

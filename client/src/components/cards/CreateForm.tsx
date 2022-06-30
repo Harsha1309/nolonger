@@ -146,7 +146,6 @@ const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
           className="form-control me-2 w-100"
           value={catname}
           placeholder="Add category ..."
-          //onBlur={(e) => showhide()}
           onFocus={(e) => showhide()}
           onChange={(e) => setCatname(e.target.value)}
         />
@@ -190,30 +189,6 @@ const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
 
         </div>
       </div>
-
-      {/* //       blogs.map((blog) => <CardHoriz key={blog._id} blog={blog} />)
-        //     ) : (
-        //       <h3 className="text-center">Add Category</h3>
-        //     )}
-        //   </div>
-        // )} */}
-
-      {/* <input
-          className="form-control text-capitalize"
-          name="category"
-          onChange={handleChangeCat}
-          id="category"
-          list="category"
-        /> */}
-
-      {/* <option value="">Choose a category</option>
-          {
-            categories.map(category => (
-              <option key={category._id} value={category._id}>
-                {category.name}
-              </option>
-            ))
-          } */}
     </form>
   );
 };

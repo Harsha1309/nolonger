@@ -6,6 +6,7 @@ import commentRouter from "./commentRouter";
 import followRouter from "./followRouter";
 import balanceRouter from "./balanceRouter";
 import notificationRouter from "./notificationRouter";
+import draftrouter from "./draftRouter";
 const routes = [
   authRouter,
   userRouter,
@@ -15,6 +16,7 @@ const routes = [
   followRouter,
   balanceRouter,
   notificationRouter,
+  draftrouter,
 ];
 
 export default routes;

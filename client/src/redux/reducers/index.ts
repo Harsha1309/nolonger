@@ -9,6 +9,7 @@ import blogsUser from "./blogsUserReducer";
 import comments from "./commentReducer";
 import notification from "./notificationReducer";
 import socket from "./socketReducer";
+import draftsUser from "./draftReducer";
 //import follow from './followReducer'
 export default combineReducers({
   auth,
@@ -21,5 +22,6 @@ export default combineReducers({
   comments,
   socket,
   notification,
+  draftsUser,
   // follow
 });

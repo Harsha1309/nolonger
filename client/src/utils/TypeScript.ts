@@ -101,3 +101,4 @@ export interface IComment {
   comment_root?: string;
   createdAt: string;
 }
+

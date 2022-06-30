@@ -68,7 +68,11 @@ const draftCtrl = {
       }
       req.user.blogcount = req.user.blogcount + 1;
       req.user.save();
-      draftDelete(req.params.id, req.user._id);
+      const abc = await Drafts.findOneAndDelete({
+        _id: req.params.id,
+        user: req.user._id,
+      });
+      console.log(abc);
       res.json({
         ...newBlog._doc,
         user: req.user,
@@ -199,14 +203,6 @@ const draftCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
-};
-
-const draftDelete = (draftid: string, userid: string) => {
-  // Delete Blog
-  Drafts.findOneAndDelete({
-    _id: draftid,
-    user: userid,
-  });
 };
 
 export default draftCtrl;
