@@ -13,7 +13,10 @@ import ReactQuill from "../components/editor/ReactQuill";
 import { ALERT } from "../redux/types/alertType";
 
 import { createBlog, deleteBlog, updateBlog } from "../redux/actions/blogAction";
-import { createDraft, deleteDraft, updateDraft } from "../redux/actions/draftAction";
+import { createDraft, deleteDraft, getDraftsByUserId, updateDraft } from "../redux/actions/draftAction";
+import UserDrafts from "../components/profile/UserDrafts";
+import UserBlogs from "../components/profile/SimilarBlogs";
+import { useHistory } from "react-router-dom";
 
 interface IProps {
   id?: string;
@@ -36,11 +39,12 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
   const divRef = useRef<HTMLDivElement>(null);
   const [text, setText] = useState("");
 
-  const { auth } = useSelector((state: RootStore) => state);
+  const { auth, draftsUser, blogsUser } = useSelector((state: RootStore) => state);
   const dispatch = useDispatch();
 
   const [oldData, setOldData] = useState<IBlog>(initState);
-
+  const history = useHistory();
+  const search = history.location.search;
   useEffect(() => {
     if (id && draft === undefined) {
       getAPI(`blog/${id}`)
@@ -54,7 +58,6 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
     else if (id && draft) {
       getAPI(`draft/${id}`, auth.access_token)
         .then((res) => {
-          console.log(res)
           setBlog(res.data);
           setBody(res.data.content);
           setOldData(res.data);
@@ -96,11 +99,13 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
     };
 
     if (id && !draft) {
-      if (blog.user !== auth.user?._id)
-        return dispatch({
-          type: ALERT,
-          payload: { errors: "Invalid Authentication." },
-        });
+      if (blog.user === auth.user?._id || typeof blog.user !== 'string' && blog.user._id === auth.user?._id) {
+
+      }
+      else return dispatch({
+        type: ALERT,
+        payload: { errors: "Invalid Authentication." },
+      });
 
       const result = shallowEqual(oldData, newData);
       if (result)
@@ -110,6 +115,7 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
         });
 
       dispatch(updateBlog(newData, auth.access_token));
+
     } else if (id && draft) {
       if (blog.user !== auth.user?._id)
         return dispatch({
@@ -119,14 +125,17 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
 
       dispatch(createBlog(newData, auth.access_token));
       dispatch(deleteDraft(newData, auth.access_token));
+      history.push(`/profile/${auth.user._id}`)
     }
     else {
       dispatch(createBlog(newData, auth.access_token));
+      history.push(`/profile/${auth.user?._id}`)
     }
   };
 
   const handleDraft = async () => {
     if (!auth.access_token) return;
+
 
     const check = validSaveDraft({ ...blog, content: text });
     if (check.errLength !== 0) {
@@ -154,9 +163,12 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
     } else if (id && draft === undefined) {
       dispatch(createDraft(newData, auth.access_token));
       dispatch(deleteBlog(newData, auth.access_token));
+      history.push(`/profile/${auth.user?._id}`)
     }
     else {
       dispatch(createDraft(newData, auth.access_token));
+      history.push(`/profile/${auth.user?._id}`)
+
     }
 
   };
