@@ -107,31 +107,6 @@ export const updateDraft =
     }
   };
 
-export const createBlogdeleteDraft =
-  (blog: IBlog, token: string) => async (dispatch: Dispatch<IAlertType>) => {
-    const result = await checkTokenExp(token, dispatch);
-    const access_token = result ? result : token;
-    let url;
-    try {
-      dispatch({ type: ALERT, payload: { loading: true } });
-
-      if (typeof blog.thumbnail !== "string") {
-        const photo = await imageUpload(blog.thumbnail);
-        url = photo.url;
-      } else {
-        url = blog.thumbnail;
-      }
-
-      const newBlog = { ...blog, thumbnail: url };
-
-      const res = await patchAPI(`draft/${newBlog._id}`, newBlog, access_token);
-
-      dispatch({ type: ALERT, payload: { success: res.data.msg } });
-    } catch (err: any) {
-      dispatch({ type: ALERT, payload: { errors: err.response.data.msg } });
-    }
-  };
-
 export const deleteDraft =
   (blog: IBlog, token: string) =>
   async (dispatch: Dispatch<IAlertType | IDeleteDraftsUserType>) => {

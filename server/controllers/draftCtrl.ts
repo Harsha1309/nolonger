@@ -39,48 +39,6 @@ const draftCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
-  createBlogdeleteDraft: async (req: IReqAuth, res: Response) => {
-    if (!req.user)
-      return res.status(400).json({ msg: "Invalid Authentication." });
-
-    try {
-      const { title, content, description, thumbnail, category } = req.body;
-
-      const newBlog = new Blogs({
-        user: req.user._id,
-        title: title.toLowerCase(),
-        content,
-        description,
-        thumbnail,
-        category,
-      });
-
-      await newBlog.save();
-      if (req.user.blogcount === 0 && req.user.referer !== "PediaGeek") {
-        notificationCtrl.addNotification(
-          req.user._id,
-          "Referal money Added 🥰.",
-          "Hii! " +
-            " " +
-            req.user.name +
-            " Your referal amount is added to your wallet .Keep contributing and earn more ."
-        );
-      }
-      req.user.blogcount = req.user.blogcount + 1;
-      req.user.save();
-      const abc = await Drafts.findOneAndDelete({
-        _id: req.params.id,
-        user: req.user._id,
-      });
-      console.log(abc);
-      res.json({
-        ...newBlog._doc,
-        user: req.user,
-      });
-    } catch (err: any) {
-      return res.status(500).json({ msg: err.message });
-    }
-  },
   getDraftsByUser: async (req: IReqAuth, res: Response) => {
     const { limit, skip } = Pagination(req);
     if (!req.user)

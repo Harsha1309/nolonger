@@ -13,7 +13,7 @@ import ReactQuill from "../components/editor/ReactQuill";
 import { ALERT } from "../redux/types/alertType";
 
 import { createBlog, deleteBlog, updateBlog } from "../redux/actions/blogAction";
-import { createBlogdeleteDraft, createDraft, deleteDraft, updateDraft } from "../redux/actions/draftAction";
+import { createDraft, deleteDraft, updateDraft } from "../redux/actions/draftAction";
 
 interface IProps {
   id?: string;
@@ -50,22 +50,6 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
           setOldData(res.data);
         })
         .catch((err) => console.log(err));
-
-      // const initData = {
-      //   user: "",
-      //   title: "",
-      //   content: "",
-      //   description: "",
-      //   thumbnail: "",
-      //   category: "",
-      //   createdAt: new Date().toISOString(),
-      // };
-
-      // return () => {
-      //   setBlog(initData);
-      //   setBody("");
-      //   setOldData(initData);
-      // };
     }
     else if (id && draft) {
       getAPI(`draft/${id}`, auth.access_token)
@@ -76,21 +60,6 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
           setOldData(res.data);
         })
         .catch((err) => console.log(err));
-      // const initData = {
-      //   user: "",
-      //   title: "",
-      //   content: "",
-      //   description: "",
-      //   thumbnail: "",
-      //   category: "",
-      //   createdAt: new Date().toISOString(),
-      // };
-
-      // return () => {
-      //   setBlog(initData);
-      //   setBody("");
-      //   setOldData(initData);
-      // };
     }
 
   }, [auth]);

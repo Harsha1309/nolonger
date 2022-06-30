@@ -12,7 +12,6 @@ router
   .route("/draft/:id")
   .get(auth, draftCtrl.getDraft)
   .put(auth, draftCtrl.updateDraft)
-  .delete(auth, draftCtrl.deleteDraft)
-  .patch(auth, draftCtrl.createBlogdeleteDraft);
+  .delete(auth, draftCtrl.deleteDraft);
 
 export default router;
