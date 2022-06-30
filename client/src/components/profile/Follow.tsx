@@ -39,8 +39,8 @@ const Follow: React.FC<IProps> = ({ user }) => {
 
   return (
     <>
-      {!follow &&
-        <button
+      {(!follow && user._id !== auth.user?._id) &&
+        < button
           className="btn btn-outline-success btn-sm follow mt-2"
           style={{ height: "31px", borderRadius: "22px" }}
           onClick={handleClick}
@@ -49,7 +49,8 @@ const Follow: React.FC<IProps> = ({ user }) => {
         </button>
       }
 
-      {follow &&
+      {
+        (follow && user._id !== auth.user?._id) &&
         <button
           className="btn btn-outline-danger  btn-sm follow mt-2"
           style={{ height: "31px", borderRadius: "22px" }}
