@@ -45,7 +45,7 @@ const CardHoriz: React.FC<IProps> = ({ blog }) => {
                     {blog.thumbnail && (
                         <>
                             {typeof blog.thumbnail === "string" ? (
-                                <Link to={`/blog/${blog._id}`}>
+                                <Link to={`/draft/${blog._id}`}>
                                     <img
                                         src={blog.thumbnail}
                                         className="w-100 h-100"
@@ -69,7 +69,7 @@ const CardHoriz: React.FC<IProps> = ({ blog }) => {
                     <div className="card-body">
                         <h5 className="card-title">
                             <Link
-                                to={`/blog/${blog._id}`}
+                                to={`/draft/${blog._id}`}
                                 className="text-capitalize text-decoration-none"
                             >
                                 {blog.title}
