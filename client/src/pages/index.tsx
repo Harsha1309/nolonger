@@ -13,6 +13,11 @@ const Home = () => {
   if (homeBlogs.length === 0) return <Loading />;
   return (
     <div className="home_page">
+      <div className="alert alert-success alert-dismissible fade show" role="alert">
+        <strong><i className="fas fa-check-circle"></i> Update! </strong> Introducing Draft Post feature in Pediageek ,Start writing from where you have left in previous session.
+        <Link to="/create_blog" className="text-capitalize text-decoration-none"> Explore. </Link>
+        <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
       <Referal />
       {
         homeBlogs.map(homeBlog => (
