@@ -41,7 +41,8 @@ const Helmetglobal: React.FC<IProps> = ({
             {twitterimage && <meta name="twitter:image" content={twitterimage} />}
             {ogtitle && <meta property="og:title" content={ogtitle} />}
             {ogdescription && <meta property="og:description" content={ogdescription} />}
-            {ogurl && <meta property="og:url" content={ogurl} />}
+            <meta property="og:url" content={window.location.href} />
+            <meta property="twitter:url" content={window.location.href} />
             {ogimage && <meta property="og:image" content={ogimage} />}
             <meta property="og:site_name" content="PediaGeek" />
             <meta property="og:locale" content="en_US" />
