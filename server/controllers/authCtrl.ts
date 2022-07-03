@@ -239,6 +239,7 @@ const authCtrl = {
           password: passwordHash,
           avatar: picture.data.url,
           type: "facebook",
+          
         };
         registerUser(user, res);
       }
