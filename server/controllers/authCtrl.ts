@@ -159,7 +159,7 @@ const authCtrl = {
   googleLogin: async (req: Request, res: Response) => {
     try {
       const { id_token } = req.body;
-      const { referer } = req.body;
+      const referer = req.body.referer.referer  ;
 
       const verify = await client.verifyIdToken({
         idToken: id_token,
@@ -201,7 +201,7 @@ const authCtrl = {
           password: passwordHash,
           avatar: picture,
           type: "google",
-          referer,
+          referer: referer,
         };
         registerUser(user, res);
       }
@@ -239,7 +239,6 @@ const authCtrl = {
           password: passwordHash,
           avatar: picture.data.url,
           type: "facebook",
-          
         };
         registerUser(user, res);
       }
@@ -360,7 +359,7 @@ const registerUser = async (user: IUserParams, res: Response) => {
       " on behalf of whole pediageek team we welcome you to the platform. Create your First blog and earn 200-250 Rs. on evry 1000 Views on your blog.Thanky you."
   );
   res.json({
-    msg: "Login Success!",
+    msg: "Registration success!",
     access_token,
 
     user: { ...regUser._doc, password: "" },

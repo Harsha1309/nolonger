@@ -74,13 +74,13 @@ const RegisterForm = () => {
       </div>
       }
 
-      {/* <div style={{ margin: 'auto' }}>
+      <div style={{ margin: 'auto' }}>
         <SocialLogin referer={referer} />
-      </div> */}
+      </div>
 
       <form onSubmit={handleSubmit}>
         <div className="container my-2" style={{ textAlign: 'center' }}>
-          {/* <h4>- - - OR - - -</h4> */}
+          <h4>- - - OR - - -</h4>
 
         </div>
         <div className="form-group mb-3">

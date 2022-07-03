@@ -76,12 +76,12 @@ export const logout =
   };
 
 export const googleLogin =
-  (id_token: string, referer) =>
+  (id_token: string, referer: string) =>
   async (dispatch: Dispatch<IAuthType | IAlertType>) => {
     try {
       dispatch({ type: ALERT, payload: { loading: true } });
 
-      const res = await postAPI("google_login", { id_token, referer });
+      let res = await postAPI("google_login", { id_token, referer });
 
       dispatch({ type: AUTH, payload: res.data });
 

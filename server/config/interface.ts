@@ -61,6 +61,7 @@ export interface IUserParams {
   password: string;
   avatar?: string;
   type: string;
+  referer?: string;
 }
 
 export interface IReqAuth extends Request {
