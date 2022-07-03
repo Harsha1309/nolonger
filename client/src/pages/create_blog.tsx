@@ -172,7 +172,10 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
     }
 
   };
-  if (!auth.access_token) return <NotFound />;
+  let url = history.location.pathname;
+  url = url.substring(1);
+
+  if (!auth.access_token) history.push(`/login?create_blog`);
 
   return (
     <div
