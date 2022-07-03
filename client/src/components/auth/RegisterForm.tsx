@@ -75,7 +75,7 @@ const RegisterForm = () => {
       }
 
       <div style={{ margin: 'auto' }}>
-        <SocialLogin referer={ referer } />
+        <SocialLogin referer={referer} />
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -158,7 +158,7 @@ const RegisterForm = () => {
           </div>
           <div className="form-group mb-3">
             <label htmlFor="referal" className="form-label">
-              Referal Id
+              Referal Id <small>(Optional)</small>
             </label>
 
             <input

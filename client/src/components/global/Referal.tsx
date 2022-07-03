@@ -10,7 +10,7 @@ const Referal = () => {
     }
     const copy1 = () => {
         if (auth.access_token) {
-            
+
             navigator.clipboard.writeText(`Hi, I just invited you to use the Pediageek ! 
     
             Step1: Click on the link below register using your email id.
