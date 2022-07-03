@@ -32,7 +32,11 @@ const blogCtrl = {
       });
 
       await newBlog.save();
-      if (req.user.blogcount === 0 && req.user.referer !== "PediaGeek") {
+      if (
+        req.user.blogcount === 0 &&
+        req.user.referer !== "PediaGeek" &&
+        req.user.referer !== ""
+      ) {
         balanceCtrl.updateReferalbalance(req.user.referer, req.user._id);
         notificationCtrl.addNotification(
           req.user._id,

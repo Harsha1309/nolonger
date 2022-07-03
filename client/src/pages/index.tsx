@@ -14,7 +14,7 @@ const Home = () => {
   if (homeBlogs.length === 0) return <Loading />;
   return (
     <div className="home_page">
-      <Helmetglobal title="Home" description="PediaGeek is the best way to express your idea to the World." keyword="Home,explore,blogs,social_media" />
+      <Helmetglobal title="Home-PediaGeek" description="PediaGeek is the best way to express your idea to the World." keyword="Home,explore,blogs,social_media" />
     
       <div className="alert alert-success alert-dismissible fade show" role="alert">
         <strong><i className="fas fa-check-circle"></i> Update! </strong> Introducing Draft Post feature in Pediageek ,Start writing from where you have left in previous session.

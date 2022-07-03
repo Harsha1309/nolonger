@@ -9,7 +9,7 @@ const GooglePrompt = () => {
   const { auth } = useSelector((state) => state);
 
   const onSuccess = (response) => {
-    dispatch(googleLogin(response.credential, ""));
+    dispatch(googleLogin(response.credential, "Prompt"));
   };
 
   useEffect(() => {

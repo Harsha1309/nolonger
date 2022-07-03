@@ -23,11 +23,10 @@ const Login = () => {
 
   return (
     <div className="auth_page">
-      <Helmetglobal title="Login" description="Login to pediageek to write a blog an dearn." keyword="Login" />
+      <Helmetglobal title="Login-PediaGeek" description="Login to pediageek to write a blog an dearn." keyword="Login" />
       <div className="auth_box">
         <h3 className="text-uppercase text-center mb-4">Login</h3>
-
-        <SocialLogin />
+        <SocialLogin referer="" />
         <LoginPass />
 
         <small className="row my-2 text-primary" style={{ cursor: "pointer" }}>

@@ -19,7 +19,7 @@ async(dispatch: Dispatch<IAlertType | ICategoryType>) => {
   const result = await checkTokenExp(token, dispatch)
   const access_token = result ? result : token
   try {
-    dispatch({ type: ALERT, payload: { loading: true }})
+ 
 
     const res = await postAPI('category', { name }, access_token)
 
@@ -28,7 +28,7 @@ async(dispatch: Dispatch<IAlertType | ICategoryType>) => {
       payload: res.data.newCategory
     })
 
-    dispatch({ type: ALERT, payload: { loading: false }})
+ 
     dispatch({ type: ALERT, payload: { success: "Category Created" }})
   } catch (err: any) {
     dispatch({ type: ALERT, payload: { errors: err.response.data.msg }})

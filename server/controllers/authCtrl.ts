@@ -83,6 +83,15 @@ const authCtrl = {
           newuser.name +
           "on behalf of whole pediageek team we welcome you to the platform.Try each and every feature on platform make your own brand on the platform.Thanky you."
       );
+      if (newuser.referer !== "")
+        notificationCtrl.addNotification(
+          newuser.referer,
+          "Referal Update 🎁🎁.",
+          "Hii! " +
+            newuser.name +
+            " have joined using your refral link tell him to write his firast blog to earn referal reward both.",
+          "/profile/" + newuser._id
+        );
       res.json({ msg: "Account has been activated!" });
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });
@@ -159,7 +168,7 @@ const authCtrl = {
   googleLogin: async (req: Request, res: Response) => {
     try {
       const { id_token } = req.body;
-      const referer = req.body.referer.referer  ;
+      const referer = req.body.referer?.referer;
 
       const verify = await client.verifyIdToken({
         idToken: id_token,
@@ -358,6 +367,15 @@ const registerUser = async (user: IUserParams, res: Response) => {
       regUser.name +
       " on behalf of whole pediageek team we welcome you to the platform. Create your First blog and earn 200-250 Rs. on evry 1000 Views on your blog.Thanky you."
   );
+  if (regUser.referer !== "")
+    notificationCtrl.addNotification(
+      regUser.referer,
+      "Referal Update 🎁🎁.",
+      "Hii! " +
+        regUser.name +
+        " have joined using your refral link tell him to write his firast blog to earn referal reward both.",
+      "/profile/" + regUser._id
+    );
   res.json({
     msg: "Registration success!",
     access_token,

@@ -80,7 +80,7 @@ const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
       }
     }, 400);
     return () => clearTimeout(delayDebounce);
-  }, [catname, dispatch, categories]);
+  }, [catname, categories]);
 
   const addcat = () => {
     if (app)
@@ -89,7 +89,7 @@ const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
   };
 
   return (
-    <form>
+    <div>
       <div className="form-group position-relative">
         <input
           type="text"
@@ -186,10 +186,9 @@ const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
             )
             )
           }
-
         </div>
       </div>
-    </form>
+    </div>
   );
 };
 

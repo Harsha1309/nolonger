@@ -17,7 +17,7 @@ const RegisterForm = () => {
     account: "",
     password: "",
     cf_password: "",
-    referer: variable === 'ref' ? answer : 'Pediageek'
+    referer: variable === 'ref' ? answer : ''
   };
   const dispatch = useDispatch();
   const [userRegister, setUserRegister] = useState(initialState);
@@ -59,7 +59,7 @@ const RegisterForm = () => {
         <p>You have been refered by : </p>
         <div className="d-flex flex-row justify-content-between align-items-center">
 
-          <Link to={`/profile/${refered?._id}`} className="text-decoration-none">
+          <Link to={`/profile/${refered?._id}`} className="text-decoration-none" >
             <div className="d-flex flex-row align-items-center"><img className="rounded-circle" src={refered?.avatar} width="55" height="55" />
               <div className="d-flex flex-column align-items-start ml-2">
                 <span className="font-weight-bold">{refered?.name}</span>
