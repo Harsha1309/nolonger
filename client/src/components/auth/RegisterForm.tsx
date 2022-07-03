@@ -17,7 +17,7 @@ const RegisterForm = () => {
     account: "",
     password: "",
     cf_password: "",
-    referer: variable === 'ref' ? answer : ''
+    referer: variable === 'ref' ? answer : 'Pediageek'
   };
   const dispatch = useDispatch();
   const [userRegister, setUserRegister] = useState(initialState);
