@@ -39,7 +39,7 @@ const Helmetglobal: React.FC<IProps> = ({
 
             {/* Open Graph / Facebook */}
             <meta property="og:type" content="article" />
-            <meta property="og:url" content={`${window.location.href}`} />
+            <meta property="og:url" content={`${ogurl}`} />
             {ogtitle && <meta property="og:title" content={`${ogtitle}`} />}
             {ogdescription && <meta property="og:description" content={`${ogdescription}`} />}
             {ogimage && <meta property="og:image" content={`${ogimage}`} />}
