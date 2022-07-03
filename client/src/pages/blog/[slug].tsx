@@ -55,7 +55,7 @@ const DetailBlog = () => {
     <div className="my-4">
 
       {blog && (typeof blog.thumbnail === 'string') &&
-        <Helmetglobal title={blog.title} description={blog.description} keyword={blog.category} twitterimage={blog.thumbnail} ogimage={blog.thumbnail} ogdescription={blog.description} twitterdescription={blog.description} ogtitle={blog.title} twittertitle={blog.title} />
+        <Helmetglobal title={blog.title} description={blog.description} keyword={blog.category} twitterimage={blog.thumbnail} ogimage={blog.thumbnail} ogdescription={blog.description} ogurl={`https://www.pediageek.com/blog/${blog._id}`} twitterdescription={blog.description} ogtitle={blog.title} twittertitle={blog.title} />
       }
 
       {error && showErrMsg(error)}

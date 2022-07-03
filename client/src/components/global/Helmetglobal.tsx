@@ -30,24 +30,34 @@ const Helmetglobal: React.FC<IProps> = ({
     fbappid }) => {
     return (
         <Helmet>
+
+
+            {/* primary meta tags */}
             <title>{title}</title>‍
-            <meta name="description" content={description} />
-            <meta name="keywords" content={keyword} />
+            <meta name="description" content={`${description}`} />
+            <meta name="keywords" content={`${keyword}`} />
+
+            {/* Open Graph / Facebook */}
+            <meta property="og:type" content="article" />
+            <meta property="og:url" content={`${window.location.href}`} />
+            {ogtitle && <meta property="og:title" content={`${ogtitle}`} />}
+            {ogdescription && <meta property="og:description" content={`${ogdescription}`} />}
+            {ogimage && <meta property="og:image" content={`${ogimage}`} />}
+
+            {/* Twitter */}
             <meta name="twitter:card" content="summary_large_image" />
-            {twittersite && <meta name="twitter:site" content={twittersite} />}
-            {twittercreator && <meta name="twitter:creator" content={twittercreator} />}
-            {twittertitle && <meta name="twitter:title" content={twittertitle} />}
-            {twitterdescription && < meta name="twitter:description" content={twitterdescription} />}
-            {twitterimage && <meta name="twitter:image" content={twitterimage} />}
-            {ogtitle && <meta property="og:title" content={ogtitle} />}
-            {ogdescription && <meta property="og:description" content={ogdescription} />}
-            <meta property="og:url" content={window.location.href} />
-            <meta property="twitter:url" content={window.location.href} />
-            {ogimage && <meta property="og:image" content={ogimage} />}
+            <meta property="twitter:url" content={`${ogurl}`} />
+            {twittertitle && <meta name="twitter:title" content={`${twittertitle}`} />}
+            {twitterdescription && < meta name="twitter:description" content={`${twitterdescription}`} />}
+            {twitterimage && <meta name="twitter:image" content={`${twitterimage}`} />}
+
+            {/* optional */}
+            {twittersite && <meta name="twitter:site" content={`${twittersite}`} />}
+            {twittercreator && <meta name="twitter:creator" content={`${twittercreator}`} />}
             <meta property="og:site_name" content="PediaGeek" />
             <meta property="og:locale" content="en_US" />
-            <meta property="og:type" content="article" />
-            {fbappid && <meta property="fb:app_id" content="ID_APP_FACEBOOK" />}
+
+
         </Helmet>
     )
 }
