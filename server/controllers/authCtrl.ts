@@ -205,7 +205,7 @@ const authCtrl = {
         });
       } else {
         const user = {
-          name,
+          name: name.slice(0, 29),
           account: email,
           password: passwordHash,
           avatar: picture,

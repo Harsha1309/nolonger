@@ -95,7 +95,8 @@ const RegisterForm = () => {
             name="name"
             value={name}
             onChange={handleChangeInput}
-            placeholder="Your name is up to 20 chars."
+            placeholder="Your name is up to 30 chars."
+            maxLength={30}
           />
         </div>
 

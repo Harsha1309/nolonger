@@ -6,8 +6,8 @@ export const validRegister = (userRegister: IUserRegister) => {
 
   if (!name) {
     errors.push("Please add your name.");
-  } else if (name.length > 20) {
-    errors.push("Your name is up to 20 chars long.");
+  } else if (name.length > 30) {
+    errors.push("Your name is up to 30 chars long.");
   }
 
   if (!account) {
