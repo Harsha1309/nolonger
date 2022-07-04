@@ -81,7 +81,7 @@ const authCtrl = {
         "Hii! " +
           " " +
           newuser.name +
-          "on behalf of whole pediageek team we welcome you to the platform.Try each and every feature on platform make your own brand on the platform.Thanky you."
+          "on behalf of whole pediageek team we welcome you to the platform.Try each and every feature on platform make your own brand on the platform."
       );
       if (newuser.referer !== "")
         notificationCtrl.addNotification(
@@ -365,7 +365,7 @@ const registerUser = async (user: IUserParams, res: Response) => {
     "Hii! " +
       " " +
       regUser.name +
-      " on behalf of whole pediageek team we welcome you to the platform. Create your First blog and earn 200-250 Rs. on evry 1000 Views on your blog.Thanky you."
+      " on behalf of whole pediageek team we welcome you to the platform. Create your First blog and earn 200-250 Rs. on evry 1000 Views on your blog."
   );
   if (regUser.referer !== "")
     notificationCtrl.addNotification(
