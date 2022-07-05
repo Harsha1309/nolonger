@@ -3,7 +3,7 @@ import { IBlog, IReqAuth } from "../config/interface";
 import Balance from "../models/balanceModel";
 import sendMail from "../config/sendBalancemail";
 import notificationCtrl from "./notificationCtrl";
-
+import Blogs from "../models/blogModel";
 const balanceCtrl = {
   getBalance: async (req: IReqAuth, res: Response) => {
     if (!req.user)
@@ -60,19 +60,68 @@ const balanceCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
-  updateBlogbalance: async (blog: IBlog) => {
+  updateBlogbalance: async (req: Request, res: Response) => {
+    const balance = await Balance.findOne({ user: req.body.blog.user._id });
+    console.log(balance);
+    if (balance) {
+      balance.blogbalance = balance.blogbalance + 0.03;
+      balance.blogbalance = parseFloat(balance.blogbalance.toFixed(2));
+      balance.balance = balance.balance + 0.03;
+      balance.balance = parseFloat(balance.balance.toFixed(2));
+      balance.save();
+      let single = await Blogs.findById(req.body.blog._id);
+
+      if (single?.earn !== undefined) {
+        single.earn = single.earn + 0.03;
+        single.earn = parseFloat(single.earn.toFixed(2));
+        single.save();
+      }
+      console.log(single);
+    } else {
+      const balance = new Balance({
+        user: req.body.blog.user._id,
+        balance: 1.7,
+        blogbalance: 1.7,
+        referalbalance: 0,
+      });
+      balance.save();
+      let single = await Blogs.findById(req.body.blog._id);
+
+      if (single?.earn !== undefined) {
+        single.earn = single.earn + 1.7;
+        single.earn = parseFloat(single.earn.toFixed(2));
+        single.save();
+      }
+      console.log(single);
+    }
+    console.log(balance);
+    return res.send(balance);
+  },
+  updateBlogbalancebyview: async (blog: IBlog) => {
     const balance = await Balance.findOne({ user: blog.user });
     if (balance) {
-      balance.blogbalance = balance.blogbalance + 0.3;
+      let single = await Blogs.findById(blog._id);
+      if (single?.earn !== undefined) {
+        single.earn = single.earn + 0.1;
+        single.earn = parseFloat(single.earn.toFixed(2));
+        single.save();
+      }
+      balance.blogbalance = balance.blogbalance + 0.1;
       balance.blogbalance = parseFloat(balance.blogbalance.toFixed(2));
-      balance.balance = balance.balance + 0.3;
+      balance.balance = balance.balance + 0.1;
       balance.balance.toFixed(2);
       balance.save();
     } else {
+      let single = await Blogs.findById(blog._id);
+      if (single?.earn !== undefined) {
+        single.earn = single.earn + 1.5;
+        single.earn = parseFloat(single.earn.toFixed(2));
+        single.save();
+      }
       const balance = new Balance({
         user: blog.user,
-        balance: 2.11,
-        blogbalance: 2.11,
+        balance: 1.5,
+        blogbalance: 1.5,
         referalbalance: 0,
       });
       balance.save();

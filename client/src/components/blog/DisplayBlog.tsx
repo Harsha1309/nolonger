@@ -10,6 +10,7 @@ import Loading from "../global/Loading";
 import Pagination from "../global/Pagination";
 
 import { createComment, getComments } from "../../redux/actions/commentAction";
+import { getAPI, patchAPI } from "../../utils/FetchData";
 
 interface IProps {
   blog: IBlog;
@@ -54,6 +55,26 @@ const DisplayBlog: React.FC<IProps> = ({ blog }) => {
   );
 
   useEffect(() => {
+    console.log(blog)
+    const len = blog.content.length;
+    let count = 0;
+    console.log("run");
+    const interval = setInterval(function () {
+      count++;
+      if (count < 3) {
+        console.log("run");
+        patchAPI("adduser", { blog });
+
+      }
+      else {
+        console.log("stop")
+        clearInterval(interval)
+      }
+    }, 15000);
+  }, [])
+
+
+  useEffect(() => {
     if (!blog._id) return;
     const num = history.location.search.slice(6) || 1;
     fetchComments(blog._id, num);
@@ -67,16 +88,16 @@ const DisplayBlog: React.FC<IProps> = ({ blog }) => {
   return (
     <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
       <div style={{ flex: 9 }}>
-        <div style={{ maxWidth: 850, margin: "20px" ,minWidth:250}}>
+        <div style={{ maxWidth: 850, margin: "20px", minWidth: 250 }}>
           <h2
             className="text-center my-3 text-capitalize fs-1"
-            style={{ color: "Black" ,fontSize:30}}
+            style={{ color: "Black", fontSize: 30 }}
           >
             <b>{blog.title}</b>
           </h2>
 
-          
-<hr /><br />
+
+          <hr /><br />
           <div
             dangerouslySetInnerHTML={{
               __html: blog.content,

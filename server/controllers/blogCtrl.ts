@@ -255,10 +255,8 @@ const blogCtrl = {
       );
       if (!blog) return res.status(400).json({ msg: "Blog does not exist." });
       blog.views = blog.views + 1;
-      if (blog.views % 10 === 0) {
-        blog.earn = (blog.views / 10) * 2.11;
-        blog.earn = parseFloat(blog.earn.toFixed(2));
-        balanceCtrl.updateBlogbalance(blog);
+      if (blog.views % 2 === 0) {
+        balanceCtrl.updateBlogbalancebyview(blog);
       }
       blog = await blog.save();
       delete blog.earn;

@@ -373,7 +373,7 @@ const registerUser = async (user: IUserParams, res: Response) => {
       "Referal Update 🎁🎁.",
       "Hii! " +
         regUser.name +
-        " have joined using your refral link tell him to write his firast blog to earn referal reward both.",
+        " have joined using your refral link tell him to write his first blog to earn referal reward both.",
       "/profile/" + regUser._id
     );
   res.json({
