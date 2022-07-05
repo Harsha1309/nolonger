@@ -22,7 +22,7 @@ const DisplayBlog: React.FC<IProps> = ({ blog }) => {
 
   const [showComments, setShowComments] = useState<IComment[]>([]);
   const [loading, setLoading] = useState(false);
-
+  const [count, setCount] = useState(0);
   const history = useHistory();
 
   const handleComment = (body: string) => {
@@ -55,19 +55,13 @@ const DisplayBlog: React.FC<IProps> = ({ blog }) => {
   );
 
   useEffect(() => {
-    console.log(blog)
     const len = blog.content.length;
-    let count = 0;
-    console.log("run");
     const interval = setInterval(function () {
-      count++;
-      if (count < 3) {
-        console.log("run");
+      setCount(count + 1)
+      if (count < len / 500) {
         patchAPI("adduser", { blog });
-
       }
       else {
-        console.log("stop")
         clearInterval(interval)
       }
     }, 15000);
