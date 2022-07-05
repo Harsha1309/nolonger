@@ -27,7 +27,7 @@ const Monetary = () => {
 
     getAPI('balance', auth.access_token).then((res) => {
       setBalance({ "_id": res.data.user, "balance": res.data.balance, "referalbalance": res.data.referalbalance, "blogbalance": res.data.blogbalance });
-      console.log(res)
+
     })
   }, [])
 
@@ -42,10 +42,13 @@ const Monetary = () => {
         setBalance({ "_id": res.data.balance.user, "balance": res.data.balance.balance, "referalbalance": res.data.balance.referalbalance, "blogbalance": res.data.balance.blogbalance });
         dispatch({ type: ALERT, payload: { loading: false } })
         dispatch({ type: ALERT, payload: { success: "Withdraw request accepted you will receive Amount with in 1 Hour." } })
-        console.log(res.data);
+        var close = document.getElementById('close');
+        close?.click();
       }).catch((err) => {
         dispatch({ type: ALERT, payload: { loading: false } })
         dispatch({ type: ALERT, payload: { errors: err.response.data.msg } })
+        var close = document.getElementById('close');
+        close?.click();
       })
     }
     else {
@@ -66,7 +69,7 @@ const Monetary = () => {
           <li><a className="dropdown-item position-relative" href="#">Referal : <span style={{ left: 104, position: 'absolute' }}><i className="fas fa-rupee-sign"></i>{balance?.referalbalance.toFixed(2)}</span></a></li>
           <li><a className="dropdown-item position-relative" href="#">Bounty :<span style={{ left: 104, position: 'absolute' }}><i className="fas fa-rupee-sign"></i>{balance?.blogbalance.toFixed(2)}</span></a></li>
           <li><hr className="dropdown-divider" /></li>
-          <li><a className="dropdown-item position-relative" href="#">Withdrawn :<span style={{ left: 104, position: 'absolute' }}><i className="fas fa-rupee-sign"></i>{(balance?.referalbalance+balance?.blogbalance-balance?.balance).toFixed(2)}</span></a></li>
+          <li><a className="dropdown-item position-relative" href="#">Withdrawn :<span style={{ left: 104, position: 'absolute' }}><i className="fas fa-rupee-sign"></i>{(balance?.referalbalance + balance?.blogbalance - balance?.balance).toFixed(2)}</span></a></li>
           <li><a className="dropdown-item position-relative" href="#">Remaining :<span style={{ left: 104, position: 'absolute' }}><i className="fas fa-rupee-sign"></i>{balance?.balance.toFixed(2)}</span></a></li>
         </ul>{' '}
         <input style={{
