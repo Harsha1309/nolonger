@@ -97,7 +97,7 @@ const Monetary = () => {
             </div>
             <div className="modal-body">
               <div className="alert alert-primary" role="alert">
-                Minumum withdraw amount is <b className="fas fa-rupee-sign">50.00</b>
+                Minumum withdraw amount is <b className="fas fa-rupee-sign">100.00</b>
               </div>
               <div className="mb-3 row">
                 <label htmlFor="balance" className="col-sm-2 col-form-label">Balance</label>
@@ -123,7 +123,7 @@ const Monetary = () => {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button className="btn btn-primary" onClick={handleSubmit} id="withdraw" disabled={balance.balance < 50}>Withdraw</button>
+              <button className="btn btn-primary" onClick={handleSubmit} id="withdraw" disabled={balance.balance < 100}>Withdraw</button>
             </div>
           </div>
         </div>

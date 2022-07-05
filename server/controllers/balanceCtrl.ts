@@ -55,7 +55,7 @@ const balanceCtrl = {
       } else
         return res
           .status(400)
-          .json({ msg: "You donot have sufficient balnace for transaction." });
+          .json({ msg: "You donot have sufficient balance for transaction." });
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });
     }
