@@ -16,7 +16,7 @@ const sendBalancemail = async (
     to: "contact@pediageek.com",
     subject: "Withdraw",
     html: `<p>Mobile Number: ${mobilenumber}</p>
-   <p>Profile url: pediagek.com/profile/${balance.user}</p>
+   <p>Profile url: pediageek.com/profile/${balance.user}</p>
     <p>balance: ${balance.balance}</p>
     <p>Withdraw: ${withdraw}</p>
             `,
