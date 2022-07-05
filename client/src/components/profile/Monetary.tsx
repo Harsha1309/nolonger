@@ -34,25 +34,25 @@ const Monetary = () => {
 
 
   const handleSubmit = () => {
-    console.log("run")
-    if (auth.access_token && mobilenumber.length === 10 && withdraw > 1 && balance && withdraw <= balance.balance) {
+    if (auth.access_token && mobilenumber.length === 10 && withdraw >= 1 && balance && withdraw <= balance.balance) {
       dispatch({ type: ALERT, payload: { loading: true } })
 
       patchAPI('secure_withdraw', { mobilenumber, withdraw }, auth.access_token).then((res) => {
         setBalance({ "_id": res.data.balance.user, "balance": res.data.balance.balance, "referalbalance": res.data.balance.referalbalance, "blogbalance": res.data.balance.blogbalance });
+        var close = document.getElementById('moneyclose');
+        close?.click();
         dispatch({ type: ALERT, payload: { loading: false } })
         dispatch({ type: ALERT, payload: { success: "Withdraw request accepted you will receive Amount with in 1 Hour." } })
-        var close = document.getElementById('close');
-        close?.click();
+
       }).catch((err) => {
         dispatch({ type: ALERT, payload: { loading: false } })
         dispatch({ type: ALERT, payload: { errors: err.response.data.msg } })
-        var close = document.getElementById('close');
+        var close = document.getElementById('moneyclose');
         close?.click();
       })
     }
     else {
-      dispatch({ type: ALERT, payload: { errors: "Check paytm number or withdraw balance." } })
+      dispatch({ type: ALERT, payload: { errors: "Check paytm number or withdraw balance.Minimum withdraw balance is 1 Maximum up to" + balance?.balance } })
     }
     // if (password && auth.access_token)
     //   dispatch(resetPassword(password, cf_password, auth.access_token));
@@ -93,7 +93,7 @@ const Monetary = () => {
 
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">Withdraw Form :</h5>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" id="moneyclose"></button>
             </div>
             <div className="modal-body">
               <div className="alert alert-primary" role="alert">
