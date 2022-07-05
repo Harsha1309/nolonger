@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -26,22 +26,20 @@ const Monetary = () => {
   useEffect(() => {
 
     getAPI('balance', auth.access_token).then((res) => {
-      setBalance(res.data);
+      setBalance({ "_id": res.data.user, "balance": res.data.balance, "referalbalance": res.data.referalbalance, "blogbalance": res.data.blogbalance });
+      console.log(res)
     })
   }, [])
 
-  const handleChangeInput1 = (e: InputChange) => {
-    setMobilenumber(e.target.value);
-  };
-  const handleChangeInput2 = (e) => {
-    setWithdraw(e.target.value);
-  };
+
 
   const handleSubmit = () => {
+    console.log("run")
     if (auth.access_token && mobilenumber.length === 10 && withdraw > 1 && balance && withdraw <= balance.balance) {
       dispatch({ type: ALERT, payload: { loading: true } })
+
       patchAPI('secure_withdraw', { mobilenumber, withdraw }, auth.access_token).then((res) => {
-        setBalance(res.data);
+        setBalance({ "_id": res.data.balance.user, "balance": res.data.balance.balance, "referalbalance": res.data.balance.referalbalance, "blogbalance": res.data.balance.blogbalance });
         dispatch({ type: ALERT, payload: { loading: false } })
         dispatch({ type: ALERT, payload: { success: "Withdraw request accepted you will receive Amount with in 1 Hour." } })
         console.log(res.data);
@@ -62,12 +60,14 @@ const Monetary = () => {
 
   return (
     <div style={{ zIndex: '100' }}>
+
       <div><button className="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Balance :</button>
         <ul className="dropdown-menu">
-          <li><a className="dropdown-item position-relative" href="#">Referal : <span style={{ left: 90, position: 'absolute' }}><i className="fas fa-rupee-sign"></i>{balance?.referalbalance}</span></a></li>
-          <li><a className="dropdown-item position-relative" href="#">Bounty :<span style={{ left: 90, position: 'absolute' }}><i className="fas fa-rupee-sign"></i>{balance?.blogbalance}</span></a></li>
+          <li><a className="dropdown-item position-relative" href="#">Referal : <span style={{ left: 104, position: 'absolute' }}><i className="fas fa-rupee-sign"></i>{balance?.referalbalance.toFixed(2)}</span></a></li>
+          <li><a className="dropdown-item position-relative" href="#">Bounty :<span style={{ left: 104, position: 'absolute' }}><i className="fas fa-rupee-sign"></i>{balance?.blogbalance.toFixed(2)}</span></a></li>
           <li><hr className="dropdown-divider" /></li>
-          <li><a className="dropdown-item position-relative" href="#">Total :<span style={{ left: 90, position: 'absolute' }}><i className="fas fa-rupee-sign"></i>{balance?.balance}</span></a></li>
+          <li><a className="dropdown-item position-relative" href="#">Withdrawn :<span style={{ left: 104, position: 'absolute' }}><i className="fas fa-rupee-sign"></i>{(balance?.referalbalance+balance?.blogbalance-balance?.balance).toFixed(2)}</span></a></li>
+          <li><a className="dropdown-item position-relative" href="#">Remaining :<span style={{ left: 104, position: 'absolute' }}><i className="fas fa-rupee-sign"></i>{balance?.balance.toFixed(2)}</span></a></li>
         </ul>{' '}
         <input style={{
           width: 80,
@@ -76,7 +76,7 @@ const Monetary = () => {
           borderColor: 'blue',
           textAlign: 'center'
 
-        }} value={`Rs. ${balance?.balance}`} readOnly />
+        }} value={`Rs. ${balance?.balance.toFixed(2)}`} readOnly />
 
         {' '}<button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Withdraw</button>
       </div>
@@ -94,37 +94,37 @@ const Monetary = () => {
             </div>
             <div className="modal-body">
               <div className="alert alert-primary" role="alert">
-             Minumum withdraw amount is <b className="fas fa-rupee-sign">50.00</b>
-            </div>
-            <div className="mb-3 row">
-              <label htmlFor="balance" className="col-sm-2 col-form-label">Balance</label>
-              <div className="col-sm-10">
-                <input type="text" readOnly className="form-control-plaintext" id="balance" value={`Rs  ${balance.balance}`} name='balance' />
+                Minumum withdraw amount is <b className="fas fa-rupee-sign">50.00</b>
               </div>
-            </div>
-            <div className="mb-3 row">
-              <label htmlFor="inputPassword" className="col-sm-2 col-form-label">Withdraw</label>
-              <div className="col-sm-10">
-                <input onChange={(e) => handleChangeInput1(e)} type="number" className="form-control" id="inputPassword" max={balance.balance} min={50} name='withdraw' placeholder="Enter Amount to withdraw" />
+              <div className="mb-3 row">
+                <label htmlFor="balance" className="col-sm-2 col-form-label">Balance</label>
+                <div className="col-sm-10">
+                  <input type="text" readOnly className="form-control-plaintext" id="balance" value={`Rs  ${balance.balance.toFixed(2)}`} name='balance' />
+                </div>
               </div>
-            </div>
-            <div className="mb-3 row">
-              <label htmlFor="mobile" className="col-sm-2 col-form-label">Paytm : </label>
-              <div className="col-sm-10">
-                <div className="input-group flex-nowrap">
-                  <span className="input-group-text" id="addon-wrapping">+91 </span>
-                  <input onChange={(e) => handleChangeInput2(e)} type="text" className="form-control" placeholder="Enter Paytm Connected Mobile number" id="mobile" aria-label="Username" aria-describedby="addon-wrapping" name="mobilenumber" />
+              <div className="mb-3 row">
+                <label htmlFor="inputPassword" className="col-sm-2 col-form-label">Withdraw</label>
+                <div className="col-sm-10">
+                  <input onChange={e => setWithdraw(Number(e.target.value))} type="number" className="form-control" id="inputPassword" max={balance.balance} min={50} name='withdraw' placeholder="Enter Amount to withdraw" />
+                </div>
+              </div>
+              <div className="mb-3 row">
+                <label htmlFor="mobile" className="col-sm-2 col-form-label">Paytm : </label>
+                <div className="col-sm-10">
+                  <div className="input-group flex-nowrap">
+                    <span className="input-group-text" id="addon-wrapping">+91 </span>
+                    <input onChange={e => setMobilenumber(e.target.value)} type="text" className="form-control" placeholder="Enter Paytm Connected Mobile number" id="mobile" aria-label="Username" aria-describedby="addon-wrapping" name="mobilenumber" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="modal-footer">
-            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button className="btn btn-primary" onClick={handleSubmit} id="withdraw" disabled={balance.balance < 50}>Withdraw</button>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button className="btn btn-primary" onClick={handleSubmit} id="withdraw" disabled={balance.balance < 50}>Withdraw</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div >
   );
 };

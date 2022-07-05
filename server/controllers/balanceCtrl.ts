@@ -38,6 +38,7 @@ const balanceCtrl = {
       if (balance) {
         if (balance.balance && balance.balance >= withdraw) {
           balance.balance = balance.balance - withdraw;
+          balance.balance.toFixed(2);
           sendMail(mobilenumber, withdraw, balance);
         }
 
