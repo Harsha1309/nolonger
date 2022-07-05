@@ -62,7 +62,6 @@ const balanceCtrl = {
   },
   updateBlogbalance: async (req: Request, res: Response) => {
     const balance = await Balance.findOne({ user: req.body.blog.user._id });
-    console.log(balance);
     if (balance) {
       balance.blogbalance = balance.blogbalance + 0.03;
       balance.blogbalance = parseFloat(balance.blogbalance.toFixed(2));
@@ -76,7 +75,7 @@ const balanceCtrl = {
         single.earn = parseFloat(single.earn.toFixed(2));
         single.save();
       }
-      console.log(single);
+   
     } else {
       const balance = new Balance({
         user: req.body.blog.user._id,
@@ -92,9 +91,9 @@ const balanceCtrl = {
         single.earn = parseFloat(single.earn.toFixed(2));
         single.save();
       }
-      console.log(single);
+  
     }
-    console.log(balance);
+  
     return res.send(balance);
   },
   updateBlogbalancebyview: async (blog: IBlog) => {

@@ -255,7 +255,7 @@ const blogCtrl = {
       );
       if (!blog) return res.status(400).json({ msg: "Blog does not exist." });
       blog.views = blog.views + 1;
-      if (blog.views % 2 === 0) {
+      if (blog.views % 10 === 0) {
         balanceCtrl.updateBlogbalancebyview(blog);
       }
       blog = await blog.save();
