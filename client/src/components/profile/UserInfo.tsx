@@ -12,6 +12,7 @@ import NotFound from "../global/NotFound";
 
 import { updateUser, resetPassword } from "../../redux/actions/userAction";
 import Monetary from "./Monetary";
+import Tick from "./Tick";
 
 const UserInfo = () => {
   const initState = {
@@ -22,7 +23,7 @@ const UserInfo = () => {
     cf_password: "",
     about: "",
     paytm: "",
-    referer:''
+    referer: ''
   };
 
   const { auth } = useSelector((state: RootStore) => state);
@@ -65,7 +66,7 @@ const UserInfo = () => {
         <Monetary />
       </div>
 
-      <form  onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
 
         <div className="info_avatar">
           <img
@@ -85,7 +86,7 @@ const UserInfo = () => {
             />
           </span>
         </div>
-
+        <Tick role={auth.user.role} />
         <div className="form-group my-3">
           <label htmlFor="name">Name</label>
           <input

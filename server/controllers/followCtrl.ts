@@ -23,7 +23,7 @@ const followCtrl = {
 
       if (user) {
         user.following = user.following.concat(addfollowing);
-        await user.save();
+        user.save();
       }
       const follow1 = await Users.findOne({ _id: addfollowing });
       if (follow1) {
@@ -39,9 +39,12 @@ const followCtrl = {
             " started following you.",
           "/profile/" + user?._id
         );
-        await follow1.save();
+        follow1.save();
+        if (follow1.follower.length >= 20)
+          Users.findByIdAndUpdate(follow1._id, { role: "blogger" });
+        if (follow1.follower.length >= 500)
+          Users.findByIdAndUpdate(follow1._id, { role: "pblogger" });
       }
-
       return res.status(200).send(user);
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });

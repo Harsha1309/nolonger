@@ -2,6 +2,7 @@ import UserBlogs from "../profile/SimilarBlogs";
 import { Link } from "react-router-dom";
 import "./sidebar.css";
 import Follow from "../profile/Follow";
+import Onlytick from "../profile/Onlytick";
 
 export default function Sidebar({ blog }) {
 
@@ -27,10 +28,10 @@ export default function Sidebar({ blog }) {
           style={{
             textDecoration: "none",
             textTransform: "capitalize",
-            fontSize:20
+            fontSize: 20
           }}
         >
-          <b>{`${blog.user.name}`}</b>
+          <b>{`${blog.user.name}`}<Onlytick role={blog.user.role} /></b>
         </Link>
         <small className="ms-2 my-1">
           Blog Created At : {new Date(blog.createdAt).toLocaleString()}
@@ -41,7 +42,7 @@ export default function Sidebar({ blog }) {
         </div>
 
         <div className="row my-3" style={{ textAlign: "center" }}>
-          
+
           <div className="col-6">
             <b>Followers</b>
             <p>{blog.user.follower.length}</p>

@@ -6,7 +6,6 @@ import { RootStore } from '../utils/TypeScript'
 
 import CardVert from '../components/cards/CardVert'
 import Loading from '../components/global/Loading'
-import Referal from '../components/global/Referal'
 import Helmetglobal from '../components/global/Helmetglobal'
 
 const Home = () => {
@@ -15,30 +14,31 @@ const Home = () => {
   return (
     <div className="home_page">
       <Helmetglobal title="Home-PediaGeek" description="PediaGeek is the best way to express your idea to the World." keyword="Home,explore,blogs,social_media" />
-    
+
       <div className="alert alert-success alert-dismissible fade show" role="alert">
-        <strong><i className="fas fa-check-circle"></i> Update! </strong> Introducing Draft Post feature in Pediageek ,Start writing from where you have left in previous session.
-        <Link to="/create_blog" className="text-capitalize text-decoration-none"> Explore. </Link>
-      
+        <strong><i className="fas fa-check-circle"></i> Update! </strong> Introducing New Monetary Policy now Earning will depend on Engagement of viewers on the blog.
+        {/* <Link to="/create_blog" className="text-capitalize text-decoration-none">  </Link> */}
+
         <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
-      <Referal />
+
       {
         homeBlogs.map(homeBlog => (
           <div key={homeBlog._id}>
             {
               homeBlog.count > 0 &&
               <>
-                <h3>
+                {/* <h3>
                   <Link to={`/blogs/${(homeBlog.name).toLowerCase()}`}>
                     {homeBlog.name} <small>({homeBlog.count})</small>
                   </Link>
                 </h3>
-                <hr className="mt-1" />
+                <hr className="mt-1" /> */}
 
                 <div className="home_blogs">
                   {
                     homeBlog.blogs.map(blog => (
+                      
                       <CardVert key={blog._id} blog={blog} />
                     ))
                   }

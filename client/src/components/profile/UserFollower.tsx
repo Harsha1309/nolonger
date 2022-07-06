@@ -18,10 +18,13 @@ const UserInfo = () => {
     return (
         <div>
             {auth.user.follower.map((follow) => (
-                <SingleFollower key={follow} id={follow} />
+                <>
+                    <SingleFollower key={follow} id={follow} />
+                    <hr />
+                </>
             ))
             }
-        </div>
+        </div >
     );
 };
 

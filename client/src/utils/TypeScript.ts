@@ -85,7 +85,7 @@ export interface IBlog {
   content: string;
   description: string;
   thumbnail: string | File;
-  category: string;
+  category: ICategory | string;
   views?: number;
   createdAt: string;
 }

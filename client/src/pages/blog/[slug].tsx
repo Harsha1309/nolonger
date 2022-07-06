@@ -54,7 +54,7 @@ const DetailBlog = () => {
   return (
     <div className="my-4">
 
-      {blog && (typeof blog.thumbnail === 'string') &&
+      {blog && (typeof blog.thumbnail === 'string') && (typeof blog.category === "string") &&
         <Helmetglobal title={blog.title} description={blog.description} keyword={blog.category} twitterimage={blog.thumbnail} ogimage={blog.thumbnail} ogdescription={blog.description} ogurl={`https://www.pediageek.com/blog/${blog._id}`} twitterdescription={blog.description} ogtitle={blog.title} twittertitle={blog.title} />
       }
 

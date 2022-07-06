@@ -254,9 +254,10 @@ const blogCtrl = {
         "-password"
       );
       if (!blog) return res.status(400).json({ msg: "Blog does not exist." });
+      delete blog.earn;
       blog.views = blog.views + 1;
       blog = await blog.save();
-      delete blog.earn;
+
       if (blog.views === 20) {
         notificationCtrl.addNotification(
           blog.user,

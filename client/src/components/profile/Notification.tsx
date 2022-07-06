@@ -70,7 +70,7 @@ const Notification = () => {
                                     <Link
                                         key={index}
                                         to={data.url ? data.url : '#'}
-                                        className="list-group-item list-group-item-action list-group-item-dark mb-1" aria-current="true"
+                                        className="list-group-item list-group-item-action list-group-item-info mb-1" aria-current="true"
                                     >
                                         <div className="d-flex w-100 justify-content-between">
                                             <h5 className="mb-1">{data.msg}</h5>

@@ -25,11 +25,14 @@ const Follower: React.FC<IProps> = ({ id }) => {
 
   if (!other) return <div>Not Found</div>
   if (other.following.length === 0)
-  return <h3 className="text-center">No Followings</h3>;
+    return <h3 className="text-center">No Followings</h3>;
   return (
     <div>
       {other.following.map((follow) => (
-        <SingleFollower key={follow} id={follow} />
+        <>
+          <SingleFollower key={follow} id={follow} />
+          <hr />
+        </>
       ))
       }
     </div>

@@ -64,7 +64,7 @@ const Monetary = () => {
   return (
     <div style={{ zIndex: '100' }}>
 
-      <div><button className="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Balance :</button>
+      <div><button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Balance :</button>
         <ul className="dropdown-menu">
           <li><a className="dropdown-item position-relative" href="#">Referal : <span style={{ left: 104, position: 'absolute' }}><i className="fas fa-rupee-sign"></i>{balance?.referalbalance.toFixed(2)}</span></a></li>
           <li><a className="dropdown-item position-relative" href="#">Bounty :<span style={{ left: 104, position: 'absolute' }}><i className="fas fa-rupee-sign"></i>{balance?.blogbalance.toFixed(2)}</span></a></li>
@@ -81,7 +81,7 @@ const Monetary = () => {
 
         }} value={`Rs. ${balance?.balance.toFixed(2)}`} readOnly />
 
-        {' '}<button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Withdraw</button>
+        {' '}<button className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Withdraw</button>
       </div>
 
 
