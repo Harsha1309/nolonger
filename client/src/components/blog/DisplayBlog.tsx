@@ -10,12 +10,13 @@ import Loading from "../global/Loading";
 import Pagination from "../global/Pagination";
 
 import { createComment, getComments } from "../../redux/actions/commentAction";
-import { getAPI, patchAPI } from "../../utils/FetchData";
+import { getAPI, patchAPI, putAPI } from "../../utils/FetchData";
+import { Timer, Time, TimerOptions } from 'timer-node';
 
 interface IProps {
   blog: IBlog;
 }
-
+const timer = new Timer({ label: 'usertime' });
 const DisplayBlog: React.FC<IProps> = ({ blog }) => {
   const { auth, comments } = useSelector((state: RootStore) => state);
   const dispatch = useDispatch();
@@ -55,17 +56,17 @@ const DisplayBlog: React.FC<IProps> = ({ blog }) => {
   );
 
   useEffect(() => {
-    const len = blog.content.length;
-    const interval = setInterval(function () {
-      setCount(count + 1)
-      if (count < len / 500) {
-        patchAPI("adduser", { blog });
-      }
-      else {
-        clearInterval(interval)
-      }
-    }, 15000);
+    timer.start();
+    setTimeout(function () {
+      putAPI("addv", { blog })
+    }, 5000)
+    return () => {
+      const t = timer.ms();
+      patchAPI("adduser", { blog, t });
+    }
+
   }, [])
+
 
 
   useEffect(() => {

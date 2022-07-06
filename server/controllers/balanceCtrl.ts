@@ -61,26 +61,27 @@ const balanceCtrl = {
     }
   },
   updateBlogbalance: async (req: Request, res: Response) => {
+    const len = req.body.blog.content.length / 500;
+    const timespent = req.body.t / 15000;
+    const finaltime = Math.min(len, timespent);
     const balance = await Balance.findOne({ user: req.body.blog.user._id });
-    if (balance) {
-      balance.blogbalance = balance.blogbalance + 0.03;
+    if (balance && req.body.blog.views > 10) {
+      balance.blogbalance = balance.blogbalance + finaltime * 0.04;
       balance.blogbalance = parseFloat(balance.blogbalance.toFixed(2));
-      balance.balance = balance.balance + 0.03;
+      balance.balance = balance.balance + finaltime * 0.04;
       balance.balance = parseFloat(balance.balance.toFixed(2));
       balance.save();
       let single = await Blogs.findById(req.body.blog._id);
-
       if (single?.earn !== undefined) {
-        single.earn = single.earn + 0.03;
+        single.earn = single.earn + finaltime * 0.04;
         single.earn = parseFloat(single.earn.toFixed(2));
         single.save();
       }
-   
-    } else {
+    } else if (req.body.blog.views === 10) {
       const balance = new Balance({
         user: req.body.blog.user._id,
-        balance: 1.7,
-        blogbalance: 1.7,
+        balance: 1,
+        blogbalance: 1,
         referalbalance: 0,
       });
       balance.save();
@@ -91,67 +92,66 @@ const balanceCtrl = {
         single.earn = parseFloat(single.earn.toFixed(2));
         single.save();
       }
-  
     }
-  
-    return res.send(balance);
+    return res.send("success");
   },
-  updateBlogbalancebyview: async (blog: IBlog) => {
-    const balance = await Balance.findOne({ user: blog.user });
-    if (balance) {
-      let single = await Blogs.findById(blog._id);
+  updateBlogbalancebyview: async (req: Request, res: Response) => {
+    const balance = await Balance.findOne({ user: req.body.blog.user._id });
+    if (balance && req.body.blog.views > 10) {
+      let single = await Blogs.findById(req.body.blog._id);
       if (single?.earn !== undefined) {
-        single.earn = single.earn + 0.1;
+        single.earn = single.earn + 0.01;
         single.earn = parseFloat(single.earn.toFixed(2));
         single.save();
       }
-      balance.blogbalance = balance.blogbalance + 0.1;
+      balance.blogbalance = balance.blogbalance + 0.01;
       balance.blogbalance = parseFloat(balance.blogbalance.toFixed(2));
-      balance.balance = balance.balance + 0.1;
+      balance.balance = balance.balance + 0.01;
       balance.balance.toFixed(2);
       balance.save();
-    } else {
-      let single = await Blogs.findById(blog._id);
+    } else if (req.body.blog.views == 10) {
+      let single = await Blogs.findById(req.body.blog._id);
       if (single?.earn !== undefined) {
-        single.earn = single.earn + 1.5;
+        single.earn = single.earn +0.9;
         single.earn = parseFloat(single.earn.toFixed(2));
         single.save();
       }
       const balance = new Balance({
-        user: blog.user,
-        balance: 1.5,
-        blogbalance: 1.5,
+        user: req.body.blog.user._id,
+        balance: 0.9,
+        blogbalance: 0.9,
         referalbalance: 0,
       });
       balance.save();
     }
+    return res.send({ success: "blog count" });
   },
   updateReferalbalance: async (referer: string, refered: string) => {
     let balance = await Balance.findOne({ user: referer });
     if (balance) {
-      balance.referalbalance = balance.referalbalance + 10;
-      balance.balance = balance.balance + 10;
+      balance.referalbalance = balance.referalbalance + 11;
+      balance.balance = balance.balance + 11;
       balance.save();
     } else {
       balance = new Balance({
         user: referer,
-        balance: 10,
+        balance: 11,
         blogbalance: 0,
-        referalbalance: 10,
+        referalbalance: 11,
       });
       balance.save();
     }
     balance = await Balance.findOne({ user: refered });
     if (balance) {
-      balance.referalbalance = balance.referalbalance + 10;
-      balance.balance = balance.balance + 10;
+      balance.referalbalance = balance.referalbalance + 12;
+      balance.balance = balance.balance + 12;
       balance.save();
     } else {
       balance = new Balance({
         user: refered,
-        balance: 10,
+        balance: 12,
         blogbalance: 0,
-        referalbalance: 10,
+        referalbalance: 12,
       });
       balance.save();
     }
