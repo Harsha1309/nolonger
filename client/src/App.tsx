@@ -23,7 +23,7 @@ const App = () => {
   useEffect(() => {
     dispatch(getCategories())
     dispatch(refreshToken())
-    dispatch(getHomeBlogs())
+    dispatch(getHomeBlogs(`?page=${1}`))
   },[dispatch])
 
   useEffect(() => {

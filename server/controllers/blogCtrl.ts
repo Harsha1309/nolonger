@@ -58,64 +58,78 @@ const blogCtrl = {
     }
   },
   getHomeBlogs: async (req: Request, res: Response) => {
+    const { limit, skip } = Pagination(req) || { 4: 0 };
     try {
-      const blogs = await Blogs.aggregate([
-        // User
+      const Data = await Blogs.aggregate([
         {
-          $lookup: {
-            from: "users",
-            let: { user_id: "$user" },
-            pipeline: [
-              { $match: { $expr: { $eq: ["$_id", "$$user_id"] } } },
-              { $project: { password: 0 } },
+          $facet: {
+            totalData: [
+              // User
+              {
+                $lookup: {
+                  from: "users",
+                  let: { user_id: "$user" },
+                  pipeline: [
+                    { $match: { $expr: { $eq: ["$_id", "$$user_id"] } } },
+                    {
+                      $project: {
+                        password: 0,
+                        referer: 0,
+                        type: 0,
+                        rf_token: 0,
+                      },
+                    },
+                  ],
+                  as: "user",
+                },
+              },
+              // array -> object
+              { $unwind: "$user" },
+              // Sorting
+              { $sort: { views: -1 } },
+              { $skip: skip },
+              { $limit: limit },
+              {
+                $project: {
+                  earn: 0,
+                },
+              },
             ],
-            as: "user",
+            totalCount: [
+              {
+                $match: {},
+              },
+              { $count: "count" },
+            ],
           },
         },
-        // array -> object
-        { $unwind: "$user" },
-        // Category
-        {
-          $lookup: {
-            from: "categories",
-            localField: "category",
-            foreignField: "_id",
-            as: "category",
-          },
-        },
-        // array -> object
-        { $unwind: "$category" },
-        // Sorting
-        { $sort: { createdAt: -1 } },
-        // Group by category
-        {
-          $group: {
-            _id: "$category._id",
-            name: { $first: "$category.name" },
-            blogs: { $push: "$$ROOT" },
-            count: { $sum: 1 },
-          },
-        },
-        // Pagination for blogs
         {
           $project: {
-            blogs: {
-              $slice: ["$blogs", 0, 4],
-            },
-            count: 1,
-            name: 1,
+            count: { $arrayElemAt: ["$totalCount.count", 0] },
+            totalData: 1,
           },
         },
       ]);
 
-      res.json(blogs);
+      const blogs = Data[0].totalData;
+      const count = Data[0].count;
+
+      // Pagination
+      let total = 0;
+
+      if (count % limit === 0) {
+        total = count / limit;
+      } else {
+        total = Math.floor(count / limit) + 1;
+      }
+
+      res.json({ blogs, total });
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });
     }
   },
   getBlogsByCategory: async (req: Request, res: Response) => {
     const { limit, skip } = Pagination(req) || { 5: 0 };
-
     try {
       const Data = await Blogs.aggregate([
         {
@@ -133,7 +147,14 @@ const blogCtrl = {
                   let: { user_id: "$user" },
                   pipeline: [
                     { $match: { $expr: { $eq: ["$_id", "$$user_id"] } } },
-                    { $project: { password: 0 } },
+                    {
+                      $project: {
+                        password: 0,
+                        referer: 0,
+                        type: 0,
+                        rf_token: 0,
+                      },
+                    },
                   ],
                   as: "user",
                 },
@@ -144,6 +165,11 @@ const blogCtrl = {
               { $sort: { createdAt: -1 } },
               { $skip: skip },
               { $limit: limit },
+              {
+                $project: {
+                  earn: 0,
+                },
+              },
             ],
             totalCount: [
               {
@@ -182,7 +208,6 @@ const blogCtrl = {
   },
   getBlogsByUser: async (req: Request, res: Response) => {
     const { limit, skip } = Pagination(req);
-
     try {
       const Data = await Blogs.aggregate([
         {

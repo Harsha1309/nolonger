@@ -39,45 +39,31 @@ const Referal = () => {
 
     }
     return (
-        <div id="carouselExampleControls" className="carousel slide mb-3 d-flex  justify-content-center bg-light py-2" data-bs-ride="carousel" >
-            <div className="carousel-inner" >
-                <div className="carousel-item active"  >
-                    <img src="Refer_a_friend.png" className="d-block w-100" alt="Refer a friend" style={{ cursor: 'pointer', maxHeight: '80vh' }} data-bs-toggle="modal" data-bs-target="#exampleModal" />
-                </div>
-                <div className="carousel-item">
-                    <img src="new_blog.png" className="d-block w-100" alt="Minimum withdraw 50." style={{ cursor: 'pointer', maxHeight: '80vh' }} onClick={handleClick} />
-                </div>
-            </div>
-            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Previous</span>
-            </button>
-            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Next</span>
-            </button>
-            <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog modal-dialog-centered">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Referal Box</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close"></button>
 
+        <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">Referal Box</h5>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close"></button>
+
+                    </div>
+                    <div className="modal-body row ">
+                        <div>
+                            <img src="referal.png" alt="Refer and earn." className="position-relative w-100"/>
                         </div>
-                        <div className="modal-body row ">
-                            <div className="col-6 text-center">
-                                <button type="button" className="btn btn-outline-success" onClick={copy1}>Copy Link</button>
-                                <br />
-                                <small>Copy the link share on : </small>
-                                <br />
-                                <i className="fab fa-facebook-f"></i> <i className="fab fa-twitter"></i> <i className="fab fa-instagram"></i> <i className="fab fa-linkedin"></i> <i className="fab fa-whatsapp"></i>
-                            </div>
+                        <div className="col-6 text-center">
+                            <button type="button" className="btn btn-outline-success" onClick={copy1}>Copy Link</button>
+                            <br />
+                            <small>Copy the link share on : </small>
+                            <br />
+                            <i className="fab fa-facebook-f"></i> <i className="fab fa-twitter"></i> <i className="fab fa-instagram"></i> <i className="fab fa-linkedin"></i> <i className="fab fa-whatsapp"></i>
+                        </div>
 
-                            <div className="col-6 text-center">
-                                <button type="button" className="btn btn-outline-success" onClick={copy2} data-dismiss="modal">Copy Code</button>
-                                <br />
-                                copy code tell your friend to enter at Sign-up.
-                            </div>
+                        <div className="col-6 text-center">
+                            <button type="button" className="btn btn-outline-success" onClick={copy2} data-dismiss="modal">Copy Code</button>
+                            <br />
+                            copy code tell your friend to enter at Sign-up.
                         </div>
                     </div>
                 </div>

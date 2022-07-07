@@ -33,7 +33,7 @@ const UserInfo: React.FC<IProps> = ({ id }) => {
     if (!follower) return <div>Not Found</div>;
 
     return (
-        <div className="container" key={follower._id}>
+        <div className="container">
             <div className="d-flex flex-row justify-content-between align-items-center">
                 <Link to={`/profile/${follower._id}`} className="text-decoration-none">
                     <div className="d-flex flex-row align-items-center"><img className="rounded-circle" src={follower.avatar} width="55" height="55" />

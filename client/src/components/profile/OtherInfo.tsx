@@ -6,6 +6,7 @@ import { RootStore, IUser } from "../../utils/TypeScript";
 
 import Loading from "../global/Loading";
 import Follow from "./Follow";
+import Tick from "./Tick";
 
 interface IProps {
   id: string;
@@ -34,10 +35,9 @@ const OtherInfo: React.FC<IProps> = ({ id }) => {
       <div className="info_avatar">
         <img src={other.avatar} alt="avatar" />
       </div>
+      <Tick role={other.role} />
 
-      <h5 className="text-uppercase text-danger">{other.role}</h5>
-
-      <div>
+      <div className="mt-1">
         Name: <span className="text-info">{other.name}</span>
       </div>
 

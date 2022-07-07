@@ -1,21 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { IBlog } from "../../utils/TypeScript";
+import { IBlog, ICategory, RootStore } from "../../utils/TypeScript";
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 import Onlytick from "../profile/Onlytick";
 import Homeuser from "../profile/SingleFollower"
+import Follow from "../profile/Follow";
+import { useSelector } from "react-redux";
 TimeAgo.addDefaultLocale(en)
 interface IProps {
   blog: IBlog;
+  ispromoted?: boolean;
 }
 
-const CardVert: React.FC<IProps> = ({ blog }) => {
+
+const CardVert: React.FC<IProps> = ({ blog, ispromoted }) => {
+
   const timeAgo = new TimeAgo('en-US')
   return (
-    <div className="card">
-      <Homeuser id={typeof blog.user !== "string" ? blog.user._id : blog.user} />
+    <div className="card mb-2 border-0 border-md-1">
+      {typeof blog.user !== "string" &&
+        < div className="mx-1">
+          <div className="d-flex flex-row justify-content-between align-items-center">
+            <Link to={`/profile/${blog.user._id}`} className="text-decoration-none">
+              <div className="d-flex flex-row align-items-center"><img className="rounded-circle" src={blog.user.avatar} width="55" height="55" />
+                <div className="d-flex flex-column align-items-start ml-2"><span className="font-weight-bold">{blog.user.name.slice(0, 14)}..<Onlytick role={blog.user.role} /></span><span className="followers text-dark"><small>{blog.user.follower.length} Followers {ispromoted && ',Ads'}</small></span></div>
+              </div>
+            </Link>
+            <div className="d-flex flex-row align-items-center mt-2"><Follow user={blog.user} /></div>
+          </div>
+        </div>
+      }
       <Link
         to={`/blog/${blog._id}`}
 
@@ -24,17 +40,12 @@ const CardVert: React.FC<IProps> = ({ blog }) => {
           textTransform: "capitalize",
         }}
       >
-        <div className="mt-2 position-relative">
-          <div className="position-absolute" style={{ bottom: 0, right: 0 }}>
-
-            {typeof blog.category !== "string" && <Link to={`/blogs/${blog.category.name ? blog.category.name : "#"}`} className="btn btn-dark btn-sm" >{blog.category.name}</Link>}
-
-          </div>
+        <div className=" mt-2 position-relative">
 
           {typeof blog.thumbnail === "string" && (
             <img
               src={blog.thumbnail}
-              className="card-img"
+              className="card-img mx-1"
               alt="..."
               style={{ height: "180px", objectFit: "cover" }}
             />
@@ -43,7 +54,7 @@ const CardVert: React.FC<IProps> = ({ blog }) => {
 
       </Link>
 
-      <div className="card-body">
+      <div className="card-body container">
         <h5 className="card-title">
           {" "}
           <Link
@@ -56,21 +67,22 @@ const CardVert: React.FC<IProps> = ({ blog }) => {
             {blog.title.slice(0, 50) + "..."}
           </Link>
         </h5>
+        <div className="text-muted d-flex justify-content-between">
+          <div className="views"> {timeAgo.format(new Date(blog.createdAt))}
 
-        <p className="card-text my-2">{blog.description.slice(0, 100) + "..."}</p>
+          </div>
+          <div className="stats">
+            <i className="far fa-eye"></i> {blog.views}
+          </div>
+        </div>
+        <p className="card-text">{blog.description.slice(0, 100) + "..."}</p>
       </div>
 
-      <div className="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
-        <div className="views"> {timeAgo.format(new Date(blog.createdAt))}
+      <div className="card-footer text-muted d-flex justify-content-between bg-light border-top-0">
 
-        </div>
-        <div className="stats">
-          <i className="far fa-eye"></i> {blog.views}
-          {/* <i className="far fa-comment"></i> 12 */}
-        </div>
 
       </div>
-    </div>
+    </div >
 
   );
 };

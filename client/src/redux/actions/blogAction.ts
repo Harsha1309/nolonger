@@ -52,18 +52,18 @@ export const createBlog =
   };
 
 export const getHomeBlogs =
-  () => async (dispatch: Dispatch<IAlertType | IGetHomeBlogsType>) => {
+  (search: string) =>
+  async (dispatch: Dispatch<IAlertType | IGetHomeBlogsType>) => {
     try {
-      dispatch({ type: ALERT, payload: { loading: true } });
+      let limit = 8;
+      let value = search ? search : `?page=${1}`;
 
-      const res = await getAPI("home/blogs");
+      const res = await getAPI(`home/blogs${value}&limit=${limit}`);
 
       dispatch({
         type: GET_HOME_BLOGS,
-        payload: res.data,
+        payload: { ...res.data },
       });
-
-      dispatch({ type: ALERT, payload: { loading: false } });
     } catch (err: any) {
       dispatch({ type: ALERT, payload: { errors: err.response.data.msg } });
     }
