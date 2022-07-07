@@ -55,7 +55,7 @@ const Follow: React.FC<IProps> = ({ user }) => {
           className="btn btn-outline-danger  btn-sm follow mt-2"
           style={{ height: "31px", borderRadius: "22px" }}
           onClick={unfollow}
-        >
+        > 
           UnFollow
         </button>
       }
