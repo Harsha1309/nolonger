@@ -16,11 +16,11 @@ const Onlytick: React.FC<IProps> = ({ role }) => {
             {
                 role === "user" && <i className="fas fa-check-circle text-danger"></i>
             } {
-                role === "garnet" && <i className="fas fa-check-circle text- "></i>
+                role === "garnet" && <i className="fas fa-check-circle text-success "></i>
             } {
-                role === "seer" && <i className="fas fa-check-circle text-warning"></i>
+                role === "seer" && <i className="fas fa-check-circle text-info"></i>
             } {
-                role === "scholar" && <i className="fas fa-check-circle text-light fa-lg"></i>
+                role === "scholar" && <i className="fas fa-check-circle text-primary"></i>
             }
         </span>
     );

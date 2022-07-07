@@ -45,7 +45,7 @@ const Follow: React.FC<IProps> = ({ user }) => {
           style={{ height: "31px", borderRadius: "22px" }}
           onClick={handleClick}
         >
-          Follow
+          <i className="fas fa-plus"></i>Follow
         </button>
       }
 

@@ -41,9 +41,9 @@ const followCtrl = {
         );
         follow1.save();
         if (follow1.follower.length >= 20)
-          Users.findByIdAndUpdate(follow1._id, { role: "blogger" });
+          Users.findByIdAndUpdate(follow1._id, { role: "garnet" });
         if (follow1.follower.length >= 500)
-          Users.findByIdAndUpdate(follow1._id, { role: "pblogger" });
+          Users.findByIdAndUpdate(follow1._id, { role: "scholar" });
       }
       return res.status(200).send(user);
     } catch (err: any) {
