@@ -17,6 +17,7 @@ import { createDraft, deleteDraft, getDraftsByUserId, updateDraft } from "../red
 import UserDrafts from "../components/profile/UserDrafts";
 import UserBlogs from "../components/profile/SimilarBlogs";
 import { useHistory } from "react-router-dom";
+import Helmetglobal from "../components/global/Helmetglobal";
 
 interface IProps {
   id?: string;
@@ -182,6 +183,8 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
       className="my-4 create_blog"
       style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
     >
+      <Helmetglobal title="Create Blog" description="Write a grate post and let your words meet the whole world." keyword="create,Blog,Earn" />
+
       <div style={{ flex: 10, maxWidth: "900px" }}>
         <div className="row mt-4">
           <div className="col-md-6">

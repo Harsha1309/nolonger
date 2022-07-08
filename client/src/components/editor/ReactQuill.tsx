@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useCallback } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-import './style.css'
-
 
 import { useDispatch } from 'react-redux'
 
@@ -70,7 +68,7 @@ const Quilll: React.FC<IProps> = ({ setBody, body }) => {
         }
     }, [dispatch])
 
-   
+
 
 
     useEffect(() => {
@@ -88,10 +86,10 @@ const Quilll: React.FC<IProps> = ({ setBody, body }) => {
                 placeholder="Write somethings..."
                 value={body}
                 onChange={e => setBody(e)}
-                ref={quillRef} 
+                ref={quillRef}
                 id="createblog"
-                />
-                
+            />
+
         </div>
     )
 }

@@ -31,19 +31,13 @@ const followCtrl = {
         notificationCtrl.addNotification(
           follow1._id,
           "Followers Update 👩‍👦‍👦.",
-          "Hii! " +
-            " " +
-            follow1.name +
-            " " +
-            user?.name +
-            " started following you.",
+          user?.name + " started following you.",
           "/profile/" + user?._id
         );
+        if (follow1.follower.length === 20 || follow1.follower.length === 21)
+          follow1.role = "garnet";
+        if (follow1.follower.length === 500) follow1.role = "scholar";
         follow1.save();
-        if (follow1.follower.length >= 20)
-          Users.findByIdAndUpdate(follow1._id, { role: "garnet" });
-        if (follow1.follower.length >= 500)
-          Users.findByIdAndUpdate(follow1._id, { role: "scholar" });
       }
       return res.status(200).send(user);
     } catch (err: any) {
