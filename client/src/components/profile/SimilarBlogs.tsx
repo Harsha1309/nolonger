@@ -10,11 +10,9 @@ import CardHoriz from "../cards/CardHoriz";
 import Loading from "../global/Loading";
 import Pagination from "../global/Pagination";
 
-const UserBlogs = ({user_id}) => {
+const UserBlogs = ({ user_id }) => {
   const { blogsUser } = useSelector((state: RootStore) => state);
-
   const dispatch = useDispatch();
-
   const [blogs, setBlogs] = useState<IBlog[]>();
   const [total, setTotal] = useState(0);
   const history = useHistory();
