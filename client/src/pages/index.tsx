@@ -9,7 +9,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Referal from '../components/global/Referal'
 import { Link } from 'react-router-dom'
 
-const Home = () => {
+const Home = (props) => {
   const { homeBlogs, categories } = useSelector((state: RootStore) => state)
   //const [promo, setPromo] = useState<IBlog>()
   const [hasMore, setHasMore] = useState(true)

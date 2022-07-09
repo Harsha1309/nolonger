@@ -75,7 +75,7 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted }) => {
             <i className="far fa-eye"></i> {blog.views}
           </div>
         </div>
-        <p className="card-text">{blog.description.slice(0, 100) + "..."}</p>
+        <p className={`card-text `}>{blog.description.slice(0, 100) + "..."}</p>
       </div>
 
       <div className="card-footer text-muted d-flex justify-content-between bg-light border-top-0">
