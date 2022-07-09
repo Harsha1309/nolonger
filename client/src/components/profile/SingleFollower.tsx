@@ -13,7 +13,6 @@ import Onlytick from "./Onlytick";
 interface IProps {
     id: string;
 }
-
 const UserInfo: React.FC<IProps> = ({ id }) => {
     const [follower, setFollower] = useState<IUser>();
     const { otherInfo } = useSelector((state: RootStore) => state);
@@ -29,9 +28,7 @@ const UserInfo: React.FC<IProps> = ({ id }) => {
             if (newUser) setFollower(newUser);
         }
     }, [id, otherInfo, dispatch, history]);
-
     if (!follower) return <div>Not Found</div>;
-
     return (
         <div className="container">
             <div className="d-flex flex-row justify-content-between align-items-center">

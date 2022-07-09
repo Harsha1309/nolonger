@@ -61,6 +61,7 @@ const balanceCtrl = {
     }
   },
   updateBlogbalance: async (req: Request, res: Response) => {
+    if (req.body.blog.user.role == "user") return res.send("not eligible");
     const len = req.body.blog.content.length / 500;
     const timespent = req.body.t / 15000;
     const finaltime = Math.min(len, timespent);
@@ -96,6 +97,7 @@ const balanceCtrl = {
     return res.send("success");
   },
   updateBlogbalancebyview: async (req: Request, res: Response) => {
+    if (req.body.blog.user.role == "user") return res.send("not eligible");
     const balance = await Balance.findOne({ user: req.body.blog.user._id });
     if (balance && req.body.blog.views > 10) {
       let single = await Blogs.findById(req.body.blog._id);
@@ -112,7 +114,7 @@ const balanceCtrl = {
     } else if (req.body.blog.views == 10) {
       let single = await Blogs.findById(req.body.blog._id);
       if (single?.earn !== undefined) {
-        single.earn = single.earn +0.9;
+        single.earn = single.earn + 0.9;
         single.earn = parseFloat(single.earn.toFixed(2));
         single.save();
       }

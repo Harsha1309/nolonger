@@ -13,7 +13,6 @@ import Helmetglobal from '../../components/global/Helmetglobal'
 const DetailBlog = () => {
   const id = useParams<IParams>().slug
   const { socket } = useSelector((state: RootStore) => state)
-
   const [blog, setBlog] = useState<IBlog>()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
