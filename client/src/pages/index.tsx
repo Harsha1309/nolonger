@@ -10,7 +10,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { getAPI } from '../utils/FetchData'
 import Referal from '../components/global/Referal'
 
-const Home = () => {
+const Home = (props) => {
   const { homeBlogs, categories } = useSelector((state: RootStore) => state)
   const [promo, setPromo] = useState<IBlog>()
   const [hasMore, setHasMore] = useState(true)

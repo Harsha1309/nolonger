@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { useState } from 'react';
 
 import PageRender from './PageRender'
 import Header from './components/global/Header'
@@ -32,20 +33,36 @@ const App = () => {
     return () => { socket.close() }
   },[dispatch])
 
+  const [mode, setMode] = useState('light'); // Whether dark mode is enabled or not
+  const[btnText, SetBtnText] = useState("Light mode")
+  const toggleMode = ()=>{
+    if(mode === 'light'){
+      setMode('dark');
+      document.body.style.backgroundColor = '#1B2430';
+      document.body.style.color="black";
+      SetBtnText("Dark mode");
+    }
+    else{
+      setMode('light');
+      document.body.style.backgroundColor = 'white';
+      document.body.style.color="blue";
+      SetBtnText("Light mode");
+    }
+  }
   return (
     <div className="container">
       <SocketClient />
       <Router>
         <Alert />
-        <Header />
+        <Header mode={mode} btnText={btnText} toggleMode={toggleMode}/>
 
         <Switch>
-          <Route exact path="/" component={PageRender} />
+          <Route  exact path="/" component={PageRender }  />
           <Route exact path="/:page" component={PageRender} />
           <Route exact path="/:page/:slug" component={PageRender} />
         </Switch>
 
-        <Footer/>
+        <Footer mode={mode}/>
       </Router>
     </div>
   )

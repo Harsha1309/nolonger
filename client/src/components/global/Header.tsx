@@ -3,11 +3,11 @@ import Menu from './Menu'
 import Search from './Search'
 import Notification from '../profile/Notification'
 import GooglePrompt from '../auth/GooglePrompt'
-const Header = () => {
+const Header = (props) => {
   return (
 
     <>
-      <nav className="navbar navbar-expand navbar-light bg-light p-3"
+      <nav className={`navbar navbar-expand navbar-${props.mode} bg-${props.mode} p-3`}
         style={{ position: 'sticky', top: 0, left: 0, zIndex: 9 }}
       >
         <Link className="navbar-brand" to="/"><b>Pedia<span style={{ color: '#00e600' }}>Geek</span></b></Link>
@@ -19,6 +19,12 @@ const Header = () => {
         <div id="navbarNav">
           <Menu />
         </div>
+        
+        <i className={`fas fa-${props.mode==='light'?'sun':'moon'}` } style={{fontSize:'1.5rem', cursor:'pointer',color: props.mode==='light'?'darkorange':'yellow',padding:'3px',}} onClick={props.toggleMode} ></i>
+        {/* <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
+                        <input className="form-check-input my-3" onClick={props.toggleMode} type="checkbox" id="flexSwitchCheckDefault"/>
+                        <label className="form-check-label small mx-1" htmlFor="flexSwitchCheckDefault">{props.btnText}</label>
+                    </div> */}
       </nav>
       < div className="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex={-1} aria-labelledby="staticBackdropLabel1" aria-hidden="true" >
         <div className="modal-dialog modal-lg">
@@ -33,6 +39,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      
       <Notification />
       <GooglePrompt />
     </>
