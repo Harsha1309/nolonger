@@ -15,8 +15,8 @@ code {
 }
 
 .avatar{
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   object-fit: cover;
   transform: translateY(-3px);
   border-radius: 50%;
@@ -45,3 +45,6 @@ code {
 
 /* ---------- Comments ------------ */
 @import url('./comments.css');
+
+/* ---------- Create Blog ------------ */
+@import url('./createblog.css');

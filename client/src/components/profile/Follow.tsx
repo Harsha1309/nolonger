@@ -56,7 +56,7 @@ const Follow: React.FC<IProps> = ({ user }) => {
           style={{ height: "31px", borderRadius: "22px" }}
           onClick={unfollow}
         >
-          UnFollow
+          Unfollow
         </button>
       }
     </>

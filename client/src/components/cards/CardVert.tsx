@@ -21,11 +21,11 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted }) => {
   return (
     <div className="card mb-2 border-0 border-md-1">
       {typeof blog.user !== "string" &&
-        < div className="mx-1">
+        < div className="mx-2">
           <div className="d-flex flex-row justify-content-between align-items-center">
             <Link to={`/profile/${blog.user._id}`} className="text-decoration-none">
-              <div className="d-flex flex-row align-items-center"><img className="rounded-circle" src={blog.user.avatar} width="55" height="55" />
-                <div className="d-flex flex-column align-items-start ml-2"><span className="font-weight-bold">{blog.user.name.slice(0, 14)}..<Onlytick role={blog.user.role} /></span><span className="followers text-dark"><small>{blog.user.follower.length} Followers {ispromoted && ',Ads'}</small></span></div>
+              <div className="d-flex flex-row align-items-center"><img className="rounded-circle" src={blog.user.avatar} width="40" height="40" />
+                <div className="d-flex flex-column align-items-start ml-2"><span className="font-weight-bold">{blog.user.name.slice(0, 12)}..<Onlytick role={blog.user.role} /></span><span className="followers text-muted"><small>{blog.user.follower.length} Followers{ispromoted && ', Ads'}</small></span></div>
               </div>
             </Link>
             <div className="d-flex flex-row align-items-center mt-2"><Follow user={blog.user} /></div>
