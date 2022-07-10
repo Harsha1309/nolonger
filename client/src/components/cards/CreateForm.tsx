@@ -28,18 +28,9 @@ const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
   const dispatch = useDispatch();
   const { categories, auth } = useSelector((state: RootStore) => state);
   const app = document.getElementById("app");
-  //const cat = document.getElementById("inputcat");
-  // const initState = {
-  //   [
-  //     name: "",
-  //   createdAt: new Date().toISOString(),
-  //   updatedAt: new Date().toISOString(),
-  // ]
-  // };
 
   const [categor, setCategor] = useState(categories);
   const [catname, setCatname] = useState("");
-  //console.log(categor);
   const handleChangeInput = (e: InputChange) => {
     const { value, name } = e.target;
     setBlog({ ...blog, [name]: value });
@@ -48,7 +39,6 @@ const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
   const handleChangeCat = (e: any) => {
     const value = e.target.id;
     setBlog({ ...blog, category: value });
-    //console.log(blog);
     if (app)
       app.style.display = 'none';
     setCatname(e.target.innerText);

@@ -18,7 +18,6 @@ const BlogsByCategory = () => {
   const { categories, blogsCategory } = useSelector((state: RootStore) => state)
   const dispatch = useDispatch()
   const { slug } = useParams<IParams>()
-
   const [categoryId, setCategoryId] = useState('')
   const [blogs, setBlogs] = useState<IBlog[]>()
   const [total, setTotal] = useState(0)
@@ -34,7 +33,6 @@ const BlogsByCategory = () => {
 
   useEffect(() => {
     if (!categoryId) return;
-
     if (blogsCategory.every(item => item.id !== categoryId)) {
       dispatch(getBlogsByCategoryId(categoryId, search))
     } else {
@@ -56,29 +54,32 @@ const BlogsByCategory = () => {
 
   if (!blogs) return <Loading />;
   return (
-    <div className="home_page">
-      <Referal />
+    <div>
       <Helmetglobal title={`${slug} Blogs`} description={`Blogs from ${slug} category.`} keyword={slug} />
-      <div className="alert alert-secondary example" role="alert" style={{
+
+      <div className="example pt-1 bg-light px-2 mb-1 border border-start-0 border-end-0" style={{
+        position: 'sticky',
         display: 'block',
         overflow: 'hidden',
         overflowX: 'scroll',
         touchAction: 'pan-y',
-        whiteSpace: 'nowrap'
+        whiteSpace: 'nowrap',
+        zIndex: 9,
+        top: 42,
       }}>
         <div className="btn btn-tag btn-success rounded-pill mx-1" data-bs-toggle="modal" data-bs-target="#referalmodal" style={{ cursor: "pointer" }}>Refer and Earn</div>
-        <Link to={`/`} className="btn rounded-pill mx-1 btn-tag" >Home</Link>
+        <Link to={`/`} className={`btn btn-tag rounded-pill mx-1 px-2`} >Home</Link>
         {categories.map((category, index) => (
-          <>
-            {category.name !== slug ?
-              <Link to={`/blogs/${category.name}`} key={index} className="btn btn-tag mx-1 rounded-pill" >
-                {category.name}</Link> : <span className="btn active-tag mx-1 rounded-pill" >
-                {category.name}</span>
-            }
-          </>
+
+          <Link to={`/blogs/${category.name}`} key={index}
+            className={`btn ${slug === category.name ? "active-tag" : "btn-tag"} rounded-pill mx-1 px-2`} >
+            {category.name}</Link>
+
         ))
         }
+      
       </div>
+
       <div className="blogs_category">
         {blogs.length > 0 ? <><div className="show_blogs">
           {
@@ -95,7 +96,7 @@ const BlogsByCategory = () => {
               callback={handlePagination}
             />
           }
-        </> : <div  style={{ height: '80vh' ,paddingTop:'30vh'}}>
+        </> : <div style={{ height: '80vh', paddingTop: '30vh' }}>
           <div className=' container text-center'>
             <h3 className="my-3 F">No Blogs</h3>
             <Link to="/create_blog">

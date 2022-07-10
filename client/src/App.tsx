@@ -25,24 +25,24 @@ const App = () => {
     dispatch(getCategories())
     dispatch(refreshToken())
     dispatch(getHomeBlogs(`?page=${1}`))
-  },[dispatch])
+  }, [dispatch])
 
   useEffect(() => {
     const socket = io()
     dispatch({ type: 'SOCKET', payload: socket })
     return () => { socket.close() }
-  },[dispatch])
+  }, [dispatch])
 
-  
+
+
   return (
     <div className="container">
       <SocketClient />
       <Router>
         <Alert />
-        <Header  />
-
+        <Header />
         <Switch>
-          <Route  exact path="/" component={PageRender }  />
+          <Route exact path="/" component={PageRender} />
           <Route exact path="/:page" component={PageRender} />
           <Route exact path="/:page/:slug" component={PageRender} />
         </Switch>

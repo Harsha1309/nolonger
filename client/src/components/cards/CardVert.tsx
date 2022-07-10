@@ -19,11 +19,8 @@ interface IProps {
 
 const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
 
-  console.log(blog.category)
   const timeAgo = new TimeAgo('en-US')
-
-  let mode=localStorage.getItem('theme');
-  console.log(mode);
+  let mode = localStorage.getItem('theme');
   return (
     <div className="card mb-2 border-0 border-md-1">
       {typeof blog.user !== "string" &&
@@ -68,7 +65,6 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
           >
             {blog.title.slice(0, 50) + "..."}
           </Link>
-
         </h5>
         <div className="text-muted d-flex justify-content-between">
           <div className="views"> {timeAgo.format(new Date(blog.createdAt))}
@@ -77,7 +73,7 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
             <i className="far fa-eye"></i> {blog.views}
           </div>
         </div>
-        <p className={`card-text text-${mode==='light'?'black':'red'}`}>{blog.description.slice(0, 100) + "..."}</p>
+        <p className={`card-text text-${mode === 'light' ? 'black' : 'red'}`}>{blog.description.slice(0, 100) + "..."}</p>
       </div>
       <div className="card-footer text-muted d-flex justify-content-between bg-light border-top-0">
       </div>
