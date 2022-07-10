@@ -11,14 +11,11 @@ import { useEffect, useState } from 'react'
 import { handledarkMode } from "../../redux/actions/DarkModeAction";
 
 const Header = () => {
-  const { categories, darkMode } = useSelector((state: RootStore) => state)
+  const {  darkMode } = useSelector((state: RootStore) => state)
 
 
 
   const dispatch = useDispatch();
-
-
-
 
   const { isdarkMode } = darkMode;
 
@@ -41,14 +38,14 @@ const Header = () => {
       <nav className={`navbar navbar-expand navbar-${isdarkMode ? 'dark' : 'light'} bg-${isdarkMode ? 'dark' : 'light'}`}
         style={{ position: 'sticky', top: 0, left: 0, zIndex: 9 }} p-3
       >
-        <Link className="navbar-brand " to="/"><b>Pedia<span style={{ color: '#00e600' }}>Geek</span></b></Link>
+        <Link className="navbar-brand  mx-2" to="/"><b>Pedia<span style={{ color: '#00e600' }}>Geek</span></b></Link>
         {/* 
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button> */}
         <div className="w-100"></div>
 
-        <i className={`fas fa-${isdarkMode ? 'sun' : 'moon'}`} style={{ fontSize: '1.5rem', cursor: 'pointer', color: isdarkMode ? 'darkorange' : 'yellow', padding: '3px', }} onClick={switchDarkMode} ></i>
+        <i className={`fas fa-${isdarkMode ? 'moon' : 'sun'}`} style={{ fontSize: '1.5rem', cursor: 'pointer', color: isdarkMode ? 'yellow' : 'darkorange', padding: '3px', }} onClick={switchDarkMode} ></i>
         <div id="navbarNav">
           <Menu />
         </div>
