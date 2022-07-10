@@ -7,6 +7,7 @@ import Helmetglobal from '../components/global/Helmetglobal'
 import { getHomeBlogs } from '../redux/actions/blogAction'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Referal from '../components/global/Referal'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   const { homeBlogs, categories } = useSelector((state: RootStore) => state)
@@ -27,12 +28,22 @@ const Home = () => {
     <div className="home_page">
       <Referal />
       <Helmetglobal title="Home-PediaGeek" description="PediaGeek is the best way to express your idea to the World." keyword="Home,explore,blogs,social_media" />
-      <div className="alert alert-success alert-dismissible fade show" role="alert">
-        <h4 className="alert-heading"><i className="fas fa-check-circle"></i> Update!</h4>
-        <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <p> Introducing New Monetary Policy of PediaGeek now Earning will depend on Engagement of viewers on the blog. Improve your blogs quality for more income.</p>
-        <hr />
-        <b className="mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ cursor: "pointer" }}>Refer and Earn</b>
+      <div className="alert alert-secondary example" role="alert" style={{
+        display: 'block',
+        overflow: 'hidden',
+        overflowX: 'scroll',
+        touchAction: 'pan-y',
+        whiteSpace: 'nowrap'
+      }}>
+        <div className="btn btn-tag btn-success rounded-pill mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ cursor: "pointer" }}>Refer and Earn</div>
+        <Link to={`/`} className="btn btn-tag rounded-pill mx-1" >Home</Link>
+        {categories.map((category, index) => (
+          <>
+            <Link to={`/blogs/${category.name}`} className="btn btn-tag mx-1 rounded-pill" >
+              {category.name}</Link>
+          </>
+        ))
+        }
       </div>
 
       <InfiniteScroll
