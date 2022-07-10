@@ -8,6 +8,7 @@ import Loading from "../global/Loading";
 import Follow from "./Follow";
 import Tick from "./Tick";
 
+
 interface IProps {
   id: string;
 }
@@ -31,6 +32,7 @@ const OtherInfo: React.FC<IProps> = ({ id }) => {
 
   if (!other) return <Loading />;
   return (
+    
     <div className="profile_info text-center rounded">
       <div className="info_avatar">
         <img src={other.avatar} alt="avatar" />

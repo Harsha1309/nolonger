@@ -7,14 +7,15 @@ import DarkMode from './DarkMode'
 const Header = () => {
 
   let mode=localStorage.getItem('theme');
+  console.log(mode);
   
   return (
 
     <>
-      <nav className={`navbar navbar-expand navbar-${mode==='light'?'dark':'light'} bg-${mode==='light'?'dark':'light'} p-3`}
-        style={{ position: 'sticky', top: 0, left: 0, zIndex: 9 }}
+      <nav className={`navbar navbar-expand navbar-${mode==='light'?'dark':'light'} bg-${mode==='light'?'dark':'light'}`}
+        style={{ position: 'sticky', top: 0, left: 0, zIndex: 9 }} p-3
       >
-        <Link className="navbar-brand" to="/"><b>Pedia<span style={{ color: '#00e600' }}>Geek</span></b></Link>
+        <Link className="navbar-brand "  to="/"><b>Pedia<span style={{ color: '#00e600' }}>Geek</span></b></Link>
         {/* 
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
