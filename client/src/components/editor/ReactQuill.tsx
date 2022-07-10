@@ -4,7 +4,8 @@ import 'react-quill/dist/quill.snow.css';
 import { useDispatch } from 'react-redux'
 import { checkImage, imageUpload } from '../../utils/ImageUpload'
 import { ALERT } from '../../redux/types/alertType'
-
+import { useSelector } from "react-redux";
+import { RootStore } from "../../utils/TypeScript";
 
 
 interface IProps {
@@ -61,6 +62,9 @@ const Quill: React.FC<IProps> = ({ setBody, body }) => {
         toolbar.addHandler('image', handleChangeImage)
     }, [handleChangeImage])
 
+    const { darkMode } = useSelector((state: RootStore) => state);
+    const { isdarkMode } = darkMode;
+
     return (
         <div>
             <ReactQuill theme="snow"
@@ -70,6 +74,7 @@ const Quill: React.FC<IProps> = ({ setBody, body }) => {
                 onChange={e => setBody(e)}
                 ref={quillRef}
                 id="createblog"
+                style={{color:isdarkMode?'black':'white'}}
             />
         </div>
     )

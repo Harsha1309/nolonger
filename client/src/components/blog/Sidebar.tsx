@@ -1,15 +1,18 @@
 import UserBlogs from "../profile/SimilarBlogs";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootStore } from "../../utils/TypeScript";
 import "./sidebar.css";
 import Follow from "../profile/Follow";
 import Onlytick from "../profile/Onlytick";
 
 export default function Sidebar({ blog }) {
-
+  const { darkMode } = useSelector((state: RootStore) => state);
+  const { isdarkMode } = darkMode;
   return (
-    <div className="sidebar">
+    <div className={`sidebar bg-${isdarkMode?'dark':'light'}`} style={{color:isdarkMode?'white':'black'}}>
       <div className="sidebarItem">
-        <span className="sidebarTitle">ABOUT AUTHOR</span>
+        <span className="sidebarTitle" style={{color:isdarkMode?'white':'black'}}>ABOUT AUTHOR</span>
         <Link
           to={`/profile/${blog.user._id}`}
           style={{
@@ -56,8 +59,8 @@ export default function Sidebar({ blog }) {
       </div>
       <br />
       <div className="sidebarItem">
-        <span className="sidebarTitle">RELATED BLOGS</span>
-        <UserBlogs user_id={blog.user._id} />
+        <span className="sidebarTitle" style={{color:isdarkMode?'white':'black'}}>RELATED BLOGS</span>
+        <UserBlogs user_id={blog.user._id}  />
       </div>
     </div>
   );
