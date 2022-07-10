@@ -9,36 +9,14 @@ import { useSelector } from 'react-redux'
 import { IParams, RootStore } from '../../utils/TypeScript'
 import { useEffect, useState } from 'react'
 const Header = () => {
-  const { categories } = useSelector((state: RootStore) => state)
   let mode = localStorage.getItem('theme');
-
-
-
-
-<<<<<<< HEAD
-  let mode=localStorage.getItem('theme');
-  console.log(mode);
-  
-=======
->>>>>>> ec0f8650e76ff73095ccf3dc8ab5a15721d53434
   return (
     <>
-<<<<<<< HEAD
-      <nav className={`navbar navbar-expand navbar-${mode==='light'?'dark':'light'} bg-${mode==='light'?'dark':'light'}`}
-        style={{ position: 'sticky', top: 0, left: 0, zIndex: 9 }} p-3
-      >
-        <Link className="navbar-brand "  to="/"><b>Pedia<span style={{ color: '#00e600' }}>Geek</span></b></Link>
-        {/* 
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button> */}
-=======
 
       <nav className={`navbar navbar-expand navbar-${mode === 'light' ? 'light' : 'dark'} bg-${mode === 'light' ? 'light' : 'dark'} px-3 mb-0`}
         style={{ position: 'sticky', top: 0, left: 0, zIndex: 9 }}
       >
         <Link className="navbar-brand" to="/"><b>Pedia<span style={{ color: '#00e600' }}>Geek</span></b></Link>
->>>>>>> ec0f8650e76ff73095ccf3dc8ab5a15721d53434
         <div className="w-100"></div>
 
         {/* <i className={`fas fa-${props.mode==='light'?'sun':'moon'}` } style={{fontSize:'1.5rem', cursor:'pointer',color: props.mode==='light'?'darkorange':'yellow',padding:'3px',}} onClick={props.toggleMode} ></i> */}
