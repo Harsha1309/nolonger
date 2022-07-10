@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { IParams, RootStore } from '../../utils/TypeScript'
 import { useEffect, useState } from 'react'
 import { handledarkMode } from "../../redux/actions/DarkModeAction";
-<<<<<<< HEAD
 
 const Header = () => {
   const { categories } = useSelector((state: RootStore) => state)
@@ -19,21 +18,10 @@ const Header = () => {
 
   
   const mode = useSelector((state) => state.darkMode);
-  /
+
   const { isdarkMode } = mode;
 
   
-=======
-const Header = () => {
-  const { categories, darkMode } = useSelector((state: RootStore) => state)
-
-  const dispatch = useDispatch();
-
-
-
-  const { isdarkMode } = darkMode;
-
->>>>>>> 7c9c4ed040531fb6917c648d35b6551be8c67f37
   const switchDarkMode = () => {
     isdarkMode
       ? dispatch(handledarkMode(false))
@@ -45,14 +33,8 @@ const Header = () => {
   }, [isdarkMode]);
 
 
-<<<<<<< HEAD
   
   
-=======
-  // let mode=localStorage.getItem('theme');
-  // console.log(mode);
-
->>>>>>> 7c9c4ed040531fb6917c648d35b6551be8c67f37
   return (
     <>
       <nav className={`navbar navbar-expand navbar-${isdarkMode ? 'dark' : 'light'} bg-${isdarkMode ? 'dark' : 'light'}`}
