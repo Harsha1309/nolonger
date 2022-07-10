@@ -2,19 +2,51 @@
   padding: 0;
   box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-.avatar{
+.btn-tag {
+  background-color: #000000;
+  text-transform: capitalize !important;
+  margin-bottom: 5px;
+  box-shadow: none;
+  color: rgb(255, 255, 255);
+}
+
+.active-tag {
+  background-color: #ffffff;
+  text-transform: capitalize !important;
+  margin-bottom: 5px;
+  box-shadow: none;
+  color: rgb(0, 0, 0);
+}
+
+.btn-tag:hover {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25),
+    0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;
+    color: blanchedalmond;
+}
+
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.avatar {
   width: 25px;
   height: 25px;
   object-fit: cover;
@@ -23,28 +55,28 @@ code {
 }
 
 /* ---------- Auth Page------------ */
-@import url('./auth.css');
+@import url("./auth.css");
 
 /* ---------- Loading Page------------ */
-@import url('./loading.css');
+@import url("./loading.css");
 
 /* ---------- Alert Page------------ */
-@import url('./alert.css');
+@import url("./alert.css");
 
 /* ---------- Profile Page------------ */
-@import url('./profile.css');
+@import url("./profile.css");
 
 /* ---------- Category Page------------ */
-@import url('./category.css');
+@import url("./category.css");
 
 /* ---------- Home Page------------ */
-@import url('./home.css');
+@import url("./home.css");
 
 /* ---------- Blogs Category Page------------ */
-@import url('./blogs_category.css');
+@import url("./blogs_category.css");
 
 /* ---------- Comments ------------ */
-@import url('./comments.css');
+@import url("./comments.css");
 
 /* ---------- Create Blog ------------ */
-@import url('./createblog.css');
+@import url("./createblog.css");

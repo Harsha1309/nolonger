@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useHistory, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { getBlogsByCategoryId } from '../../redux/actions/blogAction'
@@ -9,6 +9,8 @@ import { RootStore, IParams, IBlog } from '../../utils/TypeScript'
 import Loading from '../../components/global/Loading'
 import Pagination from '../../components/global/Pagination'
 import CardVert from '../../components/cards/CardVert'
+import Referal from '../../components/global/Referal'
+import Helmetglobal from '../../components/global/Helmetglobal'
 
 
 
@@ -54,10 +56,31 @@ const BlogsByCategory = () => {
 
   if (!blogs) return <Loading />;
   return (
-    <>
-      
+    <div className="home_page">
+      <Referal />
+      <Helmetglobal title={`${slug} Blogs`} description={`Blogs from ${slug} category.`} keyword={slug} />
+      <div className="alert alert-secondary example" role="alert" style={{
+        display: 'block',
+        overflow: 'hidden',
+        overflowX: 'scroll',
+        touchAction: 'pan-y',
+        whiteSpace: 'nowrap'
+      }}>
+        <div className="btn btn-tag btn-success rounded-pill mx-1" data-bs-toggle="modal" data-bs-target="#referalmodal" style={{ cursor: "pointer" }}>Refer and Earn</div>
+        <Link to={`/`} className="btn rounded-pill mx-1 btn-tag" >Home</Link>
+        {categories.map((category, index) => (
+          <>
+            {category.name !== slug ?
+              <Link to={`/blogs/${category.name}`} key={index} className="btn btn-tag mx-1 rounded-pill" >
+                {category.name}</Link> : <span className="btn active-tag mx-1 rounded-pill" >
+                {category.name}</span>
+            }
+          </>
+        ))
+        }
+      </div>
       <div className="blogs_category">
-        <div className="show_blogs">
+        {blogs.length > 0 ? <><div className="show_blogs">
           {
             blogs.map(blog => (
               <CardVert key={blog._id} blog={blog} />
@@ -65,16 +88,23 @@ const BlogsByCategory = () => {
           }
         </div>
 
-        {
-          total > 1 &&
-          <Pagination
-            total={total}
-            callback={handlePagination}
-          />
+          {
+            total > 1 &&
+            <Pagination
+              total={total}
+              callback={handlePagination}
+            />
+          }
+        </> : <div  style={{ height: '80vh' ,paddingTop:'30vh'}}>
+          <div className=' container text-center'>
+            <h3 className="my-3 F">No Blogs</h3>
+            <Link to="/create_blog">
+              <button className="btn btn-primary">Create One</button></Link>
+          </div>
+        </div>
         }
-
       </div>
-    </>
+    </div>
   )
 }
 

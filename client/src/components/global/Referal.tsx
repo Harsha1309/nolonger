@@ -40,17 +40,17 @@ const Referal = () => {
     }
     return (
 
-        <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="referalmodal" tabIndex={-1} aria-labelledby="referalLabel" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">Referal Box</h5>
+                        <h5 className="modal-title" id="referalLabel">Referal Box</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close"></button>
 
                     </div>
                     <div className="modal-body row ">
                         <div>
-                            <img src="referal.png" alt="Refer and earn." className="position-relative w-100"/>
+                            <img src="https://www.pediageek.com/referal.png" alt="Refer and earn." className="position-relative w-100" />
                         </div>
                         <div className="col-6 text-center">
                             <button type="button" className="btn btn-outline-success" onClick={copy1}>Copy Link</button>
