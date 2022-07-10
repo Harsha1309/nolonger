@@ -17,9 +17,9 @@ interface IProps {
 }
 
 
-const CardVert: React.FC<IProps> = ({ blog, ispromoted, category }) => {
-  const timeAgo = new TimeAgo('en-US')
+const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
 
+  const timeAgo = new TimeAgo('en-US')
   let mode = localStorage.getItem('theme');
   return (
     <div className="card mb-2 border-0 border-md-1">
