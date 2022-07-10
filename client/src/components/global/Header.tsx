@@ -24,13 +24,12 @@ const Header = () => {
       : dispatch(handledarkMode(true));
   };
   useEffect(() => {
-    //changing color of body with darkmode in useEffect
+
     document.body.style.backgroundColor = isdarkMode ? "#292c35" : "#fff";
   }, [isdarkMode]);
 
 
-  // let mode=localStorage.getItem('theme');
-  // console.log(mode);
+
 
   return (
     <>
@@ -45,14 +44,14 @@ const Header = () => {
         <div className="w-100"></div>
 
         <i className={`fas fa-${isdarkMode ? 'sun' : 'moon'}`} style={{ fontSize: '1.5rem', cursor: 'pointer', color: isdarkMode ? 'darkorange' : 'yellow', padding: '3px', }} onClick={switchDarkMode} ></i>
-      {/* <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
+        {/* <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
                         <input className="form-check-input my-3" onClick={props.toggleMode} type="checkbox" id="flexSwitchCheckDefault"/>
                         <label className="form-check-label small mx-1" htmlFor="flexSwitchCheckDefault">{props.btnText}</label>
                     </div> */}
         <div id="navbarNav">
           <Menu />
         </div>
-   
+
       </nav>
 
 
