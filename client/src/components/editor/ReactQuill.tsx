@@ -1,10 +1,7 @@
 import React, { useEffect, useRef, useCallback } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-
-
 import { useDispatch } from 'react-redux'
-
 import { checkImage, imageUpload } from '../../utils/ImageUpload'
 import { ALERT } from '../../redux/types/alertType'
 
@@ -15,7 +12,7 @@ interface IProps {
     body: string
 }
 
-const Quilll: React.FC<IProps> = ({ setBody, body }) => {
+const Quill: React.FC<IProps> = ({ setBody, body }) => {
 
     const dispatch = useDispatch()
     const quillRef = useRef<ReactQuill>(null)
@@ -37,39 +34,24 @@ const Quilll: React.FC<IProps> = ({ setBody, body }) => {
         input.type = "file"
         input.accept = "image/*"
         input.click()
-
         input.onchange = async () => {
             const files = input.files
             if (!files) return dispatch({
                 type: ALERT, payload: { errors: 'File does not exist.' }
             });
-
             const file = files[0]
             const check = checkImage(file)
             if (check) return dispatch({ type: ALERT, payload: { errors: check } });
-
             dispatch({ type: ALERT, payload: { loading: true } })
             const photo = await imageUpload(file)
-
             let quill = quillRef.current;
-
             const range = quill?.getEditor().getSelection()?.index
             if (range !== undefined) {
-
                 quill?.getEditor().insertEmbed(range, 'image', `${photo.url}`)
-
             }
-
-
-
-
-
             dispatch({ type: ALERT, payload: { loading: false } })
         }
     }, [dispatch])
-
-
-
 
     useEffect(() => {
         const quill = quillRef.current;
@@ -89,7 +71,6 @@ const Quilll: React.FC<IProps> = ({ setBody, body }) => {
                 ref={quillRef}
                 id="createblog"
             />
-
         </div>
     )
 }
@@ -111,5 +92,4 @@ let container = [
 
     ['clean', 'link', 'image', 'video']
 ]
-
-export default Quilll
+export default Quill

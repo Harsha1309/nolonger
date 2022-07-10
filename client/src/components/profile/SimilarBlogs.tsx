@@ -1,25 +1,19 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-
 import { RootStore, IBlog } from "../../utils/TypeScript";
-
 import { getBlogsByUserId } from "../../redux/actions/blogAction";
-
 import CardHoriz from "../cards/CardHoriz";
 import Loading from "../global/Loading";
 import Pagination from "../global/Pagination";
 
-const UserBlogs = ({user_id}) => {
+const UserBlogs = ({ user_id }) => {
   const { blogsUser } = useSelector((state: RootStore) => state);
-
   const dispatch = useDispatch();
-
   const [blogs, setBlogs] = useState<IBlog[]>();
   const [total, setTotal] = useState(0);
   const history = useHistory();
   const { search } = history.location;
-
   useEffect(() => {
     if (!user_id) return;
     if (
@@ -30,9 +24,7 @@ const UserBlogs = ({user_id}) => {
       dispatch(getBlogsByUserId(user_id, search));
     } else {
       const data = blogsUser.find((item) => item.id === user_id);
-
       if (!data) return;
-
       setBlogs(data.blogs);
       setTotal(data.total);
       if (data.search) history.push(data.search);
@@ -43,12 +35,10 @@ const UserBlogs = ({user_id}) => {
     const search = `?page=${num}`;
     dispatch(getBlogsByUserId(user_id, search));
   };
-
   if (!blogs) return <Loading />;
 
   if (blogs.length === 0 && total < 1)
     return <h3 className="text-center">No Blogs</h3>;
-
   return (
     <div >
       <div className="px-2" style={{}}>
@@ -56,12 +46,10 @@ const UserBlogs = ({user_id}) => {
           <CardHoriz key={blog._id} blog={blog} />
         ))}
       </div>
-
       <div>
         <Pagination total={total} callback={handlePagination} />
       </div>
     </div>
   );
 };
-
 export default UserBlogs;

@@ -14,9 +14,7 @@ interface IProps {
   ispromoted?: boolean;
 }
 
-
 const CardVert: React.FC<IProps> = ({ blog, ispromoted }) => {
-
   const timeAgo = new TimeAgo('en-US')
   return (
     <div className="card mb-2 border-0 border-md-1">
@@ -34,26 +32,22 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted }) => {
       }
       <Link
         to={`/blog/${blog._id}`}
-
         style={{
           textDecoration: "none",
           textTransform: "capitalize",
         }}
       >
         <div className=" mt-2 position-relative">
-
           {typeof blog.thumbnail === "string" && (
             <img
               src={blog.thumbnail}
-              className="card-img mx-1"
-              alt="..."
+              className="card-img"
+              alt={blog.title}
               style={{ height: "180px", objectFit: "cover" }}
             />
           )}
         </div>
-
       </Link>
-
       <div className="card-body container">
         <h5 className="card-title">
           {" "}
@@ -69,7 +63,6 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted }) => {
         </h5>
         <div className="text-muted d-flex justify-content-between">
           <div className="views"> {timeAgo.format(new Date(blog.createdAt))}
-
           </div>
           <div className="stats">
             <i className="far fa-eye"></i> {blog.views}
@@ -77,10 +70,7 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted }) => {
         </div>
         <p className={`card-text `}>{blog.description.slice(0, 100) + "..."}</p>
       </div>
-
       <div className="card-footer text-muted d-flex justify-content-between bg-light border-top-0">
-
-
       </div>
     </div >
 
