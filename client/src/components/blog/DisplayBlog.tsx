@@ -93,12 +93,9 @@ const DisplayBlog: React.FC<IProps> = ({ blog }) => {
 
 
           <hr /><br />
-          <div
-            dangerouslySetInnerHTML={{
-              __html: blog.content,
-            }}
-            style={{ fontSize: "18px" }}
-          />
+          <div className='ql-snow'>
+            <div className='ql-editor' dangerouslySetInnerHTML={{ __html: blog.content }} style={{ fontSize: "18px" }} />
+          </div>
 
           <hr className="my-1" />
           <h3 style={{ color: "#ff7a00" }}>✩ Comments ✩</h3>
