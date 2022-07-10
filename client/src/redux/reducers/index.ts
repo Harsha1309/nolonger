@@ -10,6 +10,8 @@ import comments from "./commentReducer";
 import notification from "./notificationReducer";
 import socket from "./socketReducer";
 import draftsUser from "./draftReducer";
+import darkModeReducer from "./darkModeReducer";
+
 //import follow from './followReducer'
 export default combineReducers({
   auth,
@@ -23,5 +25,6 @@ export default combineReducers({
   socket,
   notification,
   draftsUser,
+  darkMode: darkModeReducer,
   // follow
 });
