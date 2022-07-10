@@ -30,18 +30,17 @@ const Home = (props) => {
       <Helmetglobal title="Home-PediaGeek" description="PediaGeek is the best way to express your idea to the World." keyword="Home,explore,blogs,social_media" />
       <div className="alert alert-secondary example" role="alert" style={{
         display: 'block',
-        overflow:'hidden',
-        overflowX:'scroll',
-        touchAction:'pan-y',
-        whiteSpace:'nowrap'
-
-
+        overflow: 'hidden',
+        overflowX: 'scroll',
+        touchAction: 'pan-y',
+        whiteSpace: 'nowrap'
       }}>
-        <div className="btn btn-tag btn-success rounded-pill mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ cursor: "pointer" }}>Refer and Earn</div>
-        <Link to={`/`} className="btn btn-tag rounded-pill mx-1" >Home</Link>
+        <div className="btn btn-tag btn-success rounded-pill mx-1" data-bs-toggle="modal" data-bs-target="#referalmodal" style={{ cursor: "pointer" }}>Refer and Earn</div>
+        <Link to={`/`} className="btn active-tag rounded-pill mx-1" >Home</Link>
         {categories.map((category, index) => (
           <>
-            <Link to={`/blogs/${category.name}`} className="btn btn-tag mx-1 rounded-pill" >
+            <Link to={`/blogs/${category.name}`} key={index}
+              className="btn btn-tag mx-1 rounded-pill" >
               {category.name}</Link>
           </>
         ))

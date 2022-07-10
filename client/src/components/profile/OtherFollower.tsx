@@ -25,7 +25,7 @@ const Follower: React.FC<IProps> = ({ id }) => {
 
   if (!other) return <div>Not Found</div>
   if (other.follower.length === 0)
-    return <h3 className="text-center">No Followers</h3>;
+    return (<h3 className="text-center">No Followers</h3>);
   return (
     <div>
       {other.follower.map((follow) => (
