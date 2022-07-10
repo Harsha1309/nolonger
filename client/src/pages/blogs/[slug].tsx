@@ -57,28 +57,8 @@ const BlogsByCategory = () => {
   if (!blogs) return <Loading />;
   return (
     <div className="home_page">
-      <Referal />
+
       <Helmetglobal title={`${slug} Blogs`} description={`Blogs from ${slug} category.`} keyword={slug} />
-      <div className="alert alert-secondary example" role="alert" style={{
-        display: 'block',
-        overflow: 'hidden',
-        overflowX: 'scroll',
-        touchAction: 'pan-y',
-        whiteSpace: 'nowrap'
-      }}>
-        <div className="btn btn-tag btn-success rounded-pill mx-1" data-bs-toggle="modal" data-bs-target="#referalmodal" style={{ cursor: "pointer" }}>Refer and Earn</div>
-        <Link to={`/`} className="btn rounded-pill mx-1 btn-tag" >Home</Link>
-        {categories.map((category, index) => (
-          <>
-            {category.name !== slug ?
-              <Link to={`/blogs/${category.name}`} key={index} className="btn btn-tag mx-1 rounded-pill" >
-                {category.name}</Link> : <span className="btn active-tag mx-1 rounded-pill" >
-                {category.name}</span>
-            }
-          </>
-        ))
-        }
-      </div>
       <div className="blogs_category">
         {blogs.length > 0 ? <><div className="show_blogs">
           {
@@ -95,7 +75,7 @@ const BlogsByCategory = () => {
               callback={handlePagination}
             />
           }
-        </> : <div  style={{ height: '80vh' ,paddingTop:'30vh'}}>
+        </> : <div style={{ height: '80vh', paddingTop: '30vh' }}>
           <div className=' container text-center'>
             <h3 className="my-3 F">No Blogs</h3>
             <Link to="/create_blog">
