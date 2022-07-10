@@ -77,7 +77,7 @@ const BlogsByCategory = () => {
 
         ))
         }
-        <i className="fas fa-angle-right " style={{position:'absolute',zIndex:10}}></i>
+      
       </div>
 
       <div className="blogs_category">

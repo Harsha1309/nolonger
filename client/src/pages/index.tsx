@@ -40,11 +40,11 @@ const Home = (props) => {
       }}>
 
         <div className="btn btn-tag btn-success rounded-pill mx-1" data-bs-toggle="modal" data-bs-target="#referalmodal" style={{ cursor: "pointer" }}>Refer and Earn</div>
-        <Link to={`/`} className={`btn ${1 ? "active-tag" : "btn-tag"} rounded-pill mx-1 px-2`} >Home</Link>
+        <Link to={`/`} className={`btn active-tag rounded-pill mx-1 px-2`} >Home</Link>
         {categories.map((category, index) => (
 
           <Link to={`/blogs/${category.name}`} key={index}
-            className={`btn ${0 ? "btn-tag" : "btn-tag"} rounded-pill mx-1 px-2`} >
+            className={`btn btn-tag rounded-pill mx-1 px-2`} >
             {category.name}</Link>
 
         ))
