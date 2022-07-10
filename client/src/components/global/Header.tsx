@@ -24,10 +24,9 @@ const Header = () => {
       : dispatch(handledarkMode(true));
   };
   useEffect(() => {
-
+    
     document.body.style.backgroundColor = isdarkMode ? "#292c35" : "#fff";
   }, [isdarkMode]);
-
 
 
 
