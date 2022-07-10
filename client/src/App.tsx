@@ -33,28 +33,13 @@ const App = () => {
     return () => { socket.close() }
   },[dispatch])
 
-  const [mode, setMode] = useState('light'); // Whether dark mode is enabled or not
-  const[btnText, SetBtnText] = useState("Light mode")
-  const toggleMode = ()=>{
-    if(mode === 'light'){
-      setMode('dark');
-      document.body.style.backgroundColor = '#1B2430';
-      document.body.style.color="black";
-      SetBtnText("Dark mode");
-    }
-    else{
-      setMode('light');
-      document.body.style.backgroundColor = 'white';
-      document.body.style.color="blue";
-      SetBtnText("Light mode");
-    }
-  }
+  
   return (
     <div className="container">
       <SocketClient />
       <Router>
         <Alert />
-        <Header mode={mode} btnText={btnText} toggleMode={toggleMode}/>
+        <Header  />
 
         <Switch>
           <Route  exact path="/" component={PageRender }  />
@@ -62,7 +47,7 @@ const App = () => {
           <Route exact path="/:page/:slug" component={PageRender} />
         </Switch>
 
-        <Footer mode={mode}/>
+        <Footer />
       </Router>
     </div>
   )

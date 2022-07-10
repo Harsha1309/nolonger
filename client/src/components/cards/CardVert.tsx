@@ -17,7 +17,7 @@ interface IProps {
 }
 
 
-const CardVert: React.FC<IProps> = ({ blog, ispromoted, category }) => {
+const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
 
   console.log(blog.category)
   const timeAgo = new TimeAgo('en-US')
