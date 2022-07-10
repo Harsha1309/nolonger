@@ -39,6 +39,15 @@ export interface IUser extends IUserLogin {
   _id: string;
 }
 
+export interface IPreferance {
+  user: string;
+  country: string;
+  language: string[];
+  interests: string[];
+  birthday: Date;
+  theme: string;
+}
+
 export interface IUserProfile extends IUserRegister {
   avatar: any;
   about: string;
@@ -50,6 +59,7 @@ export interface IUserFollow {
   following: string[];
   follower: string[];
 }
+
 export interface IBalance {
   _id: string;
   balance: number;
@@ -101,4 +111,3 @@ export interface IComment {
   comment_root?: string;
   createdAt: string;
 }
-

@@ -5,10 +5,11 @@ import Notification from '../profile/Notification'
 import GooglePrompt from '../auth/GooglePrompt'
 import DarkMode from './DarkMode'
 import Referal from './Referal'
-import { useDispatch,useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { IParams, RootStore } from '../../utils/TypeScript'
 import { useEffect, useState } from 'react'
 import { handledarkMode } from "../../redux/actions/DarkModeAction";
+<<<<<<< HEAD
 
 const Header = () => {
   const { categories } = useSelector((state: RootStore) => state)
@@ -22,6 +23,17 @@ const Header = () => {
   const { isdarkMode } = mode;
 
   
+=======
+const Header = () => {
+  const { categories, darkMode } = useSelector((state: RootStore) => state)
+
+  const dispatch = useDispatch();
+
+
+
+  const { isdarkMode } = darkMode;
+
+>>>>>>> 7c9c4ed040531fb6917c648d35b6551be8c67f37
   const switchDarkMode = () => {
     isdarkMode
       ? dispatch(handledarkMode(false))
@@ -33,30 +45,35 @@ const Header = () => {
   }, [isdarkMode]);
 
 
+<<<<<<< HEAD
   
   
+=======
+  // let mode=localStorage.getItem('theme');
+  // console.log(mode);
+
+>>>>>>> 7c9c4ed040531fb6917c648d35b6551be8c67f37
   return (
     <>
-      <nav className={`navbar navbar-expand navbar-${mode==='light'?'dark':'light'} bg-${mode==='light'?'dark':'light'}`}
+      <nav className={`navbar navbar-expand navbar-${isdarkMode ? 'dark' : 'light'} bg-${isdarkMode ? 'dark' : 'light'}`}
         style={{ position: 'sticky', top: 0, left: 0, zIndex: 9 }} p-3
       >
-        <Link className="navbar-brand "  to="/"><b>Pedia<span style={{ color: '#00e600' }}>Geek</span></b></Link>
+        <Link className="navbar-brand " to="/"><b>Pedia<span style={{ color: '#00e600' }}>Geek</span></b></Link>
         {/* 
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button> */}
         <div className="w-100"></div>
 
-        <i className={`fas fa-${mode==='light'?'sun':'moon'}` } style={{fontSize:'1.5rem', cursor:'pointer',color: mode==='light'?'darkorange':'yellow',padding:'3px',}} onClick={switchDarkMode} ></i> 
-        {/* <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
+        <i className={`fas fa-${isdarkMode ? 'sun' : 'moon'}`} style={{ fontSize: '1.5rem', cursor: 'pointer', color: isdarkMode ? 'darkorange' : 'yellow', padding: '3px', }} onClick={switchDarkMode} ></i>
+      {/* <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
                         <input className="form-check-input my-3" onClick={props.toggleMode} type="checkbox" id="flexSwitchCheckDefault"/>
                         <label className="form-check-label small mx-1" htmlFor="flexSwitchCheckDefault">{props.btnText}</label>
-                    </div>
-
+                    </div> */}
         <div id="navbarNav">
           <Menu />
         </div>
-                    {/* <DarkMode/> */}
+   
       </nav>
 
 
