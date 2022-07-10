@@ -52,7 +52,7 @@ const Notification = () => {
                             ></button>
                         </div>
                         <div
-                            className="modal-body"
+                            className="modal-body example"
                             style={{ maxHeight: "65vh", overflow: "scroll" }}
                         >
                             {msg?.length === 0 && (
