@@ -3,6 +3,7 @@ import Menu from './Menu'
 import Search from './Search'
 import Notification from '../profile/Notification'
 import GooglePrompt from '../auth/GooglePrompt'
+import DarkMode from './DarkMode'
 const Header = (props) => {
   return (
 
@@ -19,8 +20,8 @@ const Header = (props) => {
         <div id="navbarNav">
           <Menu />
         </div>
-        
-        <i className={`fas fa-${props.mode==='light'?'sun':'moon'}` } style={{fontSize:'1.5rem', cursor:'pointer',color: props.mode==='light'?'darkorange':'yellow',padding:'3px',}} onClick={props.toggleMode} ></i>
+        <DarkMode/>
+        {/* <i className={`fas fa-${props.mode==='light'?'sun':'moon'}` } style={{fontSize:'1.5rem', cursor:'pointer',color: props.mode==='light'?'darkorange':'yellow',padding:'3px',}} onClick={props.toggleMode} ></i> */}
         {/* <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
                         <input className="form-check-input my-3" onClick={props.toggleMode} type="checkbox" id="flexSwitchCheckDefault"/>
                         <label className="form-check-label small mx-1" htmlFor="flexSwitchCheckDefault">{props.btnText}</label>

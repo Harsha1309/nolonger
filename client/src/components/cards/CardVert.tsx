@@ -8,6 +8,7 @@ import Onlytick from "../profile/Onlytick";
 import Homeuser from "../profile/SingleFollower"
 import Follow from "../profile/Follow";
 import { useSelector } from "react-redux";
+import DarkMode from "../global/DarkMode";
 TimeAgo.addDefaultLocale(en)
 interface IProps {
   blog: IBlog;
@@ -20,6 +21,9 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category }) => {
 
   console.log(blog.category)
   const timeAgo = new TimeAgo('en-US')
+
+  let mode=localStorage.getItem('theme');
+  console.log(mode);
   return (
     <div className="card mb-2 border-0 border-md-1">
       {typeof blog.user !== "string" &&
