@@ -12,9 +12,13 @@ TimeAgo.addDefaultLocale(en)
 interface IProps {
   blog: IBlog;
   ispromoted?: boolean;
+  category?: string;
 }
 
-const CardVert: React.FC<IProps> = ({ blog, ispromoted }) => {
+
+const CardVert: React.FC<IProps> = ({ blog, ispromoted, category }) => {
+
+  console.log(blog.category)
   const timeAgo = new TimeAgo('en-US')
   return (
     <div className="card mb-2 border-0 border-md-1">
@@ -42,7 +46,7 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted }) => {
             <img
               src={blog.thumbnail}
               className="card-img"
-              alt={blog.title}
+              alt="..."
               style={{ height: "180px", objectFit: "cover" }}
             />
           )}
@@ -60,6 +64,7 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted }) => {
           >
             {blog.title.slice(0, 50) + "..."}
           </Link>
+
         </h5>
         <div className="text-muted d-flex justify-content-between">
           <div className="views"> {timeAgo.format(new Date(blog.createdAt))}

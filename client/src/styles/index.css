@@ -15,11 +15,19 @@ code {
 }
 
 .btn-tag {
-  background-color: #4e4f4f;
+  background-color: #000000;
   text-transform: capitalize !important;
   margin-bottom: 5px;
   box-shadow: none;
-  color: azure;
+  color: rgb(255, 255, 255);
+}
+
+.active-tag {
+  background-color: #ffffff;
+  text-transform: capitalize !important;
+  margin-bottom: 5px;
+  box-shadow: none;
+  color: rgb(0, 0, 0);
 }
 
 .btn-tag:hover {
