@@ -9,34 +9,31 @@ import { useDispatch,useSelector } from 'react-redux'
 import { IParams, RootStore } from '../../utils/TypeScript'
 import { useEffect, useState } from 'react'
 import { handledarkMode } from "../../redux/actions/DarkModeAction";
-// import { darkMode } from "../../redux/reducers/index";
+
 const Header = () => {
   const { categories } = useSelector((state: RootStore) => state)
-  // let mode = localStorage.getItem('theme');
+  
 
   const dispatch = useDispatch();
 
-  // calling our state from the reduxer using useSelector hook of redux
+  
   const mode = useSelector((state) => state.darkMode);
-  // const mode = useSelector((state: da) => state)
-
-  // destructuring isdarkMode state from mode variable called using useSelector hook of redux
+  /
   const { isdarkMode } = mode;
 
-  // function to be fired on onChange method to switch the mode
+  
   const switchDarkMode = () => {
     isdarkMode
       ? dispatch(handledarkMode(false))
       : dispatch(handledarkMode(true));
   };
   useEffect(() => {
-    //changing color of body with darkmode in useEffect
+    
     document.body.style.backgroundColor = isdarkMode ? "#292c35" : "#fff";
   }, [isdarkMode]);
 
 
-  // let mode=localStorage.getItem('theme');
-  // console.log(mode);
+  
   
   return (
     <>
