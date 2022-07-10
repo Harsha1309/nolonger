@@ -64,11 +64,7 @@ const DisplayBlog: React.FC<IProps> = ({ blog }) => {
       const t = timer.ms();
       patchAPI("adduser", { blog, t });
     }
-
   }, [])
-
-
-
   useEffect(() => {
     if (!blog._id) return;
     const num = history.location.search.slice(6) || 1;
@@ -93,12 +89,12 @@ const DisplayBlog: React.FC<IProps> = ({ blog }) => {
 
 
           <hr /><br />
-          <div
-            dangerouslySetInnerHTML={{
-              __html: blog.content,
-            }}
-            style={{ fontSize: "18px" }}
-          />
+
+
+
+          <div className='ql-snow'>
+            <div className='ql-editor' dangerouslySetInnerHTML={{ __html: blog.content }} style={{ fontSize: "18px" }}/>
+          </div>
 
           <hr className="my-1" />
           <h3 style={{ color: "#ff7a00" }}>✩ Comments ✩</h3>
@@ -119,8 +115,6 @@ const DisplayBlog: React.FC<IProps> = ({ blog }) => {
               <Comments key={index} comment={comment} />
             ))
           )}
-
-
           {comments.total > 1 && (
             <Pagination total={comments.total} callback={handlePagination} />
           )}
