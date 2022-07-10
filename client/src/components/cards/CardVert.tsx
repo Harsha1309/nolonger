@@ -41,14 +41,13 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted }) => {
           {typeof blog.thumbnail === "string" && (
             <img
               src={blog.thumbnail}
-              className="card-img mx-1"
-              alt="..."
+              className="card-img"
+              alt={blog.title}
               style={{ height: "180px", objectFit: "cover" }}
             />
           )}
         </div>
       </Link>
-
       <div className="card-body container">
         <h5 className="card-title">
           {" "}
