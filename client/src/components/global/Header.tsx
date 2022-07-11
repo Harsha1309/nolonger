@@ -11,30 +11,17 @@ import { useEffect, useState } from 'react'
 import { handledarkMode } from "../../redux/actions/DarkModeAction";
 
 const Header = () => {
-  const { categories, darkMode } = useSelector((state: RootStore) => state)
-
-
-
+  const { darkMode } = useSelector((state: RootStore) => state)
   const dispatch = useDispatch();
-
-
-
-
   const { isdarkMode } = darkMode;
-
-
   const switchDarkMode = () => {
     isdarkMode
       ? dispatch(handledarkMode(false))
       : dispatch(handledarkMode(true));
   };
   useEffect(() => {
-
     document.body.style.backgroundColor = isdarkMode ? "#292c35" : "#fff";
   }, [isdarkMode]);
-
-
-
 
   return (
     <>

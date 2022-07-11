@@ -54,18 +54,19 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
         </div>
       </Link>
       <div className="card-body container">
-        <h5 className="card-title">
+        <h6 className="card-title">
           {" "}
           <Link
             to={`/blog/${blog._id}`}
             style={{
               textDecoration: "none",
               textTransform: "capitalize",
+              fontWeight: 'bold'
             }}
           >
             {blog.title.slice(0, 50) + "..."}
           </Link>
-        </h5>
+        </h6>
         <div className="text-muted d-flex justify-content-between">
           <div className="views"> {timeAgo.format(new Date(blog.createdAt))}
           </div>
