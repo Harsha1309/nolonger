@@ -10,8 +10,9 @@ import Referal from '../components/global/Referal'
 import { Link } from 'react-router-dom'
 
 const Home = (props) => {
-  const { homeBlogs, categories } = useSelector((state: RootStore) => state)
+  const { homeBlogs, categories,darkMode } = useSelector((state: RootStore) => state)
   //const [promo, setPromo] = useState<IBlog>()
+  const { isdarkMode } = darkMode;
   const [hasMore, setHasMore] = useState(true)
   const dispatch = useDispatch()
 
@@ -72,7 +73,7 @@ const Home = (props) => {
           }
         >
           <div className="container">
-            <div className="home_blogs">
+            <div className={`home_blogs bg-${isdarkMode?'dark':'light'}`} >
               {homeBlogs.blogs.map((blog, index) => (
                 <CardVert key={index} blog={blog} />
               ))}

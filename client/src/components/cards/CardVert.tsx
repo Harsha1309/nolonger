@@ -8,7 +8,7 @@ import Onlytick from "../profile/Onlytick";
 import Homeuser from "../profile/SingleFollower"
 import Follow from "../profile/Follow";
 import { useSelector } from "react-redux";
-import DarkMode from "../global/DarkMode";
+
 TimeAgo.addDefaultLocale(en)
 interface IProps {
   blog: IBlog;
@@ -18,11 +18,12 @@ interface IProps {
 
 
 const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
-
+  const { auth,darkMode } = useSelector((state: RootStore) => state);
+  const { isdarkMode } = darkMode;
   const timeAgo = new TimeAgo('en-US')
-  let mode = localStorage.getItem('theme');
+  
   return (
-    <div className="card mb-2 border-0 border-md-1">
+    <div className={`card mb-2 border-0 border-md-1 bg-${isdarkMode?'dark':'light'}`} style={{border:isdarkMode?'2px solid white':'2px solid black'}}>
       {typeof blog.user !== "string" &&
         < div className="mx-2">
           <div className="d-flex flex-row justify-content-between align-items-center">
@@ -74,7 +75,7 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
             <i className="far fa-eye"></i> {blog.views}
           </div>
         </div>
-        <p className={`card-text text-${mode === 'light' ? 'black' : 'red'}`}>{blog.description.slice(0, 100) + "..."}</p>
+        <p className={`card-text text-${isdarkMode?'white':'black'}`}>{blog.description.slice(0, 100) + "..."}</p>
       </div>
       <div className="card-footer text-muted d-flex justify-content-between bg-light border-top-0">
       </div>
