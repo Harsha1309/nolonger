@@ -7,8 +7,8 @@ import { RootStore } from "../utils/TypeScript";
 
 const Register = () => {
   const history = useHistory();
-  const { auth } = useSelector((state: RootStore) => state);
-
+  const { auth,darkMode } = useSelector((state: RootStore) => state);
+  const {isdarkMode}=darkMode;
   useEffect(() => {
     if (auth.access_token) {
       let url = history.location.search.replace("?", "/");
@@ -18,10 +18,10 @@ const Register = () => {
   }, [auth.access_token, history]);
 
   return (
-    <div className="auth_page">
+    <div className={`auth_page bg-${isdarkMode?'dark':'light'} text-${isdarkMode?'white':'black'}`}>
       <Helmetglobal title="Register-PediaGeek" description="Register at Pediageek to start your blogging and earning journey." keyword="Register" />
 
-      <div className="auth_box">
+      <div className={`auth_box  bg-${isdarkMode?'dark':'light'} text-${isdarkMode?'white':'black'}`}>
         <h3 className="text-uppercase text-center mb-4">Register</h3>
 
         <RegisterForm />

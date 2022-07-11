@@ -15,10 +15,10 @@ const AvatarReply: React.FC<IProps> = ({ user, reply_user }) => {
     <div className="avatar_reply">
       <img src={user.avatar} alt="avatar" />
 
-      <div className="ms-1">
+      <div className={`ms-1 text-${isdarkMode?'white':'black'}`}>
         <small>
           <Link to={`/profile/${user._id}`}
-          style={{ textDecoration: 'none' }}>
+          style={{ textDecoration: 'none', }}>
             { user.name }
           </Link>
         </small>
