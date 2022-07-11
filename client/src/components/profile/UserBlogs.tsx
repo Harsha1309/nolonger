@@ -11,9 +11,11 @@ import Loading from "../global/Loading";
 import Pagination from "../global/Pagination";
 
 const UserBlogs = () => {
-  const { blogsUser } = useSelector((state: RootStore) => state);
+  const { blogsUser,darkMode } = useSelector((state: RootStore) => state);
   const dispatch = useDispatch();
   const user_id = useParams<IParams>().slug;
+
+  const {isdarkMode}=darkMode;
 
   const [blogs, setBlogs] = useState<IBlog[]>();
 
@@ -48,7 +50,7 @@ const UserBlogs = () => {
   if (!blogs) return <Loading />;
 
   if (blogs.length === 0 && total < 1)
-    return <h3 className="text-center">No Blogs</h3>;
+    return <h3 className={`text-center text-${isdarkMode?'white':'black'}`}>No Blogs</h3>;
 
   return (
     <div>

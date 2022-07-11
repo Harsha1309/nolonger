@@ -26,9 +26,9 @@ const UserInfo = () => {
     referer: ''
   };
 
-  const { auth } = useSelector((state: RootStore) => state);
+  const { auth,darkMode } = useSelector((state: RootStore) => state);
   const dispatch = useDispatch();
-
+  const { isdarkMode } = darkMode;
   const [user, setUser] = useState<IUserProfile>(initState);
   const [typePass, setTypePass] = useState(false);
   const [typeCfPass, setTypeCfPass] = useState(false);
@@ -65,34 +65,34 @@ const UserInfo = () => {
     <button type="button" className="btn btn-dark rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <i className="fas fa-user-edit"></i>
       </button>
-      <div className="profile_info position-relative text-center">
+      <div className={`profile_info position-relative text-center bg-${isdarkMode?'dark':'light'}`}>
         
         <div className="info_avatar">
           <img src={auth.user.avatar} alt="avatar" />
         </div>
         <Tick role={auth.user.role} />
 
-        <div className="mt-1">
+        <div className={`mt-1 text-${isdarkMode?'white':'black'}`}>
           Name: <span className="text-info">{auth.user.name}</span>
         </div>
 
-        <div>
-          Email: <span className="text-info">{auth.user.account}</span>
+        <div className={`text-${isdarkMode?'white':'black'}`}>
+          Email: <span className={`text-info `}>{auth.user.account}</span>
         </div>
-        <div>{auth.user.about}</div>
+        <div className={`text-${isdarkMode?'white':'black'}`}>{auth.user.about}</div>
 
         <div className="row mt-3 mb-1" style={{ textAlign: "center" }}>
           <div className="col-6">
-            <b>Followers</b>
-            <p>{auth.user.follower.length}</p>
+            <b className={`text-${isdarkMode?'white':'black'}`}>Followers</b>
+            <p className={`text-${isdarkMode?'white':'black'}`}>{auth.user.follower.length}</p>
           </div>
           <div className="col-6">
-            <b>Following</b>
-            <p>{auth.user.following.length}</p>
+            <b className={`text-${isdarkMode?'white':'black'}`}>Following</b>
+            <p className={`text-${isdarkMode?'white':'black'}`}>{auth.user.following.length}</p>
           </div>
         </div>
         <br /><br />
-        <div className="bg-light" style={{ display: "inline" }}>
+        <div className={`bg-${isdarkMode?'dark':'white'} text-${isdarkMode?'white':'black'}`} style={{ display: "inline" }}>
           Join Date:{" "}
           <span style={{ color: "#ffc107" }}>
             {new Date(auth.user.createdAt).toLocaleString()}
@@ -103,11 +103,11 @@ const UserInfo = () => {
       <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+              <div className={`modal-header bg-${isdarkMode?'dark':'light'}`}>
+              <h5 className={`modal-title text-${isdarkMode?'white':'black'}`} id="exampleModalLabel">Modal title</h5>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div className="modal-body profile_info position-relative">
+            <div className={`modal-body profile_info position-relative bg-${isdarkMode?'dark':'light'}`}>
 
               <div className="position-absolute" style={{ right: 3, top: 3 }}>
                 <Monetary />
@@ -134,7 +134,7 @@ const UserInfo = () => {
                   </span>
                 </div>
                 <Tick role={auth.user.role} />
-                <div className="form-group my-3">
+                <div className={`form-group my-3 text-${isdarkMode?'white':'black'}`}>
                   <label htmlFor="name">Name</label>
                   <input
                     type="text"
@@ -146,7 +146,7 @@ const UserInfo = () => {
                   />
                 </div>
 
-                <div className="form-group my-3">
+                <div className={`form-group my-3 text-${isdarkMode?'white':'black'}`}>
                   <label htmlFor="account">Account</label>
                   <input
                     type="text"
@@ -159,7 +159,7 @@ const UserInfo = () => {
                   />
                 </div>
 
-                <div className="form-group my-3">
+                <div className={`form-group my-3 text-${isdarkMode?'white':'black'}`}>
                   <label htmlFor="about">About</label>
                   <textarea className="form-control" id="about"
                     name="about" defaultValue={auth.user.about}
@@ -172,7 +172,7 @@ const UserInfo = () => {
                   </small>
                 )}
 
-                <div className="form-group my-3">
+                <div className={`form-group my-3 text-${isdarkMode?'white':'black'}`}>
                   <label htmlFor="password">Password</label>
 
                   <div className="pass">
@@ -192,7 +192,7 @@ const UserInfo = () => {
                   </div>
                 </div>
 
-                <div className="form-group my-3">
+                <div className={`form-group my-3 text-${isdarkMode?'white':'black'}`}>
                   <label htmlFor="cf_password">Confirm Password</label>
 
                   <div className="pass">
@@ -212,7 +212,7 @@ const UserInfo = () => {
                   </div>
                 </div>
 
-                <button className="btn btn-dark w-100" type="submit">
+                <button className={`btn btn-${isdarkMode?'primary':'dark'} w-100`} type="submit">
                   Update
                 </button>
               </form>
