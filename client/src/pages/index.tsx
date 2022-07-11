@@ -37,7 +37,7 @@ const Home = (props) => {
         touchAction: 'pan-y',
         whiteSpace: 'nowrap',
         zIndex: 9,
-        top: 42,
+        top: 50,
       }}>
 
         <div className="btn btn-tag btn-success rounded-pill mx-1" data-bs-toggle="modal" data-bs-target="#referalmodal" style={{ cursor: "pointer" }}>Refer and Earn</div>

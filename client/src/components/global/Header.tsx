@@ -18,20 +18,14 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const { isdarkMode } = darkMode;
-
-
   const switchDarkMode = () => {
     isdarkMode
       ? dispatch(handledarkMode(false))
       : dispatch(handledarkMode(true));
   };
   useEffect(() => {
-
     document.body.style.backgroundColor = isdarkMode ? "#292c35" : "#fff";
   }, [isdarkMode]);
-
-
-
 
   return (
     <>

@@ -12,7 +12,6 @@ const Menu = () => {
   let url = history.location.pathname;
   url = url.substring(1);
   const bfLoginLinks = [
-    { label: 'Home', class: 'fas fa-home fa-lg ', path: '/' },
     { label: 'Login', class: 'fas fa-sign-in-alt fa-lg', path: `/login?${url}` },
     { label: 'Register', class: 'fas fa-user-plus fa-lg', path: `/register?${url}` }
   ]
@@ -42,7 +41,7 @@ const Menu = () => {
         {
           navLinks.map((link, index) => (
             <li key={index} className={`nav-item ${isActive(link.path)}`}>
-              <Link className="nav-link" to={link.path}><i className={`${link.class}`}></i></Link>
+              <Link className="nav-link" to={link.path}><i className={`${link.class}`} data-bs-toggle="tooltip" data-bs-placement="bottom" title={link.label}></i></Link>
             </li>
           ))
         }
@@ -66,41 +65,86 @@ const Menu = () => {
           </li>
         }
         {
-          auth.user &&
-          <li className="nav-item dropdown text-cenetr">
-            <span className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src={auth.user.avatar} alt="avatar" className="avatar" />
-            </span>
+          auth.user ?
+            <li className="nav-item dropdown text-cenetr">
+              <span className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src={auth.user.avatar} alt="avatar" className="avatar" />
+              </span>
 
-            <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li>
-                <Link className="dropdown-item"
-                  to={`/profile/${auth.user._id}`}
-                >
-                  Profile
-                </Link>
-              </li>
+              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li>
+                  <Link className="dropdown-item"
+                    to={`/profile/${auth.user._id}`}
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li><hr className="dropdown-divider" /></li>
 
-              <li><hr className="dropdown-divider" /></li>
+                <li>
+                  <Link className="dropdown-item" to="/about_us">
+                    About PediaGeek
+                  </Link>
+                </li><li><hr className="dropdown-divider" /></li>
 
-              <li>
-                <Link className="dropdown-item" to="/"
-                  onClick={handleLogout}>
-                  Logout
-                </Link>
-              </li>
+                <li>
+                  <Link className="dropdown-item" to="/privacy_policy">
+                    Privacy Policy
+                  </Link>
+                </li><li><hr className="dropdown-divider" /></li>
 
-            </ul>
-          </li>
+                <li>
+                  <Link className="dropdown-item" to="/disclaimer">
+                    Disclaimer
+                  </Link>
+                </li>
+                <li><hr className="dropdown-divider" /></li>
+
+                <li>
+                  <Link className="dropdown-item" to="/"
+                    onClick={handleLogout}>
+                    Logout
+                  </Link>
+                </li>
+
+              </ul>
+            </li> :
+            <li className="nav-item dropdown text-cenetr">
+              <span className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span className="navbar-toggler-icon"></span>
+              </span>
+
+              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li>
+                  <Link className="dropdown-item" to="/">
+                    Home
+                  </Link>
+                </li><li><hr className="dropdown-divider" /></li>
+                <li>
+                  <Link className="dropdown-item" to="/about_us">
+                    About PediaGeek
+                  </Link>
+                </li><li><hr className="dropdown-divider" /></li>
+
+                <li>
+                  <Link className="dropdown-item" to="/privacy_policy">
+                    Privacy Policy
+                  </Link>
+                </li><li><hr className="dropdown-divider" /></li>
+
+                <li>
+                  <Link className="dropdown-item" to="/disclaimer">
+                    Disclaimer
+                  </Link>
+                </li>
+
+              </ul>
+            </li>
+
+
         }
-
       </ul >
-
-
-
-
     </>
-
   )
 }
 

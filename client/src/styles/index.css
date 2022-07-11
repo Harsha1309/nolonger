@@ -31,10 +31,11 @@ code {
   color: rgb(255, 255, 255);
 }
 
-.active-tag:hover, .btn-tag:hover {
+.active-tag:hover,
+.btn-tag:hover {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25),
     0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;
-    color: rgb(253, 253, 253);
+  color: rgb(253, 253, 253);
 }
 
 .example::-webkit-scrollbar {
@@ -45,6 +46,11 @@ code {
 .example {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+
+.dropdown-toggle::after {
+  content: none;
 }
 
 .avatar {
