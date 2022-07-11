@@ -71,9 +71,8 @@ const Menu = () => {
             <span className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img src={auth.user.avatar} alt="avatar" className="avatar" />
             </span>
-
-            <ul className="dropdown-menu dropdown-menu-end"  aria-labelledby="navbarDropdown">
-              <li style={{ zIndex: 15}}>
+            <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li style={{ zIndex: 15 }}>
                 <Link className="dropdown-item"
                   to={`/profile/${auth.user._id}`}
                 >
@@ -81,7 +80,7 @@ const Menu = () => {
                 </Link>
               </li>
 
-              <li style={{ zIndex: 15}}><hr className="dropdown-divider" /></li>
+              <li><hr className="dropdown-divider" /></li>
 
               <li>
                 <Link className="dropdown-item" to="/"
@@ -93,14 +92,8 @@ const Menu = () => {
             </ul>
           </li>
         }
-
       </ul >
-
-
-
-
     </>
-
   )
 }
 
