@@ -67,14 +67,14 @@ const balanceCtrl = {
     const finaltime = Math.min(len, timespent);
     const balance = await Balance.findOne({ user: req.body.blog.user._id });
     if (balance && req.body.blog.views > 10) {
-      balance.blogbalance = balance.blogbalance + finaltime * 0.07;
+      balance.blogbalance = balance.blogbalance + finaltime * 0.03;
       balance.blogbalance = parseFloat(balance.blogbalance.toFixed(2));
-      balance.balance = balance.balance + finaltime * 0.07;
+      balance.balance = balance.balance + finaltime * 0.03;
       balance.balance = parseFloat(balance.balance.toFixed(2));
       balance.save();
       let single = await Blogs.findById(req.body.blog._id);
       if (single?.earn !== undefined) {
-        single.earn = single.earn + finaltime * 0.07;
+        single.earn = single.earn + finaltime * 0.03;
         single.earn = parseFloat(single.earn.toFixed(2));
         single.save();
       }
@@ -89,7 +89,7 @@ const balanceCtrl = {
       let single = await Blogs.findById(req.body.blog._id);
 
       if (single?.earn !== undefined) {
-        single.earn = single.earn + 1.7;
+        single.earn = single.earn + 1;
         single.earn = parseFloat(single.earn.toFixed(2));
         single.save();
       }

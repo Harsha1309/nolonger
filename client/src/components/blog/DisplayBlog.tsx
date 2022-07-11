@@ -57,12 +57,17 @@ const DisplayBlog: React.FC<IProps> = ({ blog }) => {
 
   useEffect(() => {
     timer.start();
+    setTimeout(function () {
+      putAPI("addv", { blog })
+    }, 10000)
     return () => {
       const t = timer.ms();
       patchAPI("adduser", { blog, t });
     }
   }, [])
-  
+
+
+
   useEffect(() => {
     if (!blog._id) return;
     const num = history.location.search.slice(6) || 1;
