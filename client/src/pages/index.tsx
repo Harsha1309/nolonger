@@ -10,7 +10,7 @@ import Referal from '../components/global/Referal'
 import { Link } from 'react-router-dom'
 
 const Home = (props) => {
-  const { homeBlogs, categories,darkMode } = useSelector((state: RootStore) => state)
+  const { homeBlogs, categories, darkMode } = useSelector((state: RootStore) => state)
   //const [promo, setPromo] = useState<IBlog>()
   const { isdarkMode } = darkMode;
   const [hasMore, setHasMore] = useState(true)
@@ -28,7 +28,6 @@ const Home = (props) => {
 
   return (
     <>
-
       <div className={`example pt-1 bg-light px-2 mb-1 border border-start-0 border-end-0`} style={{
         position: 'sticky',
         display: 'block',
@@ -43,11 +42,9 @@ const Home = (props) => {
         <div className="btn btn-tag btn-success rounded-pill mx-1" data-bs-toggle="modal" data-bs-target="#referalmodal" style={{ cursor: "pointer" }}>Refer and Earn</div>
         <Link to={`/`} className={`btn active-tag rounded-pill mx-1 px-2`} >Home</Link>
         {categories.map((category, index) => (
-
           <Link to={`/blogs/${category.name}`} key={index}
             className={`btn btn-tag rounded-pill mx-1 px-2`} >
             {category.name}</Link>
-
         ))
         }
       </div>
@@ -72,8 +69,8 @@ const Home = (props) => {
             </p>
           }
         >
-          <div className="container">
-            <div className={`home_blogs bg-${isdarkMode?'dark':'light'}`} >
+          <div className="container px-0">
+            <div className={`home_blogs bg-${isdarkMode ? 'dark' : 'light'}`} >
               {homeBlogs.blogs.map((blog, index) => (
                 <CardVert key={index} blog={blog} />
               ))}
