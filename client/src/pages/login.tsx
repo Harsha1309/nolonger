@@ -12,8 +12,8 @@ const Login = () => {
   const [sms, setSms] = useState(false);
   const history = useHistory();
 
-  const { auth } = useSelector((state: RootStore) => state);
-
+  const { auth,darkMode } = useSelector((state: RootStore) => state);
+  const {isdarkMode}=darkMode;
   useEffect(() => {
     if (auth.access_token) {
       let url = history.location.search.replace("?", "/");
@@ -22,9 +22,9 @@ const Login = () => {
   }, [auth.access_token, history]);
 
   return (
-    <div className="auth_page">
+    <div className={`auth_page bg-${isdarkMode?'dark':'light'} text-${isdarkMode?'white':'black'}`}>
       <Helmetglobal title="Login-PediaGeek" description="Login to pediageek to write a blog an dearn." keyword="Login" />
-      <div className="auth_box">
+      <div className={`auth_box bg-${isdarkMode?'dark':'light'} `}>
         <h3 className="text-uppercase text-center mb-4">Login</h3>
         <SocialLogin referer="" />
         <LoginPass />

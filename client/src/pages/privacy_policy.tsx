@@ -1,8 +1,12 @@
 import React from "react";
+import { RootStore } from '../utils/TypeScript'
+import { useSelector } from 'react-redux';
 import Helmetglobal from "../components/global/Helmetglobal";
 const Privacy_policy = () => {
+  const { darkMode } = useSelector((state: RootStore) => state);
+  const {isdarkMode}=darkMode;
   return (
-    <div className="d-flex justify-content-center my-3" style={{ width: '100%' }}>
+    <div className={`d-flex justify-content-center my-3 text-${isdarkMode?'white':'black'}`} style={{ width: '100%' }}>
        <Helmetglobal title="Privacy Policy - PediaGeek" description="This page explains all the legal rights of a person to use our website and his roles.." keyword="privacy,policy ,pediageek" />
      
       <div style={{ maxWidth: '800px' }}>

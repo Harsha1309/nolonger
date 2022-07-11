@@ -1,8 +1,11 @@
 import Helmetglobal from "../components/global/Helmetglobal";
-
+import { RootStore } from '../utils/TypeScript'
+import { useSelector } from 'react-redux';
 const About = () => {
+  const { darkMode } = useSelector((state: RootStore) => state);
+  const {isdarkMode}=darkMode;
   return (
-    <div className="d-flex justify-content-center my-3" style={{ width: '100%' }}>
+    <div className={`d-flex justify-content-center my-3 text-${isdarkMode?'white':'black'}`} style={{ width: '100%' }}>
       <Helmetglobal title="About us" description="Pediageeek is the place to express your ideas and views." keyword="aboutus,pediageek" />
       <div style={{ maxWidth: '800px' }}>
 

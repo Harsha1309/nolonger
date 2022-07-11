@@ -16,9 +16,9 @@ interface IProps {
 const OtherInfo: React.FC<IProps> = ({ id }) => {
   const [other, setOther] = useState<IUser>();
 
-  const { otherInfo } = useSelector((state: RootStore) => state);
+  const { otherInfo,darkMode } = useSelector((state: RootStore) => state);
   const dispatch = useDispatch();
-
+  const {isdarkMode}=darkMode;
   useEffect(() => {
     if (!id) return;
 
@@ -33,34 +33,34 @@ const OtherInfo: React.FC<IProps> = ({ id }) => {
   if (!other) return <Loading />;
   return (
     
-    <div className="profile_info text-center rounded">
+    <div className={`profile_info text-center rounded bg-${isdarkMode?'dark':'light'}`}>
       <div className="info_avatar">
         <img src={other.avatar} alt="avatar" />
       </div>
       <Tick role={other.role} />
 
-      <div className="mt-1">
+      <div className={`mt-1 text-${isdarkMode?'white':'black'}`}>
         Name: <span className="text-info">{other.name}</span>
       </div>
 
-      <div>
+      <div className={`text-${isdarkMode?'white':'black'}`}>
         Email: <span className="text-info">{other.account}</span>
       </div>
-      <div>{other.about}</div>
+      <div className={`text-${isdarkMode?'white':'black'}`}>{other.about}</div>
 
       <div className="row mt-3 mb-1" style={{ textAlign: "center" }}>
-        <div className="col-6">
+        <div className={`col-6 text-${isdarkMode?'white':'black'}`}>
           <b>Followers</b>
           <p>{other.follower.length}</p>
         </div>
-        <div className="col-6">
+        <div className={`col-6 text-${isdarkMode?'white':'black'}`}>
           <b>Following</b>
           <p>{other.following.length}</p>
         </div>
       </div>
       <Follow user={other} />
       <br /><br />
-      <div className="bg-light" style={{ display: "inline" }}>
+      <div className={`bg-${isdarkMode?'dark':'light'} text-${isdarkMode?'white':'black'}`} style={{ display: "inline" }}>
         Join Date:{" "}
         <span style={{ color: "#ffc107" }}>
           {new Date(other.createdAt).toLocaleString()}

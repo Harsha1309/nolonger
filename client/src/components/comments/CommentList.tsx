@@ -21,9 +21,9 @@ const CommentList: React.FC<IProps> = ({
   children, comment, showReply, setShowReply
 }) => {
   const [onReply, setOnReply] = useState(false)
-  const { auth } = useSelector((state: RootStore) => state)
+  const { auth,darkMode } = useSelector((state: RootStore) => state)
   const dispatch = useDispatch()
-
+  const {isdarkMode}=darkMode;
   const [edit, setEdit] = useState<IComment>()
 
   const handleReply = (body: string) => {
@@ -86,7 +86,7 @@ const CommentList: React.FC<IProps> = ({
           setEdit={setEdit}
         />
 
-        : <div className="comment_box">
+        : <div className={`comment_box text-${isdarkMode?'white':'black'}`}>
             <div className="p-2" dangerouslySetInnerHTML={{
               __html: comment.content
             }} />
