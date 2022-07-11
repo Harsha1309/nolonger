@@ -71,10 +71,14 @@ const Quill: React.FC<IProps> = ({ setBody, body }) => {
                 modules={modules}
                 placeholder="Write somethings..."
                 value={body}
+                className={`bg-${isdarkMode?'dark':'light'}`}
                 onChange={e => setBody(e)}
                 ref={quillRef}
                 id="createblog"
-                style={{color:isdarkMode?'black':'white'}}
+                style={{
+                    color:isdarkMode?'black':'black',
+
+            }}
             />
         </div>
     )

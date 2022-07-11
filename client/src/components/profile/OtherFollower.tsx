@@ -10,7 +10,8 @@ interface IProps {
 
 const Follower: React.FC<IProps> = ({ id }) => {
   const [other, setOther] = useState<IUser>();
-  const { otherInfo } = useSelector((state: RootStore) => state);
+  const { otherInfo,darkMode } = useSelector((state: RootStore) => state);
+  const {isdarkMode}=darkMode;
   const dispatch = useDispatch();
   useEffect(() => {
     if (!id) return;
@@ -25,7 +26,7 @@ const Follower: React.FC<IProps> = ({ id }) => {
 
   if (!other) return <div>Not Found</div>
   if (other.follower.length === 0)
-    return (<h3 className="text-center">No Followers</h3>);
+    return (<h3 className={`text-center text-${isdarkMode?'white':'black'}`}>No Followers</h3>);
   return (
     <div>
       {other.follower.map((follow) => (

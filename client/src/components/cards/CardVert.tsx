@@ -23,7 +23,7 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
   const timeAgo = new TimeAgo('en-US')
   
   return (
-    <div className={`card mb-2 border-0 border-md-1 bg-${isdarkMode?'dark':'light'}`} style={{border:isdarkMode?'2px solid white':'2px solid black'}}>
+    <div className={`card mb-2 border-${isdarkMode?'1':'0'} border-md-1 bg-${isdarkMode?'dark':'light'}`} style={{border:isdarkMode?'2px solid white':'2px solid black'}}>
       {typeof blog.user !== "string" &&
         < div className="mx-2">
           <div className="d-flex flex-row justify-content-between align-items-center">
@@ -72,12 +72,12 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
           <div className="views"> {timeAgo.format(new Date(blog.createdAt))}
           </div>
           <div className="stats">
-            <i className="far fa-eye"></i> {blog.views}
+            <i className="far fa-eye "></i> {blog.views}
           </div>
         </div>
-        <p className={`card-text text-${isdarkMode?'white':'black'}`}>{blog.description.slice(0, 100) + "..."}</p>
+        <p className={`card-text text-${isdarkMode?'white':'black'}`}>{blog.description.slice(0, 110) + "..."}</p>
       </div>
-      <div className="card-footer text-muted d-flex justify-content-between bg-light border-top-0">
+      <div className={`card-footer text-muted d-flex justify-content-between bg-light border-${isdarkMode?'white':'dark'} border-0 bg-${isdarkMode?'dark':'light'}`}>
       </div>
     </div >
 
