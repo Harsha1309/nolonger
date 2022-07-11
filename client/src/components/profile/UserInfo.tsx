@@ -62,43 +62,44 @@ const UserInfo = () => {
 
   return (
     <>
-    <button type="button" className="btn btn-dark rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        <i className="fas fa-user-edit"></i>
-      </button>
-      <div className="profile_info position-relative text-center">
-        
-        <div className="info_avatar">
-          <img src={auth.user.avatar} alt="avatar" />
-        </div>
-        <Tick role={auth.user.role} />
 
-        <div className="mt-1">
-          Name: <span className="text-info">{auth.user.name}</span>
-        </div>
-
-        <div>
-          Email: <span className="text-info">{auth.user.account}</span>
-        </div>
-        <div>{auth.user.about}</div>
-
-        <div className="row mt-3 mb-1" style={{ textAlign: "center" }}>
-          <div className="col-6">
-            <b>Followers</b>
-            <p>{auth.user.follower.length}</p>
+      <div className="profile_info position-relative ">
+        <button type="button" className="btn btn-dark rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i className="fas fa-user-edit"></i>
+        </button>
+        <div className="text-center">
+          <div className="info_avatar">
+            <img src={auth.user.avatar} alt="avatar" />
           </div>
-          <div className="col-6">
-            <b>Following</b>
-            <p>{auth.user.following.length}</p>
+          <Tick role={auth.user.role} />
+
+          <div className="mt-1">
+            Name: <span className="text-info">{auth.user.name}</span>
+          </div>
+
+          <div>
+            Email: <span className="text-info">{auth.user.account}</span>
+          </div>
+          <div>{auth.user.about}</div>
+
+          <div className="row mt-3 mb-1" style={{ textAlign: "center" }}>
+            <div className="col-6">
+              <b>Followers</b>
+              <p>{auth.user.follower.length}</p>
+            </div>
+            <div className="col-6">
+              <b>Following</b>
+              <p>{auth.user.following.length}</p>
+            </div>
+          </div>
+          <br /><br />
+          <div className="bg-light" style={{ display: "inline" }}>
+            Join Date:{" "}
+            <span style={{ color: "#ffc107" }}>
+              {new Date(auth.user.createdAt).toLocaleString()}
+            </span>
           </div>
         </div>
-        <br /><br />
-        <div className="bg-light" style={{ display: "inline" }}>
-          Join Date:{" "}
-          <span style={{ color: "#ffc107" }}>
-            {new Date(auth.user.createdAt).toLocaleString()}
-          </span>
-        </div>
-
       </div>
       <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
