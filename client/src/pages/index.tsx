@@ -28,7 +28,7 @@ const Home = (props) => {
 
   return (
     <>
-      <div className={`example pt-1 bg-light px-2 mb-1 border border-start-0 border-end-0`} style={{
+      <div className={`example pt-1 px-2 mb-1 border border-start-0 border-end-0 `} style={{
         position: 'sticky',
         display: 'block',
         overflow: 'hidden',
@@ -37,13 +37,14 @@ const Home = (props) => {
         whiteSpace: 'nowrap',
         zIndex: 9,
         top: 50,
+        backgroundColor:isdarkMode?'#202020':''
       }}>
 
-        <div className="btn btn-tag btn-success rounded-pill mx-1" data-bs-toggle="modal" data-bs-target="#referalmodal" style={{ cursor: "pointer" }}>Refer and Earn</div>
-        <Link to={`/`} className={`btn active-tag rounded-pill mx-1 px-2`} >Home</Link>
+        <div className={`btn btn-tag btn-success rounded-pill mx-1 text-${isdarkMode?'white':'black'}`} data-bs-toggle="modal" data-bs-target="#referalmodal" style={{ cursor: "pointer",backgroundColor:isdarkMode?'#373737':'#e9e3e3' }}>Refer and Earn</div>
+        <Link to={`/`} className={`btn active-tag rounded-pill mx-1 px-2`}  >Home</Link>
         {categories.map((category, index) => (
           <Link to={`/blogs/${category.name}`} key={index}
-            className={`btn btn-tag rounded-pill mx-1 px-2`} >
+            className={`btn btn-tag rounded-pill mx-1 px-2 text-${isdarkMode?'white':'black'} `} style={{backgroundColor:isdarkMode?'#373737':'#e9e3e3'}} >
             {category.name}</Link>
         ))
         }

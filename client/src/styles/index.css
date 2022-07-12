@@ -30,12 +30,18 @@ code {
   box-shadow: none;
   color: rgb(255, 255, 255);
 }
-
-.active-tag:hover,
-.btn-tag:hover {
+.btn-tag:hover{
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25),
     0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;
-  color: rgb(253, 253, 253);
+  background-color: #5cb85c;
+  color: darkblue
+}
+
+.active-tag:hover
+{
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25),
+    0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;
+  color: darkgray;
 }
 
 .example::-webkit-scrollbar {
