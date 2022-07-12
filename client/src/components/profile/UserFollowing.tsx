@@ -9,10 +9,11 @@ import NotFound from "../global/NotFound";
 import SingleFollower from "./SingleFollower";
 
 const UserInfo = () => {
-    const { auth } = useSelector((state: RootStore) => state);
+    const { auth,darkMode } = useSelector((state: RootStore) => state);
+    const {isdarkMode}=darkMode;
     if (!auth.user) return <NotFound />;
     if (auth.user.following.length === 0)
-        return <h3 className="text-center">No Following</h3>;
+        return <h3 className={`text-center text-${isdarkMode?'white':'black'}`}>No Following</h3>;
     return (
         <div>
             {auth.user.following.map((follow) => (

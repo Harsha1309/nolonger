@@ -12,10 +12,10 @@ import Pagination from "../global/Pagination";
 import DraftCard from "../cards/DraftCard";
 
 const UserDrafts = () => {
-    const { draftsUser, auth } = useSelector((state: RootStore) => state);
+    const { draftsUser, auth,darkMode } = useSelector((state: RootStore) => state);
     const dispatch = useDispatch();
     const user_id = useParams<IParams>().slug;
-
+    const {isdarkMode}=darkMode;
     const [blogs, setBlogs] = useState<IBlog[]>();
 
     const [total, setTotal] = useState(0);
@@ -51,7 +51,7 @@ const UserDrafts = () => {
     if (!blogs) return <Loading />;
 
     if (blogs.length === 0 && total < 1)
-        return <h3 className="text-center">Nothing Draft</h3>;
+        return <h3 className={`text-center text-${isdarkMode?'white':'black'}`}>Nothing Draft</h3>;
 
     return (
         <div>
