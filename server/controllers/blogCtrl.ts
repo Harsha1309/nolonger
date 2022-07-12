@@ -274,10 +274,12 @@ const blogCtrl = {
   },
   getBlog: async (req: Request, res: Response) => {
     try {
-      let blog = await Blogs.findOne({ _id: req.params.id }).populate(
-        "user",
-        "-password"
-      );
+      let blog = await Blogs.findOne({ _id: req.params.id }).populate("user", [
+        "-password",
+        "-type",
+        "-paytm",
+        "-referer",
+      ]).select("-earn");
       if (!blog) return res.status(400).json({ msg: "Blog does not exist." });
       delete blog.earn;
       blog.views = blog.views + 1;
