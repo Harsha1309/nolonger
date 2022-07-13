@@ -28,7 +28,7 @@ const Home = (props) => {
 
   return (
     <>
-      <div className={`example pt-1 px-2 mb-1  border border-start-0 border-end-0 d-sm-none d-md-block`} style={{
+      <div className={`example pt-1 px-2 mb-1  border border-start-0 border-end-0 d-none d-md-block`} style={{
         position: 'sticky',
         display: 'block',
         overflow: 'hidden',
