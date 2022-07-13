@@ -74,7 +74,7 @@ const BlogsByCategory = () => {
         {categories.map((category, index) => (
 
           <Link to={`/blogs/${category.name}`} key={index}
-            className={`btn ${slug === category.name ? "active-tag" : "btn-tag"}  text-${isdarkMode?'white':'black'} rounded-pill mx-1 px-2 ` } style={{backgroundColor:isdarkMode?'#373737':'#e9e3e3'}} >
+            className={`btn ${slug === category.name ? "active-tag" : "btn-tag"}  text-${isdarkMode?'white':'black'} rounded-pill mx-1 px-2 ` } style={{backgroundColor:isdarkMode && slug !== category.name ?'#373737':''}} >
             {category.name}</Link>
 
         ))
