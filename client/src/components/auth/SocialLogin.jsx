@@ -1,8 +1,10 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { googleLogin } from "../../redux/actions/authAction";
 
 const SocialLogin = (referer) => {
+  const { darkMode } = useSelector((state) => state);
+  const { isdarkMode } = darkMode;
   const dispatch = useDispatch();
   const onSuccess = (response) => {
     dispatch(googleLogin(response.credential, referer));
@@ -27,7 +29,11 @@ const SocialLogin = (referer) => {
 
   return (
     <div className="row ml-md-3">
-      <div className="bg-light justify-content-center row">
+      <div
+        className={`bg-${
+          isdarkMode ? "dark" : "light"
+        } justify-content-center row`}
+      >
         <div className="col-1"></div>
         <div className="my-2 col-11" id="buttonDiv"></div>
         <div className="col-1"></div>

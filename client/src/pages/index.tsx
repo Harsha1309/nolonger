@@ -40,20 +40,16 @@ const Home = (props) => {
         backgroundColor:isdarkMode?'#202020':'white'
       }}>
 
-        <div className={`btn btn-tag btn-success rounded-pill mx-1 text-${isdarkMode?'white':'black'}`} data-bs-toggle="modal" data-bs-target="#referalmodal" style={{ cursor: "pointer",backgroundColor:isdarkMode?'#373737':'#e9e3e3' }}>Refer and Earn</div>
+        <div className={`btn btn-tag btn-success rounded-pill mx-1 text-${isdarkMode ? 'white' : 'black'}`} data-bs-toggle="modal" data-bs-target="#referalmodal" style={{ cursor: "pointer", backgroundColor: isdarkMode ? '#373737' : '#e9e3e3' }}>Refer and Earn</div>
         <Link to={`/`} className={`btn active-tag rounded-pill mx-1 px-2`}  >Home</Link>
         {categories.map((category, index) => (
           <Link to={`/blogs/${category.name}`} key={index}
-            className={`btn btn-tag rounded-pill mx-1 px-2 text-${isdarkMode?'white':'black'} `} style={{backgroundColor:isdarkMode?'#373737':'#e9e3e3'}} >
+            className={`btn btn-tag rounded-pill mx-1 px-2 text-${isdarkMode ? 'white' : 'black'} `} style={{ backgroundColor: isdarkMode ? '#373737' : '#e9e3e3' }} >
             {category.name}</Link>
         ))
         }
       </div>
-      <div className="alert alert-success alert-dismissible fade show" role="alert">
-        <h4 className="alert-heading"><i className="fas fa-check-circle"></i> Update!</h4>
-        <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <p> Introducing New Monetary Policy of PediaGeek now Earning will depend on Engagement of viewers on the blog. Improve your blogs quality for more income.</p>
-      </div>
+
       <div className="home_page">
 
         <Referal />

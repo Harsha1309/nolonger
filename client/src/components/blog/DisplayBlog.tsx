@@ -18,7 +18,7 @@ interface IProps {
 }
 const timer = new Timer({ label: 'usertime' });
 const DisplayBlog: React.FC<IProps> = ({ blog }) => {
-  const { auth, comments,darkMode } = useSelector((state: RootStore) => state);
+  const { auth, comments, darkMode } = useSelector((state: RootStore) => state);
   const dispatch = useDispatch();
   const { isdarkMode } = darkMode;
   const [showComments, setShowComments] = useState<IComment[]>([]);
@@ -82,7 +82,7 @@ const DisplayBlog: React.FC<IProps> = ({ blog }) => {
         <div style={{ maxWidth: 850, margin: "20px", minWidth: 250 }}>
           <h2
             className="text-center my-3 text-capitalize fs-1"
-            style={{ color: isdarkMode?'white':'black', fontSize: 30 }}
+            style={{ color: isdarkMode ? 'white' : 'black', fontSize: 30 }}
           >
             <b>{blog.title}</b>
           </h2>
@@ -93,7 +93,7 @@ const DisplayBlog: React.FC<IProps> = ({ blog }) => {
 
 
           <div className='ql-snow'>
-            <div className='ql-editor' dangerouslySetInnerHTML={{ __html: blog.content }} style={{ fontSize: "18px",color:isdarkMode?'white':'black' }}/>
+            <div className='ql-editor' dangerouslySetInnerHTML={{ __html: blog.content }} style={{ fontSize: "18px", color: isdarkMode ? 'white' : 'black' }} />
           </div>
 
           <hr className="my-1" />
@@ -102,7 +102,7 @@ const DisplayBlog: React.FC<IProps> = ({ blog }) => {
           {auth.user ? (
             <Input callback={handleComment} />
           ) : (
-            <h5>
+            <h5 className={`text-${isdarkMode ? 'light' : 'dark'}`}>
               Please <Link to={`/login?blog/${blog._id}`}>login</Link> to
               comment.
             </h5>
