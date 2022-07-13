@@ -15,8 +15,9 @@ import Helmetglobal from '../../components/global/Helmetglobal'
 
 
 const BlogsByCategory = () => {
-  const { categories, blogsCategory } = useSelector((state: RootStore) => state)
+  const { categories, blogsCategory ,darkMode} = useSelector((state: RootStore) => state)
   const dispatch = useDispatch()
+  const {isdarkMode}=darkMode;
   const { slug } = useParams<IParams>()
   const [categoryId, setCategoryId] = useState('')
   const [blogs, setBlogs] = useState<IBlog[]>()
@@ -57,7 +58,7 @@ const BlogsByCategory = () => {
     <div>
       <Helmetglobal title={`${slug} Blogs`} description={`Blogs from ${slug} category.`} keyword={slug} />
 
-      <div className="example pt-1 bg-light px-2 mb-1 border border-start-0 border-end-0" style={{
+      <div className="example pt-1 px-2 mb-1 border border-start-0 border-end-0" style={{
         position: 'sticky',
         display: 'block',
         overflow: 'hidden',
@@ -66,13 +67,14 @@ const BlogsByCategory = () => {
         whiteSpace: 'nowrap',
         zIndex: 9,
         top: 42,
+        backgroundColor:isdarkMode?'#202020':''
       }}>
-        <div className="btn btn-tag btn-success rounded-pill mx-1" data-bs-toggle="modal" data-bs-target="#referalmodal" style={{ cursor: "pointer" }}>Refer and Earn</div>
-        <Link to={`/`} className={`btn btn-tag rounded-pill mx-1 px-2`} >Home</Link>
+        <div className={`btn btn-tag btn-success rounded-pill mx-1 text-${isdarkMode?'white':'black'}`} data-bs-toggle="modal" data-bs-target="#referalmodal" style={{ cursor: "pointer",backgroundColor:isdarkMode?'#373737':'#e9e3e3' }}>Refer and Earn</div>
+        <Link to={`/`} className={`btn btn-tag rounded-pill mx-1 px-2 text-${isdarkMode?'white':'black'}`} style={{backgroundColor:isdarkMode?'#373737':'#e9e3e3'}} >Home</Link>
         {categories.map((category, index) => (
 
           <Link to={`/blogs/${category.name}`} key={index}
-            className={`btn ${slug === category.name ? "active-tag" : "btn-tag"} rounded-pill mx-1 px-2`} >
+            className={`btn ${slug === category.name ? "active-tag" : "btn-tag"}  text-${isdarkMode?'white':'black'} rounded-pill mx-1 px-2 `} style={{backgroundColor:isdarkMode?'#373737':'#e9e3e3'}} >
             {category.name}</Link>
 
         ))
@@ -98,9 +100,9 @@ const BlogsByCategory = () => {
           }
         </> : <div style={{ height: '80vh', paddingTop: '30vh' }}>
           <div className=' container text-center'>
-            <h3 className="my-3 F">No Blogs</h3>
+            <h3 className={`my-3 F text-${isdarkMode?'white':'black'}`}>No Blogs</h3>
             <Link to="/create_blog">
-              <button className="btn btn-primary">Create One</button></Link>
+              <button className={`btn btn-primary text-${isdarkMode?'white':'black'}`}>Create One</button></Link>
           </div>
         </div>
         }
