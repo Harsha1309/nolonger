@@ -14,8 +14,8 @@ const AvatarComment: React.FC<IProps> = ({ user }) => {
     <div className="avatar_comment">
       <img src={user.avatar} alt="avatar" />
 
-      <small className={`d-block text-break text-${isdarkMode?'white':'black'}`}>
-        <Link to={`/profile/${user._id}`}>
+      <small className={`d-block text-break `}>
+        <Link to={`/profile/${user._id}`} className={`text-${isdarkMode?'white':'black'}`}>
           {user.name}
         </Link>
       </small>
