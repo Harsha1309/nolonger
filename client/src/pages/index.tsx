@@ -28,7 +28,7 @@ const Home = (props) => {
 
   return (
     <>
-      <div className={`example pt-1 px-2 mb-1 border border-start-0 border-end-0 `} style={{
+      <div className={`example pt-1 px-2 mb-1  border border-start-0 border-end-0 `} style={{
         position: 'sticky',
         display: 'block',
         overflow: 'hidden',
@@ -37,7 +37,7 @@ const Home = (props) => {
         whiteSpace: 'nowrap',
         zIndex: 9,
         top: 50,
-        backgroundColor:isdarkMode?'#202020':''
+        backgroundColor:isdarkMode?'#202020':'white'
       }}>
 
         <div className={`btn btn-tag btn-success rounded-pill mx-1 text-${isdarkMode?'white':'black'}`} data-bs-toggle="modal" data-bs-target="#referalmodal" style={{ cursor: "pointer",backgroundColor:isdarkMode?'#373737':'#e9e3e3' }}>Refer and Earn</div>
@@ -65,7 +65,7 @@ const Home = (props) => {
           loader={<Loading />}
           scrollThreshold={0.6}
           endMessage={
-            <p style={{ textAlign: 'center' }}>
+            <p style={{ textAlign: 'center',color:isdarkMode?'white':'black' }}>
               <b>Yay! You have seen it all</b>
             </p>
           }

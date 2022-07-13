@@ -67,14 +67,14 @@ const BlogsByCategory = () => {
         whiteSpace: 'nowrap',
         zIndex: 9,
         top: 42,
-        backgroundColor:isdarkMode?'#202020':''
+        backgroundColor:isdarkMode?'#202020':'white'
       }}>
         <div className={`btn btn-tag btn-success rounded-pill mx-1 text-${isdarkMode?'white':'black'}`} data-bs-toggle="modal" data-bs-target="#referalmodal" style={{ cursor: "pointer",backgroundColor:isdarkMode?'#373737':'#e9e3e3' }}>Refer and Earn</div>
         <Link to={`/`} className={`btn btn-tag rounded-pill mx-1 px-2 text-${isdarkMode?'white':'black'}`} style={{backgroundColor:isdarkMode?'#373737':'#e9e3e3'}} >Home</Link>
         {categories.map((category, index) => (
 
           <Link to={`/blogs/${category.name}`} key={index}
-            className={`btn ${slug === category.name ? "active-tag" : "btn-tag"}  text-${isdarkMode?'white':'black'} rounded-pill mx-1 px-2 `} style={{backgroundColor:isdarkMode?'#373737':'#e9e3e3'}} >
+            className={`btn ${slug === category.name ? "active-tag" : "btn-tag"}  text-${isdarkMode?'white':'black'} rounded-pill mx-1 px-2 ` } style={{backgroundColor:isdarkMode?'#373737':'#e9e3e3'}} >
             {category.name}</Link>
 
         ))

@@ -11,10 +11,7 @@
   height: 95vh;
   scroll-margin: 50px 0 0 50px;;
 }
-::-webkit-scrollbar {
-  width: 2em;  /* Total width including `border-width` of scrollbar thumb */
-  height: 0;
-}
+
 
  /* Hide scrollbar for Chrome, Safari and Opera */
  .profile_info::-webkit-scrollbar {
