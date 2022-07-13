@@ -71,15 +71,8 @@ const Menu = () => {
                 <img src={auth.user.avatar} alt="avatar" className="avatar" />
               </span>
 
-              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li>
-                  <Link className="dropdown-item"
-                    to={`/profile/${auth.user._id}`}
-                  >
-                    Profile
-                  </Link>
-                </li>
-                <li><hr className="dropdown-divider" /></li>
+              <ul className="dropdown-menu dropdown-menu-end my-3" aria-labelledby="navbarDropdown" >
+
 
                 <li>
                   <Link className="dropdown-item" to="/about_us">
@@ -99,7 +92,14 @@ const Menu = () => {
                   </Link>
                 </li>
                 <li><hr className="dropdown-divider" /></li>
-
+                <li>
+                  <Link className="dropdown-item"
+                    to={`/profile/${auth.user._id}`}
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li><hr className="dropdown-divider" /></li>
                 <li>
                   <Link className="dropdown-item" to="/"
                     onClick={handleLogout}>
@@ -114,10 +114,10 @@ const Menu = () => {
                 <span className="navbar-toggler-icon"></span>
               </span>
 
-              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <ul className="dropdown-menu dropdown-menu-end my-3" aria-labelledby="navbarDropdown" style={{ marginTop: 100 }}>
                 <li>
-                  <Link className="dropdown-item" to="/">
-                    Home
+                  <Link className="dropdown-item" to="#">
+
                   </Link>
                 </li><li><hr className="dropdown-divider" /></li>
                 <li>
@@ -137,7 +137,12 @@ const Menu = () => {
                     Disclaimer
                   </Link>
                 </li>
-
+                <li><hr className="dropdown-divider" /></li>
+                <li>
+                  <Link className="dropdown-item" to="/">
+                    Home
+                  </Link>
+                </li>
               </ul>
             </li>
 
