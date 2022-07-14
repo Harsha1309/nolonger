@@ -4,21 +4,31 @@ body {
 }
 
 #createblog .ql-container {
-  border-bottom-left-radius: 0.5em;
-  border-bottom-right-radius: 0.5em;
+  border-bottom-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
   background: #ffffff;
   font-size: 18px;
 }
 
 /* Snow Theme */
 #createblog .ql-snow.ql-toolbar {
+  position: sticky;
+  top: '150px';
   display: block;
   background: #ffffff;
   z-index: 2;
-  border-top-left-radius: 0.5em;
-  border-top-right-radius: 0.5em;
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
 }
 
 #createblog .ql-editor {
   min-height: 18em;
+}
+
+#commenteditor .ql-editor {
+  min-height: 5em;
+}
+
+#commenteditor .ql-container {
+  font-size: 16px;
 }

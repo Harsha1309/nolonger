@@ -71,14 +71,11 @@ const Quill: React.FC<IProps> = ({ setBody, body }) => {
                 modules={modules}
                 placeholder="Write somethings..."
                 value={body}
-                className={`bg-${isdarkMode?'dark':'light'}`}
+                className={`bg-${isdarkMode ? 'dark' : 'light'}`}
                 onChange={e => setBody(e)}
                 ref={quillRef}
                 id="createblog"
-                style={{
-                    color:isdarkMode?'black':'black',
-
-            }}
+                
             />
         </div>
     )
@@ -86,12 +83,10 @@ const Quill: React.FC<IProps> = ({ setBody, body }) => {
 
 let container = [
     [{ 'font': [] }],
-    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+    [{ 'header': [2, 4, false] }],
 
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-    ['blockquote', 'code-block'],
-    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+    ['blockquote', 'code-block'],         // dropdown with defaults from theme
     [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
 
     [{ 'list': 'ordered' }, { 'list': 'bullet' }],
