@@ -109,7 +109,7 @@ const UserInfo = () => {
           <div className="modal-content">
             <div className={`modal-header bg-${isdarkMode ? 'dark' : 'light'}`}>
               <h5 className={`modal-title text-${isdarkMode ? 'white' : 'black'}`} id="profileModalLabel">Modal title</h5>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" className={`btn-close btn-close-${isdarkMode ? 'white' : 'dark'}`} data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className={`modal-body profile_info position-relative bg-${isdarkMode ? 'dark' : 'light'}`}>
 
