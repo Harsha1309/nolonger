@@ -88,7 +88,7 @@ const DisplayBlog: React.FC<IProps> = ({ blog }) => {
           </h2>
 
 
-          <hr /><br />
+          <hr style={{ color: isdarkMode ? 'white' : 'black' }} /><br />
 
 
 
