@@ -67,7 +67,7 @@ const UserInfo = () => {
         <div className="position-absolute" style={{ right: 3, top: 3 }}>
           <Monetary />
         </div>
-        <button type="button" className={`btn btn-${isdarkMode ? 'light' : 'dark'} rounded-circle`} data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" className={`btn btn-${isdarkMode ? 'light' : 'dark'} rounded-circle`} data-bs-toggle="modal" data-bs-target="#profileModal">
           <i className={`fas fa-user-edit text-${isdarkMode ? 'dark' : 'light'}`}></i>
         </button>
         <div className="text-center">
@@ -104,11 +104,11 @@ const UserInfo = () => {
           </div>
         </div>
       </div>
-      <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal fade" id="profileModal" tabIndex={-1} aria-labelledby="profileModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className={`modal-header bg-${isdarkMode ? 'dark' : 'light'}`}>
-              <h5 className={`modal-title text-${isdarkMode ? 'white' : 'black'}`} id="exampleModalLabel">Modal title</h5>
+              <h5 className={`modal-title text-${isdarkMode ? 'white' : 'black'}`} id="profileModalLabel">Modal title</h5>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className={`modal-body profile_info position-relative bg-${isdarkMode ? 'dark' : 'light'}`}>
