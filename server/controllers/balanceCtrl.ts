@@ -110,13 +110,13 @@ const balanceCtrl = {
     if (balance && req.body.blog.views > 10) {
       let single = await Blogs.findById(req.body.blog._id);
       if (single?.earn !== undefined) {
-        single.earn = single.earn + 0.03;
+        single.earn = single.earn + 0.01;
         single.earn = parseFloat(single.earn.toFixed(2));
         single.save();
       }
-      balance.blogbalance = balance.blogbalance + 0.03;
+      balance.blogbalance = balance.blogbalance + 0.01;
       balance.blogbalance = parseFloat(balance.blogbalance.toFixed(2));
-      balance.balance = balance.balance + 0.03;
+      balance.balance = balance.balance + 0.01;
       balance.balance.toFixed(2);
       balance.save();
     } else if (req.body.blog.views == 10) {
