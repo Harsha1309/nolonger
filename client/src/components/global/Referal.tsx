@@ -4,10 +4,7 @@ import { RootStore } from "../../utils/TypeScript";
 const Referal = () => {
     const { auth } = useSelector((state: RootStore) => state);
     const history = useHistory()
-    const handleClick = () => {
-        if (auth.access_token) history.push('/create_blog');
-        else history.push('/register');
-    }
+
     const copy1 = () => {
         if (auth.access_token) {
 
@@ -17,7 +14,7 @@ const Referal = () => {
             Step2: Write your first blog and post it.
             Step3: Get Rs.10-100 on your account instatntly and earn 21-25 per 100 views on your blog.
             
-            Here is my referal link click on it to register. ${window.location.origin.toString()}/register?ref=${auth.user?._id}`);
+            Link. ${window.location.origin.toString()}/register?ref=${auth.user?._id}`);
         }
         else history.push('/register');
         var close = document.getElementById('close');
@@ -31,15 +28,13 @@ const Referal = () => {
             Step2: Write your first blog and post it.
             Step3: Get Rs.10-100 on your account instatntly and earn 21-25 per 100 viewson your blog.
             
-            Here is my code eneter at the registrain referal id and check my name before submit. ${auth.user?._id}`);
+            Id - ${auth.user?._id}`);
         }
         else history.push('/register');
         var close = document.getElementById('close');
         close?.click();
-
     }
     return (
-
         <div className="modal fade" id="referalmodal" tabIndex={-1} aria-labelledby="referalLabel" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">

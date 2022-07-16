@@ -8,6 +8,7 @@ import { getHomeBlogs } from '../redux/actions/blogAction'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Referal from '../components/global/Referal'
 import { Link } from 'react-router-dom'
+import Homevert from '../components/ads/Homevert'
 
 const Home = (props) => {
   const { homeBlogs, categories, darkMode } = useSelector((state: RootStore) => state)
@@ -37,7 +38,7 @@ const Home = (props) => {
         whiteSpace: 'nowrap',
         zIndex: 9,
         top: 50,
-        backgroundColor:isdarkMode?'#202020':'white'
+        backgroundColor: isdarkMode ? '#202020' : 'white'
       }}>
 
         
@@ -61,14 +62,18 @@ const Home = (props) => {
           loader={<Loading />}
           scrollThreshold={0.6}
           endMessage={
-            <p style={{ textAlign: 'center',color:isdarkMode?'white':'black' }}>
+            <p style={{ textAlign: 'center', color: isdarkMode ? 'white' : 'black' }}>
               <b>Yay! You have seen it all</b>
             </p>
           }
         >
           <div className="container px-0">
             <div className={`home_blogs bg-${isdarkMode ? 'dark' : 'light'}`} >
+              <Homevert />
               {homeBlogs.blogs.map((blog, index) => (
+
+
+
                 <CardVert key={index} blog={blog} />
               ))}
             </div>

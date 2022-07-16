@@ -22,7 +22,8 @@ const PageRender = () => {
     name = slug ? `${page}/[slug]` : `${page}`
   }
   useEffect(() => {
-    window.scrollTo(0, 0)
+    if (page !== undefined)
+      window.scrollTo(0, 0);
   }, [page])
 
   return generatePage(name)

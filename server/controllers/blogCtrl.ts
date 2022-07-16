@@ -274,12 +274,9 @@ const blogCtrl = {
   },
   getBlog: async (req: Request, res: Response) => {
     try {
-      let blog = await Blogs.findOne({ _id: req.params.id }).populate("user", [
-        "-password",
-        "-type",
-        "-paytm",
-        "-referer",
-      ]).select("-earn");
+      let blog = await Blogs.findOne({ _id: req.params.id })
+        .populate("user", ["-password", "-type", "-paytm", "-referer"])
+        .select("-earn");
       if (!blog) return res.status(400).json({ msg: "Blog does not exist." });
       delete blog.earn;
       blog.views = blog.views + 1;
@@ -357,9 +354,20 @@ const blogCtrl = {
   },
   searchBlogs: async (req: Request, res: Response) => {
     try {
-      const blogs = await Blogs.find({
-        title: { $regex: `${req.query.title}` },
-      }).limit(5);
+      const blogs = await Blogs.aggregate([
+        {
+          $search: {
+            index: "blogs_search",
+            text: {
+              query: `${req.query.title}`,
+              path: {
+                wildcard: "*",
+              },
+            },
+          },
+        },
+        { $limit: 5 },
+      ]);
 
       if (!blogs.length) return res.status(400).json({ msg: "No Blogs." });
 
