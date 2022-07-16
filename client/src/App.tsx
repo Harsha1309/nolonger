@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { useState } from 'react';
 
 import PageRender from './PageRender'
 import Header from './components/global/Header'
@@ -32,8 +31,6 @@ const App = () => {
     dispatch({ type: 'SOCKET', payload: socket })
     return () => { socket.close() }
   }, [dispatch])
-
-
 
   return (
     <div className="container">

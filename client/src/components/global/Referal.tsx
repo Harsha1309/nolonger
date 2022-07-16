@@ -4,10 +4,7 @@ import { RootStore } from "../../utils/TypeScript";
 const Referal = () => {
     const { auth } = useSelector((state: RootStore) => state);
     const history = useHistory()
-    const handleClick = () => {
-        if (auth.access_token) history.push('/create_blog');
-        else history.push('/register');
-    }
+
     const copy1 = () => {
         if (auth.access_token) {
 
