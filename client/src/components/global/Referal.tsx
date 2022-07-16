@@ -14,7 +14,7 @@ const Referal = () => {
             Step2: Write your first blog and post it.
             Step3: Get Rs.10-100 on your account instatntly and earn 21-25 per 100 views on your blog.
             
-            Here is my referal link click on it to register. ${window.location.origin.toString()}/register?ref=${auth.user?._id}`);
+            Link. ${window.location.origin.toString()}/register?ref=${auth.user?._id}`);
         }
         else history.push('/register');
         var close = document.getElementById('close');
@@ -28,7 +28,7 @@ const Referal = () => {
             Step2: Write your first blog and post it.
             Step3: Get Rs.10-100 on your account instatntly and earn 21-25 per 100 viewson your blog.
             
-            Link - ${auth.user?._id}`);
+            Id - ${auth.user?._id}`);
         }
         else history.push('/register');
         var close = document.getElementById('close');
