@@ -23,7 +23,7 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
   const timeAgo = new TimeAgo('en-US')
   
   return (
-    <div className={`card mb-2 border-${isdarkMode?'1':'1'} border-md-1 bg-${isdarkMode?'dark':'light'}`} style={{border:isdarkMode?'2px solid white':'2px solid black'}}>
+    <div className={`card border-${isdarkMode?'1':'1'} border-md-1 bg-${isdarkMode?'dark':'light'}`} >
       {typeof blog.user !== "string" &&
         < div className="mx-2">
           <div className="d-flex flex-row justify-content-between align-items-center">

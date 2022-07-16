@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux";
 const Homevert = () => {
   const { darkMode } = useSelector((state) => state);
   const { isdarkMode } = darkMode;
@@ -9,10 +9,9 @@ const Homevert = () => {
 
   return (
     <div
-      className={`card mb-2 border-1 border-md-1 bg-${
+      className={`card  border-1 position-relative border-md-1 bg-${
         isdarkMode ? "dark" : "light"
       }`}
-      style={{ border: isdarkMode ? "2px solid white" : "2px solid black" }}
     >
       <ins
         className="adsbygoogle"
