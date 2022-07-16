@@ -33,7 +33,6 @@ const Referal = () => {
         else history.push('/register');
         var close = document.getElementById('close');
         close?.click();
-
     }
     return (
         <div className="modal fade" id="referalmodal" tabIndex={-1} aria-labelledby="referalLabel" aria-hidden="true">
