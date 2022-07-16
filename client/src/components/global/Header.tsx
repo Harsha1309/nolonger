@@ -7,7 +7,7 @@ import Referal from './Referal'
 import { useDispatch, useSelector } from 'react-redux'
 import { IParams, RootStore } from '../../utils/TypeScript'
 import { useEffect, useState } from 'react'
-import { handledarkMode } from "../../redux/actions/DarkModeAction";
+
 
 const Header = () => {
   const {  darkMode } = useSelector((state: RootStore) => state)
@@ -17,14 +17,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const { isdarkMode } = darkMode;
-  const switchDarkMode = () => {
-    isdarkMode
-      ? dispatch(handledarkMode(false))
-      : dispatch(handledarkMode(true));
-  };
-  useEffect(() => {
-    document.body.style.backgroundColor = isdarkMode ? "#292c35" : "#fff";
-  }, [isdarkMode]);
+  
 
   return (
     <>
@@ -37,8 +30,6 @@ const Header = () => {
           <span className="navbar-toggler-icon"></span>
         </button> */}
         <div className="w-100"></div>
-
-        <i className={`fas fa-${isdarkMode ? 'moon' : 'sun'}`} style={{ fontSize: '1.5rem', cursor: 'pointer', color: isdarkMode ? 'yellow' : 'darkorange', padding: '3px', }} onClick={switchDarkMode} ></i>
         <div id="navbarNav">
           <Menu />
         </div>

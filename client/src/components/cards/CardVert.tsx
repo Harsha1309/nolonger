@@ -8,6 +8,7 @@ import Onlytick from "../profile/Onlytick";
 import Homeuser from "../profile/SingleFollower"
 import Follow from "../profile/Follow";
 import { useSelector } from "react-redux";
+import { isDeepStrictEqual } from "util";
 
 TimeAgo.addDefaultLocale(en)
 interface IProps {
@@ -29,7 +30,7 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
           <div className="d-flex flex-row justify-content-between align-items-center">
             <Link to={`/profile/${blog.user._id}`} className="text-decoration-none">
               <div className="d-flex flex-row align-items-center"><img className="rounded-circle" src={blog.user.avatar} width="40" height="40" />
-                <div className="d-flex flex-column align-items-start ml-2"><span className="font-weight-bold">{blog.user.name.slice(0, 12)}..<Onlytick role={blog.user.role} /></span><span className="followers text-muted"><small>{blog.user.follower.length} Followers{ispromoted && ', Ads'}</small></span></div>
+                <div className="d-flex flex-column align-items-start ml-2"><span className="font-weight-bold" style={{color:isdarkMode?'white':'#003300',}}>{blog.user.name.slice(0, 12)}..<Onlytick role={blog.user.role} /></span><span className="followers text-muted"><small >{blog.user.follower.length} Followers{ispromoted && ', Ads'}</small></span></div>
               </div>
             </Link>
             <div className="d-flex flex-row align-items-center mt-2"><Follow user={blog.user} /></div>
@@ -62,20 +63,21 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
             style={{
               textDecoration: "none",
               textTransform: "capitalize",
-              fontWeight: 'bold'
+              fontWeight: 'bold',
+              color:isdarkMode?'white':'#003300'
             }}
           >
             {blog.title.slice(0, 50) + "..."}
           </Link>
         </h6>
         <div className="text-muted d-flex justify-content-between">
-          <div className="views"> {timeAgo.format(new Date(blog.createdAt))}
+          <div className={`views`}> {timeAgo.format(new Date(blog.createdAt))}
           </div>
-          <div className="stats">
+          <div className={`stats `}>
             <i className="far fa-eye "></i> {blog.views}
           </div>
         </div>
-        <p className={`card-text text-${isdarkMode?'white':'black'}`}>{blog.description.slice(0, 110) + "..."}</p>
+        <p className={`card-text`} style={{color:isdarkMode?'white':'#003300'}}>{blog.description.slice(0, 110) + "..."}</p>
       </div>
       <div className={`card-footer text-muted d-flex justify-content-between bg-light border-${isdarkMode?'white':'dark'} border-0 bg-${isdarkMode?'dark':'light'}`}>
       </div>
