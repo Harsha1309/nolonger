@@ -83,7 +83,7 @@ const Quill: React.FC<IProps> = ({ setBody, body }) => {
 
 let container = [
     [{ 'font': [] }],
-    [{ 'header': [2, 4, false] }],
+    [{ 'header': [3, 4, false] }],
 
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
     ['blockquote', 'code-block'],         // dropdown with defaults from theme
