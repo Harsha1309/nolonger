@@ -205,7 +205,7 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
           dangerouslySetInnerHTML={{
             __html: body,
           }}
-          style={{ display: "none" }}
+          style={{ fontSize: "18px", color: isdarkMode ? 'white' : 'black', display: "none" }}
         />
 
         <small className={`text-muted text-${isdarkMode ? 'light' : 'dark'}`}>{text.length}</small>
