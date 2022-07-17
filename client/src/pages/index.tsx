@@ -69,10 +69,13 @@ const Home = (props) => {
         >
           <div className="container px-0">
             <div className={`home_blogs `} >
-              <Homevert />
-              {homeBlogs.blogs.map((blog, index) => (
+              {homeBlogs.blogs.map((blog, index) => (<>
                 <CardVert key={index} blog={blog} />
-              ))}
+                {
+                index%8==0 && <Homevert  />
+                }
+                </>
+))}
             </div>
           </div>
         </InfiniteScroll>

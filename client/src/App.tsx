@@ -33,7 +33,7 @@ const App = () => {
   }, [dispatch])
 
   return (
-    <div className="container">
+    <div >
       <SocketClient />
       <Router>
         <Alert />

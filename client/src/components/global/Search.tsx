@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { useSelector } from "react-redux";
 
 import { getAPI } from '../../utils/FetchData'
-import { IBlog } from '../../utils/TypeScript'
+import { IBlog,RootStore } from '../../utils/TypeScript'
 
 import CardHoriz from '../cards/CardHoriz'
 
@@ -11,6 +12,9 @@ const Search = () => {
   const [blogs, setBlogs] = useState<IBlog[]>([])
   // const [cross, setCross] = useState('0')
   const { pathname } = useLocation()
+
+  const { darkMode } = useSelector((state: RootStore) => state);
+  const {isdarkMode}=darkMode;
 
   useEffect(() => {
     const delayDebounce = setTimeout(async () => {
@@ -36,8 +40,8 @@ const Search = () => {
   return (
 
    
- <div className="search w-100 position-relative me-4"  >
- <input type="text" className="form-control me-2"
+ <div className={`search w-100 position-relative me-4 `} >
+ <input type={`text `} className={`form-control me-2 bg-${isdarkMode?'dark':'light'} text-${isdarkMode?'white':'black'}`}
    value={search} placeholder="Enter your search..."
    onChange={e => setSearch(e.target.value)} aria-label="Search" />
 
@@ -47,7 +51,7 @@ const Search = () => {
    search.length >= 2 &&
    <div className="position-relative pt-2 px-1 w-100 rounded mt-2"
      style={{
-       background: '#eee', zIndex: 10,
+       background:isdarkMode?'dark':'#eee', zIndex: 10,
        maxHeight: 'calc(100vh - 100px)',
        overflow: 'auto'
      }}>
@@ -57,7 +61,7 @@ const Search = () => {
          blogs.map(blog => (
            <CardHoriz key={blog._id} blog={blog} />
          ))
-         : <h3 className="text-center">No Blogs</h3>
+         : <h3 className={`text-center bg-${isdarkMode?'dark':'light'} text-${isdarkMode?'white':'black'}`}>No Blogs</h3>
      }
    </div>
  }
