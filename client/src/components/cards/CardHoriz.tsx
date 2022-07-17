@@ -71,7 +71,7 @@ const CardHoriz: React.FC<IProps> = ({ blog }) => {
             <h5 className="card-title">
               <Link
                 to={`/blog/${blog._id}`}
-                className="text-capitalize text-decoration-none"
+                className={`text-capitalize text-decoration-none text-${isdarkMode?'white':''}`}
               >
                 {blog.title}
               </Link>
