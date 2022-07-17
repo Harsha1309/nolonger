@@ -75,7 +75,7 @@ const Quill: React.FC<IProps> = ({ setBody, body }) => {
                 onChange={e => setBody(e)}
                 ref={quillRef}
                 id="createblog"
-                
+
             />
         </div>
     )
@@ -83,17 +83,14 @@ const Quill: React.FC<IProps> = ({ setBody, body }) => {
 
 let container = [
     [{ 'font': [] }],
-    [{ 'header': [3, 4, false] }],
-
+    [{ 'header': [1, 2, 3, 4, false] }],
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
     ['blockquote', 'code-block'],         // dropdown with defaults from theme
     [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
-
     [{ 'list': 'ordered' }, { 'list': 'bullet' }],
     [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
     [{ 'direction': 'rtl' }],                         // text direction
     [{ 'align': [] }],
-
     ['clean', 'link', 'image', 'video']
 ]
 export default Quill

@@ -48,6 +48,7 @@ const Menu = () => {
   const Read = () => {
     dispatch(notificationRead(auth))
   }
+ 
 
   return (
     <>
@@ -71,7 +72,7 @@ const Menu = () => {
           ))
         }
         <li className='nav-item' style={{ cursor: 'pointer' }}>
-          <span className='nav-link' data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+          <span className='nav-link' data-bs-toggle="modal" data-bs-target="#staticBackdrop1" >
             <i className="fas fa-search fa-lg"></i>
           </span>
         </li>

@@ -10,14 +10,18 @@ import { useEffect, useState } from 'react'
 
 
 const Header = () => {
-  const {  darkMode } = useSelector((state: RootStore) => state)
+  const { darkMode } = useSelector((state: RootStore) => state)
 
 
 
   const dispatch = useDispatch();
 
   const { isdarkMode } = darkMode;
-  
+
+  $('#staticBackdrop1').on('shown.bs.modal', function () {
+    $('#searchbox').trigger('focus');
+  })
+
 
   return (
     <>
