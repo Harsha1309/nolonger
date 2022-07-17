@@ -24,7 +24,7 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
   const timeAgo = new TimeAgo('en-US')
   
   return (
-    <div className={`card border-${isdarkMode?'1':'1'} border-${isdarkMode?'white':'black'} border-md-1 bg-${isdarkMode?'dark':'light'}`} >
+    <div className={`card border-${isdarkMode?'1':'1'}  border-md-1 bg-${isdarkMode?'dark':'light'}`} >
       {typeof blog.user !== "string" &&
         < div className="mx-2">
           <div className="d-flex flex-row justify-content-between align-items-center">
@@ -79,7 +79,7 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
         </div>
         <p className={`card-text`} style={{color:isdarkMode?'white':'#003300'}}>{blog.description.slice(0, 110) + "..."}</p>
       </div>
-      <div className={`card-footer text-muted d-flex justify-content-between bg-light border-${isdarkMode?'white':'dark'} border-0 bg-${isdarkMode?'dark':'light'}`}>
+      <div className={`card-footer text-muted d-flex justify-content-between py-1  bg-${isdarkMode?'dark':'light'}`}>
       </div>
     </div >
 
