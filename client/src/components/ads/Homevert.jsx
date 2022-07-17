@@ -19,7 +19,7 @@ const Homevert = () => {
         data-ad-client="ca-pub-3982561798373930"
         data-ad-slot="6177057546"
         data-ad-format="auto"
-        data-full-width-responsive="true"
+        data-full-width-responsive="false"
       ></ins>
     </div>
   );
