@@ -188,12 +188,12 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
       <div style={{ flex: 10, maxWidth: "900px" }}>
         <div className="row mt-4">
           <div className="col-md-6">
-            <h5 className={`text-${isdarkMode ? 'white' : 'black'} `}>Create</h5>
+            <h5 className={`text-${isdarkMode ? 'white' : 'black'} text-center`}>Create</h5>
             <CreateForm blog={blog} setBlog={setBlog} />
           </div>
 
           <div className="col-md-6">
-            <h5 className={`text-${isdarkMode ? 'white' : 'black'} my-2 text-center`}>Preview</h5>
+            <h5 className={`text-${isdarkMode ? 'white' : 'black'}  text-center`}>Preview</h5>
             <CardHoriz blog={blog} />
           </div>
         </div>
@@ -208,7 +208,7 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
           style={{ display: "none" }}
         />
 
-        <small>{text.length}</small>
+        <small className={`text-muted text-${isdarkMode ? 'light' : 'dark'}`}>{text.length}</small>
       </div>
       <div style={{ flex: 2, maxWidth: 330, margin: 15 }} className={`bg-${isdarkMode ? 'dark' : 'light'}`}>
         <h5 className={`text-${isdarkMode ? 'white' : 'black'} my-2 text-center`}>Blog Policy</h5>

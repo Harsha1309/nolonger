@@ -25,8 +25,10 @@ interface IProps {
 }
 
 const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
+
   const dispatch = useDispatch();
-  const { categories, auth } = useSelector((state: RootStore) => state);
+  const { categories, auth, darkMode } = useSelector((state: RootStore) => state);
+  const { isdarkMode } = darkMode;
   const app = document.getElementById("app");
 
   const [categor, setCategor] = useState(categories);
@@ -99,7 +101,7 @@ const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
       </div>
 
       <div className="form-group my-3">
-        <label htmlFor="thumbnail">Thumbnail</label>
+        <label htmlFor="thumbnail" className={`text-${isdarkMode ? 'light' : 'dark'}`}>Thumbnail</label>
         <input
           type="file"
           className="form-control"
