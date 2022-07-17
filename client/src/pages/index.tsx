@@ -41,7 +41,7 @@ const Home = (props) => {
         backgroundColor: isdarkMode ? '#202020' : 'white'
       }}>
 
-        
+
         <Link to={`/`} className={`btn active-tag rounded-pill mx-1 px-2`}  >Home</Link>
         {categories.map((category, index) => (
           <Link to={`/blogs/${category.name}`} key={index}
@@ -71,9 +71,6 @@ const Home = (props) => {
             <div className={`home_blogs bg-${isdarkMode ? 'dark' : 'light'}`} >
               <Homevert />
               {homeBlogs.blogs.map((blog, index) => (
-
-
-
                 <CardVert key={index} blog={blog} />
               ))}
             </div>
