@@ -363,6 +363,7 @@ const blogCtrl = {
               path: {
                 wildcard: "*",
               },
+              fuzzy: {},
             },
           },
         },

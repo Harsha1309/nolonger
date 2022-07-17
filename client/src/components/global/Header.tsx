@@ -10,21 +10,25 @@ import { useEffect, useState } from 'react'
 
 
 const Header = () => {
-  const {  darkMode } = useSelector((state: RootStore) => state)
+  const { darkMode } = useSelector((state: RootStore) => state)
 
 
 
   const dispatch = useDispatch();
 
   const { isdarkMode } = darkMode;
-  
+
+  $('#staticBackdrop1').on('shown.bs.modal', function () {
+    $('#searchbox').trigger('focus');
+  })
+
 
   return (
     <>
       <nav className={`navbar navbar-expand navbar-${isdarkMode ? 'dark' : 'light'} bg-${isdarkMode ? 'dark' : 'light'} px-md-2`}
         style={{ position: 'sticky', top: 0, left: 0, zIndex: 9 }} 
       >
-        <Link className="navbar-brand " to="www.pediageek.com">  <h5 className={`text-uppercase fw-bold text-${isdarkMode ? 'white' : 'black'}`} style={{marginBottom:'-5px'}} >
+        <Link className="navbar-brand " to="/">  <h5 className={`text-uppercase fw-bold text-${isdarkMode ? 'white' : 'black'}`} style={{marginBottom:'-5px'}} >
                   <img className='img-fluid'
                     src="/logo192.png"
                     alt="pediageek logo"

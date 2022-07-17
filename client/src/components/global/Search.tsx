@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { useSelector } from "react-redux";
 
 import { getAPI } from '../../utils/FetchData'
-import { IBlog,RootStore } from '../../utils/TypeScript'
+import { IBlog, RootStore } from '../../utils/TypeScript'
 
 import CardHoriz from '../cards/CardHoriz'
 
@@ -14,7 +14,7 @@ const Search = () => {
   const { pathname } = useLocation()
 
   const { darkMode } = useSelector((state: RootStore) => state);
-  const {isdarkMode}=darkMode;
+  const { isdarkMode } = darkMode;
 
   useEffect(() => {
     const delayDebounce = setTimeout(async () => {
@@ -35,37 +35,55 @@ const Search = () => {
   useEffect(() => {
     setSearch('')
     setBlogs([])
+
   }, [pathname])
+
+
 
   return (
 
-   
- <div className={`search w-100 position-relative me-4 `} >
- <input type={`text `} className={`form-control me-2 bg-${isdarkMode?'dark':'light'} text-${isdarkMode?'white':'black'}`}
-   value={search} placeholder="Enter your search..."
-   onChange={e => setSearch(e.target.value)} aria-label="Search" />
+
+    <div className={`search w-100 position-relative me-4 `} >
+      <input type={`text `} className={`form-control me-2 bg-${isdarkMode ? 'dark' : 'light'} text-${isdarkMode ? 'white' : 'black'}`}
+        value={search} placeholder="Enter your search..."
+        onChange={e => setSearch(e.target.value)} aria-label="Search" />
+
+      <ul className="nav nav-pills nav-fill">
+        <li className="nav-item">
+          <a className="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="#">Much</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="#">Link</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link disabled">Disabled</a>
+        </li>
+      </ul>
+
+      {
+        search.length >= 2 &&
+        <div className="position-relative pt-2 px-1 w-100 rounded mt-2"
+          style={{
+            background: isdarkMode ? 'dark' : '#eee', zIndex: 10,
+            maxHeight: 'calc(100vh - 100px)',
+            overflow: 'auto'
+          }}>
+          {
+            blogs.length
+              ?
+              blogs.map(blog => (
+                <CardHoriz key={blog._id} blog={blog} />
+              ))
+              : <h3 className={`text-center bg-${isdarkMode ? 'dark' : 'light'} text-${isdarkMode ? 'white' : 'black'}`}>No Blogs</h3>
+          }
+        </div>
+      }
+    </div>
 
 
-
- {
-   search.length >= 2 &&
-   <div className="position-relative pt-2 px-1 w-100 rounded mt-2"
-     style={{
-       background:isdarkMode?'dark':'#eee', zIndex: 10,
-       maxHeight: 'calc(100vh - 100px)',
-       overflow: 'auto'
-     }}>
-     {
-       blogs.length
-         ?
-         blogs.map(blog => (
-           <CardHoriz key={blog._id} blog={blog} />
-         ))
-         : <h3 className={`text-center bg-${isdarkMode?'dark':'light'} text-${isdarkMode?'white':'black'}`}>No Blogs</h3>
-     }
-   </div>
- }
-</div>
 
 
 
