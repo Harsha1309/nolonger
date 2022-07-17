@@ -79,7 +79,8 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
         </div>
         <p className={`card-text`} style={{color:isdarkMode?'white':'#003300'}}>{blog.description.slice(0, 110) + "..."}</p>
       </div>
-      <div className={`card-footer text-muted d-flex justify-content-between py-1 bg-${isdarkMode?'secondary':'light'}`}>
+      <div className={`card-footer text-muted d-flex justify-content-between py-1 bg-${isdarkMode?'secondary':'light'}`}
+      style={{backgroundColor:isdarkMode?'#4a4848':'#cccaca'}}>
       </div>
     </div >
 
