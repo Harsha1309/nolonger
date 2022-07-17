@@ -261,13 +261,13 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
           <br />
           <br />
           <button
-            className="btn btn-light mt-3 d-block mx-auto"
+            className={`btn btn-${isdarkMode ? 'light' : 'dark'} text-${!isdarkMode ? 'light' : 'dark'} mt-3 d-block mx-auto`}
             onClick={handleDraft}
           >
             {(id && draft === undefined) ? "Convert Draft" : "Save Draft"}
           </button>
           <button
-            className="btn btn-light mt-3 d-block mx-auto"
+            className={`btn btn-${isdarkMode ? 'light' : 'dark'} text-${!isdarkMode ? 'light' : 'dark'} mt-3 d-block mx-auto`}
             onClick={handleSubmit}
           >
             {(id && !draft) ? "Update Post" : "Create Post"}
