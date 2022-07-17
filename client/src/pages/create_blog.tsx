@@ -40,9 +40,9 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
   const divRef = useRef<HTMLDivElement>(null);
   const [text, setText] = useState("");
 
-  const { auth, draftsUser, blogsUser,darkMode } = useSelector((state: RootStore) => state);
+  const { auth, draftsUser, blogsUser, darkMode } = useSelector((state: RootStore) => state);
   const dispatch = useDispatch();
-  const {isdarkMode}=darkMode;
+  const { isdarkMode } = darkMode;
   const [oldData, setOldData] = useState<IBlog>(initState);
   const history = useHistory();
   const search = history.location.search;
@@ -75,7 +75,7 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
     const text = div?.innerText as string;
     setText(text);
   }, [body]);
-
+  const regex = /style=".*?"/ig;
   const handleSubmit = async () => {
     if (!auth.access_token) return;
 
@@ -96,7 +96,7 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
     }
     let newData = {
       ...blog,
-      content: body.replaceAll("<img src", '<img width="100%" src'),
+      content: body.replaceAll("<img src", '<img width="100%" src').replaceAll(regex, "")
     };
 
     if (id && !draft) {
@@ -144,7 +144,7 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
     }
     let newData = {
       ...blog,
-      content: body.replaceAll("<img src", '<img width="100%" src'),
+      content: body.replaceAll("<img src", '<img width="100%" src').replaceAll(regex, ""),
     };
     if (id && draft) {
       console.log(blog.user)
@@ -188,12 +188,12 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
       <div style={{ flex: 10, maxWidth: "900px" }}>
         <div className="row mt-4">
           <div className="col-md-6">
-            <h5 className={`text-${isdarkMode?'white':'black'} ` }>Create</h5>
+            <h5 className={`text-${isdarkMode ? 'white' : 'black'} `}>Create</h5>
             <CreateForm blog={blog} setBlog={setBlog} />
           </div>
 
           <div className="col-md-6">
-            <h5 className={`text-${isdarkMode?'white':'black'} my-2 text-center` }>Preview</h5>
+            <h5 className={`text-${isdarkMode ? 'white' : 'black'} my-2 text-center`}>Preview</h5>
             <CardHoriz blog={blog} />
           </div>
         </div>
@@ -210,14 +210,14 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
 
         <small>{text.length}</small>
       </div>
-      <div style={{ flex: 2, maxWidth: 330, margin: 15 }} className={`bg-${isdarkMode?'dark':'light'}`}>
-        <h5 className={`text-${isdarkMode?'white':'black'} my-2 text-center` }>Blog Policy</h5>
+      <div style={{ flex: 2, maxWidth: 330, margin: 15 }} className={`bg-${isdarkMode ? 'dark' : 'light'}`}>
+        <h5 className={`text-${isdarkMode ? 'white' : 'black'} my-2 text-center`}>Blog Policy</h5>
         <div
-          className={`blogpolicy bg-${isdarkMode?'dark':'light'}`}
+          className={`blogpolicy bg-${isdarkMode ? 'dark' : 'light'}`}
           style={{
             borderRadius: 5,
             padding: 10,
-            color: isdarkMode?'white':'black',
+            color: isdarkMode ? 'white' : 'black',
             marginTop: 22,
             minWidth: 250,
           }}

@@ -9,7 +9,7 @@ const Homevert = () => {
 
   return (
     <div
-      className={`card  border-1 position-relative border-md-1 bg-${
+      className={`card  border-0 position-relative bg-${
         isdarkMode ? "dark" : "light"
       }`}
     >
