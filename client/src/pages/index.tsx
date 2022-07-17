@@ -10,7 +10,7 @@ import Referal from '../components/global/Referal'
 import { Link } from 'react-router-dom'
 import Homevert from '../components/ads/Homevert'
 
-const Home = (props) => {
+const Home = () => {
   const { homeBlogs, categories, darkMode } = useSelector((state: RootStore) => state)
   //const [promo, setPromo] = useState<IBlog>()
   const { isdarkMode } = darkMode;
@@ -25,6 +25,8 @@ const Home = (props) => {
     dispatch(getHomeBlogs(`?page=${homeBlogs.count + 1}`))
     return
   }
+
+  
   if (homeBlogs.blogs.length === 0) return <Loading />;
 
   return (
@@ -67,19 +69,20 @@ const Home = (props) => {
             </p>
           }
         >
-          <div className="container px-0">
-            <div className={`home_blogs `} >
+          
+            <div className={`home_blogs`} >
 
               {homeBlogs.blogs.map((blog, index) => (
                 <>
                   <CardVert key={index} blog={blog} />
-                  {index % 9 === 0
+                  {index % 9 === 0 
+                  //&& window.location.origin !== "http://localhost:3000"
                     && <Homevert />
                   }
                 </>
               ))}
             </div>
-          </div>
+         
         </InfiniteScroll>
       </div >
     </>

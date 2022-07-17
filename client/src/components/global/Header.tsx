@@ -22,7 +22,7 @@ const Header = () => {
   return (
     <>
       <nav className={`navbar navbar-expand navbar-${isdarkMode ? 'dark' : 'light'} bg-${isdarkMode ? 'dark' : 'light'}`}
-        style={{ position: 'sticky', top: 0, left: 0, zIndex: 9 }} p-3
+        style={{ position: 'sticky', top: 0, left: 0, zIndex: 9 }}
       >
         <Link className="navbar-brand  mx-2" to="/"><b>Pedia<span style={{ color: '#00e600' }}>Geek</span></b></Link>
         {/* 

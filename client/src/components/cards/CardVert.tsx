@@ -19,18 +19,18 @@ interface IProps {
 
 
 const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
-  const { auth,darkMode } = useSelector((state: RootStore) => state);
+  const { auth, darkMode } = useSelector((state: RootStore) => state);
   const { isdarkMode } = darkMode;
   const timeAgo = new TimeAgo('en-US')
-  
+ 
   return (
-    <div className={`card border-0 pt-1 bg-${isdarkMode?'dark':'light'}`} >
+    <div className={`card border-0 pt-1 bg-${isdarkMode ? 'dark' : 'light'}`} >
       {typeof blog.user !== "string" &&
         < div className="mx-2">
           <div className="d-flex flex-row justify-content-between align-items-center">
             <Link to={`/profile/${blog.user._id}`} className="text-decoration-none">
               <div className="d-flex flex-row align-items-center"><img className="rounded-circle" src={blog.user.avatar} width="40" height="40" />
-                <div className="d-flex flex-column align-items-start ml-2"><span className="font-weight-bold" style={{color:isdarkMode?'white':'#003300',}}>{blog.user.name.slice(0, 12)}..<Onlytick role={blog.user.role} /></span><span className="followers text-muted"><small >{blog.user.follower.length} Followers{ispromoted && ', Ads'}</small></span></div>
+                <div className="d-flex flex-column align-items-start ml-2"><span className="font-weight-bold" style={{ color: isdarkMode ? 'white' : '#003300', }}>{blog.user.name.slice(0, 12)}..<Onlytick role={blog.user.role} /></span><span className="followers text-muted"><small >{blog.user.follower.length} Followers{ispromoted && ', Ads'}</small></span></div>
               </div>
             </Link>
             <div className="d-flex flex-row align-items-center mt-2"><Follow user={blog.user} /></div>
@@ -64,7 +64,7 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
               textDecoration: "none",
               textTransform: "capitalize",
               fontWeight: 'bold',
-              color:isdarkMode?'white':'#003300'
+              color: isdarkMode ? 'white' : '#003300'
             }}
           >
             {blog.title.slice(0, 50) + "..."}
@@ -77,7 +77,7 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
             <i className="far fa-eye "></i> {blog.views}
           </div>
         </div>
-        <p className={`card-text`} style={{color:isdarkMode?'white':'#003300'}}>{blog.description.slice(0, 110) + "..."}</p>
+        <p className={`card-text`} style={{ color: isdarkMode ? 'white' : '#003300' }}>{blog.description.slice(0, 110) + "..."}</p>
       </div>
       {/* <div className={`card-footer text-muted d-flex justify-content-between py-1 `}
       style={{backgroundColor:isdarkMode?'#4a4848':'#cccaca'}}>
