@@ -68,7 +68,7 @@ const Home = (props) => {
           }
         >
           <div className="container px-0">
-            <div className={`home_blogs bg-${isdarkMode ? 'dark' : 'light'}`} >
+            <div className={`home_blogs `} >
               <Homevert />
               {homeBlogs.blogs.map((blog, index) => (
                 <CardVert key={index} blog={blog} />
