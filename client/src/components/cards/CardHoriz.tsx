@@ -33,7 +33,7 @@ const CardHoriz: React.FC<IProps> = ({ blog }) => {
   };
 
   return (
-    <div className={`card mb-3 bg-${isdarkMode?'dark':'light'} text-${isdarkMode?'white':'black'}`} style={{ minWidth: "260px" }}>
+    <div className={`card mb-3 bg-${isdarkMode?'dark':'light'} text-${isdarkMode?'white':'black'}`}>
       <div className="row g-0 p-2">
         <div
           className="col-md-4"

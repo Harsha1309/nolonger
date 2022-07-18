@@ -64,7 +64,8 @@ const Search = () => {
             }}>
             <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabIndex={0}>
               <div className="row">
-                <div className="col-sm-6"> {
+                <div className="col-sm-6"> 
+                {
                   blogs.length
                     ?
                     blogs.map(blog => (
