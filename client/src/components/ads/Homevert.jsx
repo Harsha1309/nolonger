@@ -15,12 +15,21 @@ const Homevert = () => {
     >
       <ins
         className="adsbygoogle"
-        style={{ display: "block"  }}
+        style={{ display: "block" }}
         data-ad-client="ca-pub-3982561798373930"
         data-ad-slot="6177057546"
         data-ad-format="auto"
         data-full-width-responsive="false"
       ></ins>
+      <ins
+        class="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-format="fluid"
+        data-ad-layout-key="-gt-a+u-44+8x"
+        data-ad-client="ca-pub-3982561798373930"
+        data-ad-slot="8626647989"
+      ></ins>
+      <script></script>
     </div>
   );
 };
