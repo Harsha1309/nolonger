@@ -26,7 +26,7 @@ const Home = () => {
     return
   }
 
-  
+
   if (homeBlogs.blogs.length === 0) return <Loading />;
 
   return (
@@ -69,20 +69,20 @@ const Home = () => {
             </p>
           }
         >
-          
-            <div className={`home_blogs`} >
 
-              {homeBlogs.blogs.map((blog, index) => (
-                <>
-                  <CardVert key={index} blog={blog} />
-                  {index % 9 === 0 
+          <div className={`home_blogs`} >
+
+            {homeBlogs.blogs.map((blog, index) => (
+              <>
+                <CardVert key={index} blog={blog} />
+                {index % 8 === 0
                   //&& window.location.origin !== "http://localhost:3000"
-                    && <Homevert />
-                  }
-                </>
-              ))}
-            </div>
-         
+                  && <Homevert />
+                }
+              </>
+            ))}
+          </div>
+
         </InfiniteScroll>
       </div >
     </>

@@ -136,7 +136,6 @@ const Search = () => {
                       </div>
                       : <>
                       </>
-
                   }
 
                 </div>
@@ -170,7 +169,7 @@ const Search = () => {
                 {
                   users.length
                     ?
-                    users.slice(0, 2).map((user, index) => (
+                    users.map((user, index) => (
                       <div className="pr-1 px-md-3 col-md-6">
                         <div className="d-flex flex-row justify-content-between align-items-center ">
                           <Link to={`/profile/${user._id}`} className="text-decoration-none">
