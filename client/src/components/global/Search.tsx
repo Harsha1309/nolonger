@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-
+import { useSelector } from 'react-redux'
 import { getAPI } from '../../utils/FetchData'
-import { IBlog, ICategory, IUser } from '../../utils/TypeScript'
+import { IBlog, ICategory, IUser,RootStore } from '../../utils/TypeScript'
 import CardHoriz from '../cards/CardHoriz'
 
 import SearchCard from '../cards/searchCard'
