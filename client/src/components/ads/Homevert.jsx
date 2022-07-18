@@ -14,22 +14,21 @@ const Homevert = () => {
       }`}
     >
       <ins
-        className="adsbygoogle"
+        class="adsbygoogle"
         style={{ display: "block" }}
         data-ad-client="ca-pub-3982561798373930"
-        data-ad-slot="6177057546"
+        data-ad-slot="8003831451"
         data-ad-format="auto"
-        data-full-width-responsive="false"
+        data-full-width-responsive="true"
       ></ins>
       <ins
         class="adsbygoogle"
-        style={{ display: "block" }}
+        style="display:block"
         data-ad-format="fluid"
-        data-ad-layout-key="-gt-a+u-44+8x"
+        data-ad-layout-key="-gw-3+1f-3d+2z"
         data-ad-client="ca-pub-3982561798373930"
-        data-ad-slot="8626647989"
+        data-ad-slot="3393684365"
       ></ins>
-      <script></script>
     </div>
   );
 };
