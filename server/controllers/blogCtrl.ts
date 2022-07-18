@@ -357,7 +357,7 @@ const blogCtrl = {
       const blogs = await Blogs.aggregate([
         {
           $search: {
-            index: "blogs_search",
+            index: "bogs_search",
             text: {
               query: `${req.query.title}`,
               path: {
