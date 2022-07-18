@@ -188,12 +188,12 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
       <div style={{ flex: 10, maxWidth: "900px" }}>
         <div className="row mt-4">
           <div className="col-md-6">
-            <h5 className={`text-${isdarkMode ? 'white' : 'black'} `}>Create</h5>
+            <h5 className={`text-${isdarkMode ? 'white' : 'black'} text-center`}>Create</h5>
             <CreateForm blog={blog} setBlog={setBlog} />
           </div>
 
           <div className="col-md-6">
-            <h5 className={`text-${isdarkMode ? 'white' : 'black'} my-2 text-center`}>Preview</h5>
+            <h5 className={`text-${isdarkMode ? 'white' : 'black'}  text-center`}>Preview</h5>
             <CardHoriz blog={blog} />
           </div>
         </div>
@@ -205,10 +205,10 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
           dangerouslySetInnerHTML={{
             __html: body,
           }}
-          style={{ display: "none" }}
+          style={{ fontSize: "18px", color: isdarkMode ? 'white' : 'black', display: "none" }}
         />
 
-        <small>{text.length}</small>
+        <small className={`text-muted text-${isdarkMode ? 'light' : 'dark'}`}>{text.length}</small>
       </div>
       <div style={{ flex: 2, maxWidth: 330, margin: 15 }} className={`bg-${isdarkMode ? 'dark' : 'light'}`}>
         <h5 className={`text-${isdarkMode ? 'white' : 'black'} my-2 text-center`}>Blog Policy</h5>
@@ -261,13 +261,13 @@ const CreateBlog: React.FC<IProps> = ({ id, draft }) => {
           <br />
           <br />
           <button
-            className="btn btn-light mt-3 d-block mx-auto"
+            className={`btn btn-${isdarkMode ? 'light' : 'dark'} text-${!isdarkMode ? 'light' : 'dark'} mt-3 d-block mx-auto`}
             onClick={handleDraft}
           >
             {(id && draft === undefined) ? "Convert Draft" : "Save Draft"}
           </button>
           <button
-            className="btn btn-light mt-3 d-block mx-auto"
+            className={`btn btn-${isdarkMode ? 'light' : 'dark'} text-${!isdarkMode ? 'light' : 'dark'} mt-3 d-block mx-auto`}
             onClick={handleSubmit}
           >
             {(id && !draft) ? "Update Post" : "Create Post"}
