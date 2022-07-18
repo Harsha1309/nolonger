@@ -22,14 +22,6 @@ const Homevert = () => {
           data-ad-format="rectangle"
           data-full-width-responsive="false"
         ></ins>
-        <ins
-          class="adsbygoogle my-2"
-          style={{ display: "block" }}
-          data-ad-client="ca-pub-3982561798373930"
-          data-ad-slot="7436871156"
-          data-ad-format="horizontal"
-          data-full-width-responsive="false"
-        ></ins>
       </div>
     </div>
   );
