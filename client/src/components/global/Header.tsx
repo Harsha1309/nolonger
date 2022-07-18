@@ -47,7 +47,7 @@ const Header = () => {
           <div className={`modal-content bg-${isdarkMode?'dark':'light'} text-${isdarkMode?'white':'black'}`}>
             <div className="modal-header">
               <h5 className="modal-title" id="staticBackdropLabel1">Search For Blogs</h5>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" id='searchclose'></button>
             </div>
             <div className="modal-body">
               <Search />

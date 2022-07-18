@@ -16,4 +16,6 @@ router
   .patch(auth, categoryCtrl.updateCategory)
   .delete(auth, categoryCtrl.deleteCategory);
 
+router.get("/search/category", categoryCtrl.searchCategory);
+
 export default router;
