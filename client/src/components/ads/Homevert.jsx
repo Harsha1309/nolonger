@@ -15,12 +15,20 @@ const Homevert = () => {
     >
       <div className="container">
         <ins
-          class="adsbygoogle"
-          style={{ display: block }}
+          class="adsbygoogle my-2"
+          style={{ display: "block" }}
           data-ad-client="ca-pub-3982561798373930"
-          data-ad-slot="8003831451"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
+          data-ad-slot="6423172384"
+          data-ad-format="rectangle"
+          data-full-width-responsive="false"
+        ></ins>
+        <ins
+          class="adsbygoogle my-2"
+          style={{ display: "block" }}
+          data-ad-client="ca-pub-3982561798373930"
+          data-ad-slot="7436871156"
+          data-ad-format="horizontal"
+          data-full-width-responsive="false"
         ></ins>
       </div>
     </div>
