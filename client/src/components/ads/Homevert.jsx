@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import Hometext from "./Hometext";
 const Homevert = () => {
   const { darkMode } = useSelector((state) => state);
   const { isdarkMode } = darkMode;
@@ -22,6 +23,7 @@ const Homevert = () => {
           data-ad-format="rectangle"
           data-full-width-responsive="false"
         ></ins>
+        <Hometext />
       </div>
     </div>
   );
