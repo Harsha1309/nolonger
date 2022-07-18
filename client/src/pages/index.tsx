@@ -75,7 +75,7 @@ const Home = () => {
             {homeBlogs.blogs.map((blog, index) => (
               <>
                 <CardVert key={index} blog={blog} />
-                {index % 8 === 0
+                {index % 6 === 0
                   //&& window.location.origin !== "http://localhost:3000"
                   && <Homevert />
                 }
