@@ -63,6 +63,7 @@
     ]
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.14",
     "@types/react-router-dom": "^5.1.7"
   },
   "resolutions": {

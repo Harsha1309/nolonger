@@ -30,9 +30,8 @@ const categoryCtrl = {
   },
   getCategories: async (req: Request, res: Response) => {
     try {
-     
-      let categories = await Categories.find()
-        
+      let categories = await Categories.find();
+
       res.json({ categories });
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });
@@ -40,14 +39,14 @@ const categoryCtrl = {
   },
   getCategoriesarray: async (req: Request, res: Response) => {
     try {
-      console.log(req.query.categor)
+      console.log(req.query.categor);
       let categories = await Categories.find({
         //updated only to convert to lower case.
         name: { $regex: `${req.query.categor}`.toLocaleLowerCase() },
       })
         .limit(10)
         .sort("-createdAt");
-      res.json( categories );
+      res.json(categories);
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });
     }
@@ -92,6 +91,33 @@ const categoryCtrl = {
         return res.status(400).json({ msg: "Category does not exists." });
 
       res.json({ msg: "Delete Success!" });
+    } catch (err: any) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
+  searchCategory: async (req: Request, res: Response) => {
+    try {
+      const categories = await Categories.aggregate([
+        {
+          $search: {
+            index: "category",
+            text: {
+              query: req.query.title,
+              path: {
+                wildcard: "*",
+              },
+              fuzzy: {},
+            },
+          },
+        },
+        { $limit: 8 },
+      ]);
+
+      if (!categories.length)
+        return res
+          .status(400)
+          .json({ msg: "No Category with this name you may create one." });
+      res.json(categories);
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });
     }

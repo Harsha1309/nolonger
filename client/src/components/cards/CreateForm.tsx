@@ -30,7 +30,7 @@ const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
   const { categories, auth, darkMode } = useSelector((state: RootStore) => state);
   const { isdarkMode } = darkMode;
   const app = document.getElementById("app");
-
+  const types = ['image/png', 'image/jpeg'];
   const [categor, setCategor] = useState(categories);
   const [catname, setCatname] = useState("");
   const handleChangeInput = (e: InputChange) => {
@@ -49,7 +49,15 @@ const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
   const handleChangeThumbnail = (e: InputChange) => {
     const target = e.target as HTMLInputElement;
     const files = target.files;
+
     if (files) {
+      if (!types.includes(files[0].type)) {
+        e.target.value = "";
+        return dispatch({
+          type: "ALERT",
+          payload: { errors: "Image can only of .JPG or .PNG extension." },
+        });
+      }
       const file = files[0];
       setBlog({ ...blog, thumbnail: file });
     }
@@ -79,6 +87,8 @@ const CreateForm: React.FC<IProps> = ({ blog, setBlog }) => {
       app.style.display = 'none';
     if (auth.access_token) dispatch(createCategory(catname, auth.access_token));
   };
+
+
 
   return (
     <div>

@@ -359,7 +359,7 @@ const blogCtrl = {
           $search: {
             index: "bogs_search",
             text: {
-              query: `${req.query.title}`,
+              query: req.query.title,
               path: {
                 wildcard: "*",
               },
@@ -367,11 +367,15 @@ const blogCtrl = {
             },
           },
         },
-        { $limit: 5 },
+        { $limit: 8 },
+        {
+          $project: {
+            earn: 0,
+          },
+        },
       ]);
 
       if (!blogs.length) return res.status(400).json({ msg: "No Blogs." });
-
       res.json(blogs);
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });
