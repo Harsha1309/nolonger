@@ -53,7 +53,7 @@ const Home = () => {
         }
       </div>
 
-      <div className="home_page">
+      <div className="home_page px-2">
 
         <Referal />
         <Helmetglobal title="Home-PediaGeek" description="PediaGeek is the best way to express your idea to the World." keyword="Home,explore,blogs,social_media" />

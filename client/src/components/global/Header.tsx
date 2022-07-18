@@ -28,7 +28,7 @@ const Header = () => {
       <nav className={`navbar navbar-expand navbar-${isdarkMode ? 'dark' : 'light'} bg-${isdarkMode ? 'dark' : 'light'} px-md-2`}
         style={{ position: 'sticky', top: 0, left: 0, zIndex: 9 }} 
       >
-        <Link className="navbar-brand " to="/">  <h5 className={`text-uppercase fw-bold text-${isdarkMode ? 'white' : 'black'}`} style={{marginBottom:'-5px'}} >
+        <Link className="navbar-brand " to="/">  <h5 className={`text-uppercase fw-bold text-${isdarkMode ? 'white' : 'black'} mx-2`} style={{marginBottom:'-5px'}} >
                   Pedia<span style={{color:'#00e600'}}>Geek</span>
                 </h5></Link>
         {/* 

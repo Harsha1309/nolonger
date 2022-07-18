@@ -88,22 +88,6 @@ const Search = () => {
         value={search} placeholder="Enter your search..."
         onChange={e => setSearch(e.target.value)} aria-label="Search" />
 
-      <ul className="nav nav-pills nav-fill">
-        <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Active</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Much</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Link</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link disabled">Disabled</a>
-        </li>
-      </ul>
-
-
       <nav>
         <div className="nav nav-pills nav-fill mt-2 mb-1" id="nav-tab" role="tablist">
           <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">All</button>
@@ -116,13 +100,13 @@ const Search = () => {
         search.length >= 2 &&
 
         <>
-          <div className="tab-content my-3 position-relative pt-2 px-1 w-100 rounded mt-2" id="nav-tabContent"
+          <div className={`tab-content my-3 position-relative pt-2 px-1 w-100 rounded mt-2 `} id="nav-tabContent"
             style={{
-              background: '#eee', zIndex: 10,
+              background:isdarkMode?'#181818':'#eee', zIndex: 10,
               height: 'calc(100vh - 200px)',
               overflow: 'scroll'
             }}>
-            <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabIndex={0}>
+            <div className={`tab-pane fade show active text-${isdarkMode?'white':'black'} `} id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabIndex={0} style={{backgroundColor:isdarkMode?'dark':'#eee'}}>
               <div className="row">
 
                 <div className="col-sm-6 my-2">
@@ -138,7 +122,7 @@ const Search = () => {
                   {
                     users.length
                       ?
-                      <div className='m-2 rounded bg-light p-2'>
+                      <div className={`m-2 rounded bg-${isdarkMode?'dark':'light'} text-${isdarkMode?'white':'black'} p-2`}>
                         {users.slice(0, 2).map((user, index) => (
                           <div className="pr-1">
                             <div className="d-flex flex-row justify-content-between align-items-center ">
