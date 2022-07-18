@@ -25,12 +25,6 @@ const Header = () => {
         style={{ position: 'sticky', top: 0, left: 0, zIndex: 9 }} 
       >
         <Link className="navbar-brand " to="www.pediageek.com">  <h5 className={`text-uppercase fw-bold text-${isdarkMode ? 'white' : 'black'}`} style={{marginBottom:'-5px'}} >
-                  <img className='img-fluid'
-                    src="/logo192.png"
-                    alt="pediageek logo"
-                    width={25}
-                    height={25}
-                  />
                   Pedia<span style={{color:'#00e600'}}>Geek</span>
                 </h5></Link>
         {/* 

@@ -72,7 +72,7 @@ const Home = (props) => {
               {homeBlogs.blogs.map((blog, index) => (<>
                 <CardVert key={index} blog={blog} />
                 {
-                index%8==0 && <Homevert  />
+                index%6==0 && <Homevert  />
                 }
                 </>
 ))}
