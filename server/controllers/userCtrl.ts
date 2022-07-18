@@ -63,5 +63,39 @@ const userCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
+  searchUsers: async (req: Request, res: Response) => {
+    try {
+      const users = await Users.aggregate([
+        {
+          $search: {
+            index: "default",
+            text: {
+              query: req.query.title,
+              path: {
+                wildcard: "*",
+              },
+              fuzzy: {},
+            },
+          },
+        },
+        {
+          $project: {
+            password: 0,
+            type: 0,
+            paytm: 0,
+            referer:0
+          },
+        },
+        { $limit: 8 },
+      ]);
+
+      if (!users.length)
+        return res.status(400).json({ msg: "No Users with this name." });
+      res.json(users);
+    } catch (err: any) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
 };
 export default userCtrl;
