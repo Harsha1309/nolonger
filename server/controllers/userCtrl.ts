@@ -69,7 +69,7 @@ const userCtrl = {
       const users = await Users.aggregate([
         {
           $search: {
-            index: "default",
+            index: "user_search",
             text: {
               query: req.query.title,
               path: {
