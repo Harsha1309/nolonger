@@ -6,7 +6,7 @@ const Hometext = () => {
 
   return (
     <ins
-      class="adsbygoogle my-2"
+      className="adsbygoogle my-2"
       style={{ display: "block" }}
       data-ad-client="ca-pub-3982561798373930"
       data-ad-slot="7436871156"
