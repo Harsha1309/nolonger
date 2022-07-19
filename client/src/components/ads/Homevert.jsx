@@ -16,7 +16,7 @@ const Homevert = () => {
     >
       <div className="container">
         <ins
-          class="adsbygoogle my-2"
+          className="adsbygoogle mt-3"
           style={{ display: "block" }}
           data-ad-client="ca-pub-3982561798373930"
           data-ad-slot="6423172384"
