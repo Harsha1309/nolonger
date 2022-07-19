@@ -125,7 +125,7 @@ const Search = () => {
                 {
                   users && users?.length
                     ?
-                    <div className={`m-2 rounded bg-${isdarkMode ? 'dark' : 'light'} text-${isdarkMode ? 'white' : 'black'} p-2`}>
+                    <div className={`my-2 rounded bg-${isdarkMode ? 'dark' : 'light'} text-${isdarkMode ? 'white' : 'black'} p-2`}>
                       {users.slice(0, 2).map((user, index) => (
                         <div className="pr-1">
                           <div className="d-flex flex-row justify-content-between align-items-center ">
@@ -157,7 +157,7 @@ const Search = () => {
               }
             </div> : <div className='my-3 text-center'><Loading />
               <h3>
-                Enetr your search ....
+                Enter your search ....
               </h3>
             </div>
             }
