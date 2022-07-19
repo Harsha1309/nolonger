@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { IBlog, RootStore, IUser, IComment } from "../../utils/TypeScript";
-
+import "./DisplayBlog.css";
 import Input from "../comments/Input";
 import Comments from "../comments/Comments";
 import Loading from "../global/Loading";
@@ -92,8 +92,8 @@ const DisplayBlog: React.FC<IProps> = ({ blog }) => {
 
 
 
-          <div className='ql-snow text-center'>
-            <div className='ql-editor p-0' dangerouslySetInnerHTML={{ __html: blog.content }} style={{ fontSize: "18px", color: isdarkMode ? 'white' : 'black' }} />
+          <div className='ql-snow text-center '>
+            <div className='ql-editor p-0 text-size' dangerouslySetInnerHTML={{ __html: blog.content }} style={{color: isdarkMode ? 'white' : 'black' }} />
           </div>
 
           <hr className="my-1" />
