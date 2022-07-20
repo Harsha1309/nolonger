@@ -1,7 +1,7 @@
 import { Response } from "express";
 import { IReqAuth } from "../config/interface";
 import Users from "../models/userModel";
-import notificationCtrl from "./notificationCtrl";
+import notificationCtrl from "./noticeCtrl";
 
 // const Pagination = (req: IReqAuth) => {
 //   let page = Number(req.query.page) * 1 || 1;

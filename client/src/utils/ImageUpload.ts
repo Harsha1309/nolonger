@@ -16,12 +16,10 @@ export const imageUpload = async (file: File) => {
   formData.append("file", file);
   formData.append("upload_preset", "cnl01koe");
   formData.append("cloud_name", "aababcab");
-
   const res = await fetch("https://api.cloudinary.com/v1_1/aababcab/upload", {
     method: "POST",
     body: formData,
   });
-
   const data = await res.json();
   return { public_id: data.public_id, url: data.secure_url };
 };

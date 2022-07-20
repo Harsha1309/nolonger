@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import { IBlog, IParams, RootStore } from "../../utils/TypeScript";
 
 import { deleteBlog } from "../../redux/actions/blogAction";

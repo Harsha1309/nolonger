@@ -2,7 +2,7 @@ import { Dispatch } from "react";
 import { checkTokenExp } from "../../utils/checkTokenExp";
 import { getAPI, patchAPI } from "../../utils/FetchData";
 import { ALERT, IAlertType } from "../types/alertType";
-import { IAuth } from "../types/authType";
+import { AUTH, IAuth, IAuthType } from "../types/authType";
 import {
   GET_NOTIFICATIONS,
   INotificationType,
@@ -18,13 +18,13 @@ export const getNotifications =
 
     try {
       const res = await getAPI("notification", access_token);
+    
       if (res)
         dispatch({
           type: GET_NOTIFICATIONS,
           payload: {
-            data: res.data.msg,
-            new: res.data.new,
-            total: res.data.msg.length,
+            data: res.data.notice,
+            total: 20,
           },
         });
     } catch (err: any) {
@@ -34,7 +34,7 @@ export const getNotifications =
 
 export const notificationRead =
   (auth: IAuth) =>
-  async (dispatch: Dispatch<IAlertType | INotificationType>) => {
+  async (dispatch: Dispatch<IAuthType | INotificationType | IAlertType>) => {
     if (!auth.access_token || !auth.user) return;
 
     const result = await checkTokenExp(auth.access_token, dispatch);
@@ -42,15 +42,10 @@ export const notificationRead =
 
     try {
       const res = await patchAPI("notification", {}, access_token);
-      if (res)
-        dispatch({
-          type: GET_NOTIFICATIONS,
-          payload: {
-            data: res.data.msg,
-            new: res.data.new,
-            total: res.data.msg.length,
-          },
-        });
+      dispatch({
+        type: AUTH,
+        payload: { ...auth, user: { ...auth.user, notice: false } },
+      });
     } catch (err: any) {
       dispatch({ type: ALERT, payload: { errors: err.response.data.msg } });
     }

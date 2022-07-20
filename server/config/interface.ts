@@ -12,6 +12,7 @@ export interface IUser extends Document {
   following: string[];
   role: string;
   type: string;
+  notice?: boolean;
   rf_token?: string;
   _doc: object;
 }
@@ -21,6 +22,15 @@ export interface INewUser {
   account: string;
   password: string;
 }
+
+export interface INotice extends Document {
+  user: string;
+  msg: string;
+  desc: string;
+  url?: string;
+  _doc: object;
+}
+
 export interface INotification {
   user: string;
   msg: [

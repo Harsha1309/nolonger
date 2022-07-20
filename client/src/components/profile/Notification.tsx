@@ -55,34 +55,33 @@ const Notification = () => {
                             className="modal-body example"
                             style={{ maxHeight: "65vh", overflow: "scroll" }}
                         >
-                            {msg?.length === 0 && (
+                            {msg?.length === 0 ?
                                 <div className="text-center">
                                     <div>
                                         <i className="fas fa-bell fa-4x"></i>
                                     </div>
                                     <h5>No Notifications</h5>
+                                </div> : <div className="list-group">
+
+                                    {msg?.map((data, index) => (
+
+                                        <Link
+                                            key={index}
+                                            to={data.url ? data.url : '#'}
+                                            className="list-group-item list-group-item-action list-group-item-info mb-1" aria-current="true"
+                                        >
+                                            <div className="d-flex w-100 justify-content-between">
+                                                <h5 className="mb-1">{data.msg}</h5>
+                                                <small>{timeAgo.format(new Date(data.createdAt))}</small>
+                                            </div>
+                                            <p className="mb-1">{data.desc}</p>
+
+                                        </Link>
+
+                                    ))}
+
                                 </div>
-                            )}
-                            <div className="list-group">
-
-                                {msg?.length && msg?.map((data, index) => (
-
-                                    <Link
-                                        key={index}
-                                        to={data.url ? data.url : '#'}
-                                        className="list-group-item list-group-item-action list-group-item-info mb-1" aria-current="true"
-                                    >
-                                        <div className="d-flex w-100 justify-content-between">
-                                            <h5 className="mb-1">{data.msg}</h5>
-                                            <small>{timeAgo.format(new Date(data.time))}</small>
-                                        </div>
-                                        <p className="mb-1">{data.desc}</p>
-
-                                    </Link>
-
-                                ))}
-
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>

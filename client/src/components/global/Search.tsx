@@ -22,7 +22,6 @@ const Search = () => {
       if (search.length < 2) return setCategories([]);
       try {
         getAPI(`search/category?title=${search}`).then((res) => {
-          console.log(res.data)
           setCategories(res.data)
         }).catch(err => {
           setCategories([])
@@ -55,7 +54,6 @@ const Search = () => {
       if (search.length < 2) return setBlogs([]);
       try {
         getAPI(`search/blogs?title=${search}`).then((res) => {
-          console.log(res.data)
           setBlogs(res.data)
         }).catch(err => {
           setBlogs([])

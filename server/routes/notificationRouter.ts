@@ -1,5 +1,5 @@
 import express from "express";
-import notificationCtrl from "../controllers/notificationCtrl";
+import notificationCtrl from "../controllers/noticeCtrl";
 import auth from "../middleware/auth";
 const router = express.Router();
 

@@ -2,7 +2,6 @@ import jwt_decode from "jwt-decode";
 import { AUTH } from '../redux/types/authType'
 import { getAPI } from './FetchData'
 
-
 interface IToken {
   exp: number
   iat: number

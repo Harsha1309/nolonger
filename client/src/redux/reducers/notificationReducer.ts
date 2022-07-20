@@ -8,7 +8,6 @@ import {
 const initialState = {
   data: [],
   total: 0,
-  new: false,
 };
 
 const commentReducer = (

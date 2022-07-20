@@ -3,7 +3,6 @@ import Drafts from "../models/draftModel";
 import Blogs from "../models/blogModel";
 import { IReqAuth } from "../config/interface";
 import mongoose from "mongoose";
-import notificationCtrl from "./notificationCtrl";
 
 const Pagination = (req: IReqAuth) => {
   let page = Number(req.query.page) * 1 || 1;

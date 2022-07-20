@@ -28,9 +28,9 @@ const userSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    referer:{
+    referer: {
       type: String,
-      default: 'PediaGeek',
+      default: "PediaGeek",
     },
     password: {
       type: String,
@@ -53,7 +53,8 @@ const userSchema = new mongoose.Schema(
       {
         type: mongoose.Types.ObjectId,
         ref: "Users",
-        index: true, unique: true ,
+        index: true,
+        unique: true,
         default: [],
       },
     ],
@@ -61,16 +62,20 @@ const userSchema = new mongoose.Schema(
       {
         type: mongoose.Types.ObjectId,
         ref: "Users",
-        index: true, unique: true ,
+        index: true,
+        unique: true,
         default: [],
       },
     ],
+    notice: {
+      type: Boolean,
+      default: false,
+    },
     rf_token: { type: String, select: false },
   },
   {
     timestamps: true,
   }
 );
-
 
 export default mongoose.model<IUser>("user", userSchema);

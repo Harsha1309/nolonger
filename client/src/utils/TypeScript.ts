@@ -37,6 +37,7 @@ export interface IUser extends IUserLogin {
   paytm: string;
   updatedAt: string;
   _id: string;
+  notice: Boolean;
 }
 
 export interface IPreferance {
@@ -76,7 +77,7 @@ export interface IAlert {
 export interface INotification {
   msg: string;
   desc: string;
-  time: Date;
+  createdAt: Date;
   url?: string;
 }
 

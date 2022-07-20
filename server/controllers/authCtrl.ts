@@ -20,7 +20,7 @@ import {
 
 import { OAuth2Client } from "google-auth-library";
 import fetch from "node-fetch";
-import notificationCtrl from "./notificationCtrl";
+import notificationCtrl from "./noticeCtrl";
 
 const client = new OAuth2Client(`${process.env.MAIL_CLIENT_ID}`);
 const CLIENT_URL = `${process.env.BASE_URL}`;

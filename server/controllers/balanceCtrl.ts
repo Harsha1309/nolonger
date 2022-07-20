@@ -2,7 +2,7 @@ import { json, Request, Response } from "express";
 import { IBlog, IReqAuth } from "../config/interface";
 import Balance from "../models/balanceModel";
 import sendMail from "../config/sendBalancemail";
-import notificationCtrl from "./notificationCtrl";
+import notificationCtrl from "./noticeCtrl";
 import Blogs from "../models/blogModel";
 const balanceCtrl = {
   getBalance: async (req: IReqAuth, res: Response) => {

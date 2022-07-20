@@ -4,7 +4,7 @@ import Comments from "../models/commentModel";
 import { IReqAuth } from "../config/interface";
 import mongoose from "mongoose";
 import balanceCtrl from "./balanceCtrl";
-import notificationCtrl from "./notificationCtrl";
+import notificationCtrl from "./noticeCtrl";
 
 const Pagination = (req: IReqAuth) => {
   let page = Number(req.query.page) * 1 || 1;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import millify from "millify";
 import { IBlog, ICategory, RootStore } from "../../utils/TypeScript";
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
@@ -22,7 +22,7 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
   const { auth, darkMode } = useSelector((state: RootStore) => state);
   const { isdarkMode } = darkMode;
   const timeAgo = new TimeAgo('en-US')
- 
+
   return (
     <div className={`card border-0 pt-1 bg-${isdarkMode ? 'dark' : 'light'}`} >
       {typeof blog.user !== "string" &&
@@ -74,7 +74,7 @@ const CardVert: React.FC<IProps> = ({ blog, ispromoted, category, }) => {
           <div className={`views`}> {timeAgo.format(new Date(blog.createdAt))}
           </div>
           <div className={`stats `}>
-            <i className="far fa-eye "></i> {blog.views}
+            <i className="far fa-eye "></i> {blog.views != undefined ? millify(blog.views) : 0}
           </div>
         </div>
         <p className={`card-text`} style={{ color: isdarkMode ? 'white' : '#003300' }}>{blog.description.slice(0, 110) + "..."}</p>
